@@ -70,5 +70,5 @@ dependencies {
     implementation "com.tencent.bugly:nativecrashreport:$bugly_version"
     //权限
     implementation 'com.permissionx.guolindev:permissionx:1.4.0'
-    implementation 'com.github.mik3y:usb-serial-for-android:3.7.0'
+
 }
