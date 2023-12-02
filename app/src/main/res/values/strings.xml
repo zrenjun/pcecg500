@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">pcecg500</string>
+    <string name="gain">增益</string>
+    <string name="speed">走速</string>
+    <string name="collection">采集</string>
+    <string name="detect_not_connection_usb">未连接ECG，无法采集，请连接ECG</string>
+    <string name="detect_is_connected">已连接上ECG</string>
+    <string name="detect_interrupt_re_detect">数据不连续，需重新采集</string>
+    <string name="lpf">低通(Hz)</string>
+    <string name="pff">肌电(Hz)</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="hint">核心基础基于这些权限</string>
+    <string name="permission">您需要手动在“设置”中允许必要的权限</string>
+    <string name="ecg_data_uploading_please_wait">心电分析中，请稍等…</string>
+    <string name="analysis">分析</string>
+    <string name="share">分享</string>
+</resources>

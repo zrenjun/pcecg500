@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="detect_interrupt_re_detect">数据不连续，需重新采集</string>
+    <string name="lpf">低通(Hz)</string>
+    <string name="ecg_data_uploading_please_wait">心电分析中，请稍等…</string>
+</resources>

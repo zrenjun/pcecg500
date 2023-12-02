@@ -1,0 +1,4941 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="single_file_btn">Analyse Single ECG</string>
+  <string name="batch_file_btn">Analyse ECG Batch</string>
+  <string name="inv_file_type">Invalid file type</string>
+  <string name="action_settings">Settings</string>
+  <string name="txtAnalysisVersion">Analysis Version:</string>
+  <string name="txtBuildDate">Build Date:</string>
+  <string name="txtBuildTime">Build Time:</string>
+  <string name="AnalysisVersion" />
+  <string name="BuildDate" />
+  <string name="BuildTime" />
+  <string name="about">About the Glasgow Program</string>
+  <string-array name="STAT_1_1_1">
+    <item>Lead(s) unsuitable for analysis:</item>
+    <item>1</item>
+    <item>LUNAV</item>
+  </string-array>
+  <string-array name="STAT_1_1_9">
+    <item>--- Possible measurement error ---</item>
+    <item>0</item>
+    <item>MERR</item>
+  </string-array>
+  <string-array name="STAT_1_1_18">
+    <item>--- Suspect limb lead reversal ---</item>
+    <item>4</item>
+    <item>LLR</item>
+    <item>+
+
+    </item>
+  </string-array>
+  <string-array name="STAT_1_1_25">
+    <item>--- Interpretation based on pediatric criteria ---</item>
+    <item>0</item>
+    <item>REV</item>
+  </string-array>
+  <string-array name="STAT_2_1_9">
+    <item>--- Possible arm lead reversal - hence only aVF, V1-V6 analyzed ---</item>
+    <item>1</item>
+    <item>ALR</item>
+  </string-array>
+  <string-array name="STAT_2_1_11">
+    <item>--- Suggests dextrocardia ---</item>
+    <item>4</item>
+    <item>DEX</item>
+  </string-array>
+  <string-array name="STAT_2_1_17">
+    <item>--- Similar QRS in V leads ---</item>
+    <item>5</item>
+    <item>SIM</item>
+  </string-array>
+  <string-array name="STAT_2_1_25">
+    <item>--- Invalid clinical data entry ---</item>
+    <item>0</item>
+    <item>ICD</item>
+  </string-array>
+  <string-array name="STAT_2_1_26">
+    <item>--- Invalid medication entry ---</item>
+    <item>0</item>
+    <item>IDD</item>
+  </string-array>
+  <string-array name="STAT_2_1_33">
+    <item>--- Interpretation made without knowing patient\'s gender ---</item>
+    <item>0</item>
+    <item>NSX</item>
+  </string-array>
+  <string-array name="STAT_2_1_34">
+    <item>--- Interpretation made without knowing patient\'s age ---</item>
+    <item>0</item>
+    <item>NAG</item>
+  </string-array>
+  <string-array name="STAT_2_1_35">
+    <item>--- Interpretation made without knowing patient\'s gender/age ---</item>
+    <item>0</item>
+    <item>NSA</item>
+  </string-array>
+  <string-array name="STAT_2_1_49">
+    <item>Pacemaker rhythm - no further analysis</item>
+    <item>4</item>
+    <item>NFAP</item>
+  </string-array>
+  <string-array name="STAT_2_1_50">
+    <item>--- No further analysis due to lack of dominant QRS ---</item>
+    <item>4</item>
+    <item>NFAB</item>
+  </string-array>
+  <string-array name="STAT_2_1_51">
+    <item>--- No further analysis due to lack of dominant QRS ---</item>
+    <item>4</item>
+    <item>NFAC</item>
+  </string-array>
+  <string-array name="STAT_2_1_52">
+    <item>--- No further analysis made ---</item>
+    <item>4</item>
+    <item>NFAVF</item>
+  </string-array>
+  <string-array name="STAT_2_1_53">
+    <item>If rhythm is confirmed, the following report may not be valid</item>
+    <item>0</item>
+    <item>FRNV</item>
+  </string-array>
+  <string-array name="STAT_2_1_65">
+    <item>Consider digitalis intoxication</item>
+    <item>4</item>
+    <item>DIG</item>
+  </string-array>
+  <string-array name="STAT_2_1_66">
+    <item>--- Possible limb lead reversal - hence only V1-V6 analyzed ---</item>
+    <item>0</item>
+    <item>LRTA</item>
+  </string-array>
+  <string-array name="STAT_2_1_67">
+    <item>--- Interpretation affected by artifact ---</item>
+    <item>0</item>
+    <item>ART</item>
+  </string-array>
+  <string-array name="STAT_2_1_68">
+    <item>--- Technically unsatisfactory tracing ---</item>
+    <item>5</item>
+    <item>TUT</item>
+  </string-array>
+  <string-array name="STAT_2_1_69">
+    <item />
+    <item>0</item>
+    <item>ERRA</item>
+  </string-array>
+  <string-array name="STAT_2_1_70">
+    <item>--- Possible arm/leg lead interchange - hence only V1-V6 analyzed ---</item>
+    <item>0</item>
+    <item>LRLTA</item>
+  </string-array>
+  <string-array name="STAT_2_1_74">
+    <item>Possible faulty V2 - omitted from analysis</item>
+    <item>0</item>
+    <item>V2O</item>
+  </string-array>
+  <string-array name="STAT_2_1_75">
+    <item>Possible faulty V3 - omitted from analysis</item>
+    <item>0</item>
+    <item>V3O</item>
+  </string-array>
+  <string-array name="STAT_2_1_76">
+    <item>Possible faulty V4 - omitted from analysis</item>
+    <item>0</item>
+    <item>V4O</item>
+  </string-array>
+  <string-array name="STAT_2_1_77">
+    <item>Possible faulty V5 - omitted from analysis</item>
+    <item>0</item>
+    <item>V5O</item>
+  </string-array>
+  <string-array name="STAT_2_1_78">
+    <item>Possible faulty V6 - omitted from analysis</item>
+    <item>0</item>
+    <item>V6O</item>
+  </string-array>
+  <string-array name="STAT_2_1_81">
+    <item>Possible sequence error: V1,V2 omitted</item>
+    <item>0</item>
+    <item>SE12</item>
+  </string-array>
+  <string-array name="STAT_2_1_82">
+    <item>Possible sequence error: V2,V3 omitted</item>
+    <item>0</item>
+    <item>SE23</item>
+  </string-array>
+  <string-array name="STAT_2_1_83">
+    <item>Possible sequence error: V3,V4 omitted</item>
+    <item>0</item>
+    <item>SE34</item>
+  </string-array>
+  <string-array name="STAT_2_1_84">
+    <item>Possible sequence error: V4,V5 omitted</item>
+    <item>0</item>
+    <item>SE45</item>
+  </string-array>
+  <string-array name="STAT_2_1_85">
+    <item>Possible sequence error: V5,V6 omitted</item>
+    <item>0</item>
+    <item>SE56</item>
+  </string-array>
+  <string-array name="STAT_2_1_86">
+    <item>V1/V2 are at least one interspace too high and have been omitted from the analysis</item>
+    <item>0</item>
+    <item>TH12</item>
+  </string-array>
+  <string-array name="STAT_3_1_576">
+    <item>Short PR interval</item>
+    <item>2</item>
+    <item>PRS</item>
+  </string-array>
+  <string-array name="STAT_3_1_584">
+    <item>Short PR interval</item>
+    <item>2</item>
+    <item>SPR</item>
+  </string-array>
+  <string-array name="STAT_3_1_1168">
+    <item>Prolonged QT - consider ischemia, electrolyte imbalance, drug effects</item>
+    <item>3</item>
+    <item>LQTK</item>
+  </string-array>
+  <string-array name="STAT_3_1_1176">
+    <item>Short QT interval</item>
+    <item>3</item>
+    <item>SQTC</item>
+  </string-array>
+  <string-array name="STAT_3_1_1184">
+    <item>Short QT interval</item>
+    <item>3</item>
+    <item>SQTCD</item>
+  </string-array>
+  <string-array name="STAT_3_1_1192">
+    <item>Prolonged QT - consider ischemia, electrolyte imbalance, drug effects</item>
+    <item>3</item>
+    <item>LQTP</item>
+  </string-array>
+  <string-array name="STAT_3_1_1200">
+    <item>Prolonged QT - consider ischemia, electrolyte imbalance, drug effects</item>
+    <item>3</item>
+    <item>LQTD</item>
+  </string-array>
+  <string-array name="STAT_3_1_1208">
+    <item>Increased QT dispersion</item>
+    <item>3</item>
+    <item>IQTD</item>
+  </string-array>
+  <string-array name="STAT_3_1_1216">
+    <item>Prolonged QT and increased QT dispersion</item>
+    <item>3</item>
+    <item>LQTID</item>
+  </string-array>
+  <string-array name="STAT_3_1_1224">
+    <item>Short QT and increased QT dispersion</item>
+    <item>3</item>
+    <item>SQTID</item>
+  </string-array>
+  <string-array name="STAT_3_1_1232">
+    <item>Borderline prolonged QT interval</item>
+    <item>2</item>
+    <item>BLQT</item>
+  </string-array>
+  <string-array name="STAT_4_0_1">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_4_0_2">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_4_0_3">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_4_0_4">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_4_0_5">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_4_0_6">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_4_1_576">
+    <item>Possible left atrial abnormality</item>
+    <item>2</item>
+    <item>LAE</item>
+  </string-array>
+  <string-array name="STAT_4_1_640">
+    <item>Possible right atrial abnormality</item>
+    <item>2</item>
+    <item>RAE</item>
+  </string-array>
+  <string-array name="STAT_4_1_704">
+    <item>Possible biatrial enlargement</item>
+    <item>3</item>
+    <item>BAE</item>
+  </string-array>
+  <string-array name="STAT_4_1_768">
+    <item>Possible right atrial abnormality consistent with pulmonary disease</item>
+    <item>3</item>
+    <item>RAERD</item>
+  </string-array>
+  <string-array name="STAT_4_1_1024">
+    <item>Possible right atrial abnormality</item>
+    <item>2</item>
+    <item>NSPP</item>
+  </string-array>
+  <string-array name="STAT_4_1_1088">
+    <item>Consider left atrial abnormality</item>
+    <item>2</item>
+    <item>CLAE</item>
+  </string-array>
+  <string-array name="STAT_5_0_11">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_5_1_576">
+    <item>Left axis deviation</item>
+    <item>2</item>
+    <item>LAD</item>
+  </string-array>
+  <string-array name="STAT_5_1_581">
+    <item>QRS axis leftward for age</item>
+    <item>2</item>
+    <item>LADCHD</item>
+  </string-array>
+  <string-array name="STAT_5_1_582">
+    <item>Marked left axis deviation</item>
+    <item>3</item>
+    <item>MLADCHD</item>
+  </string-array>
+  <string-array name="STAT_5_1_584">
+    <item>Possible left anterior fascicular block</item>
+    <item>2</item>
+    <item>PLAFB</item>
+  </string-array>
+  <string-array name="STAT_5_1_608">
+    <item>Left anterior fascicular block</item>
+    <item>3</item>
+    <item>LAFB</item>
+  </string-array>
+  <string-array name="STAT_5_1_616">
+    <item>Marked left axis deviation</item>
+    <item>3</item>
+    <item>MLAD</item>
+  </string-array>
+  <string-array name="STAT_5_1_624">
+    <item>Leftward axis</item>
+    <item>2</item>
+    <item>LWA</item>
+  </string-array>
+  <string-array name="STAT_5_1_640">
+    <item>Right axis deviation</item>
+    <item>2</item>
+    <item>RAD</item>
+  </string-array>
+  <string-array name="STAT_5_1_656">
+    <item>Possible left posterior fascicular block</item>
+    <item>2</item>
+    <item>LPFB</item>
+  </string-array>
+  <string-array name="STAT_5_1_680">
+    <item>Marked right axis deviation</item>
+    <item>3</item>
+    <item>MRAD</item>
+  </string-array>
+  <string-array name="STAT_5_1_688">
+    <item>Rightward axis</item>
+    <item>2</item>
+    <item>RWA</item>
+  </string-array>
+  <string-array name="STAT_5_1_704">
+    <item>Indeterminate axis</item>
+    <item>2</item>
+    <item>IFAX</item>
+  </string-array>
+  <string-array name="STAT_5_1_728">
+    <item>Severe right axis deviation</item>
+    <item>3</item>
+    <item>EAX</item>
+  </string-array>
+  <string-array name="STAT_5_1_1088">
+    <item>Poor R wave progression</item>
+    <item>2</item>
+    <item>CCR</item>
+  </string-array>
+  <string-array name="STAT_5_1_1152">
+    <item>Prominent anterior forces</item>
+    <item>2</item>
+    <item>CCCR</item>
+  </string-array>
+  <string-array name="STAT_6_0_2">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_3">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_4">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_5">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_6">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_7">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_8">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_9">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_10">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_11">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_12">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_13">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_14">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_15">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_16">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_17">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_18">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_19">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_22">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_25">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_26">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_27">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_28">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_75">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_76">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_77">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_78">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_81">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_82">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_83">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_84">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_85">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_86">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_87">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_89">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_91">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_93">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_0_94">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_6_1_512">
+    <item>Left bundle branch block now absent</item>
+    <item>0</item>
+    <item>LBBBA</item>
+  </string-array>
+  <string-array name="STAT_6_1_520">
+    <item>Right bundle branch block now absent</item>
+    <item>0</item>
+    <item>RBBBA</item>
+  </string-array>
+  <string-array name="STAT_6_1_576">
+    <item>Incomplete LBBB</item>
+    <item>4</item>
+    <item>ILBBB</item>
+  </string-array>
+  <string-array name="STAT_6_1_584">
+    <item>Incomplete RBBB</item>
+    <item>2</item>
+    <item>IRBBB</item>
+  </string-array>
+  <string-array name="STAT_6_1_586">
+    <item>rSr\'(V1) - probable normal variant</item>
+    <item>0</item>
+    <item>NVP</item>
+  </string-array>
+  <string-array name="STAT_6_1_600">
+    <item>~</item>
+    <item>0</item>
+    <item>PRVD</item>
+  </string-array>
+  <string-array name="STAT_6_1_640">
+    <item>Left bundle branch block</item>
+    <item>4</item>
+    <item>IVLB</item>
+  </string-array>
+  <string-array name="STAT_6_1_648">
+    <item>Right bundle branch block</item>
+    <item>4</item>
+    <item>IVRB</item>
+  </string-array>
+  <string-array name="STAT_6_1_656">
+    <item>IV conduction defect</item>
+    <item>4</item>
+    <item>IVCD</item>
+  </string-array>
+  <string-array name="STAT_6_1_657">
+    <item>IV conduction defect now present</item>
+    <item>4</item>
+    <item>IVCDP</item>
+  </string-array>
+  <string-array name="STAT_6_1_680">
+    <item>Minor IVCD</item>
+    <item>2</item>
+    <item>MIVCD</item>
+  </string-array>
+  <string-array name="STAT_6_1_704">
+    <item>Left bundle branch block</item>
+    <item>4</item>
+    <item>LBBB</item>
+  </string-array>
+  <string-array name="STAT_6_1_705">
+    <item>Left bundle branch block now present</item>
+    <item>4</item>
+    <item>LBBBP</item>
+  </string-array>
+  <string-array name="STAT_6_1_712">
+    <item>Right bundle branch block</item>
+    <item>4</item>
+    <item>RBBB</item>
+  </string-array>
+  <string-array name="STAT_6_1_713">
+    <item>Right bundle branch block now present</item>
+    <item>4</item>
+    <item>RBBBP</item>
+  </string-array>
+  <string-array name="STAT_6_1_720">
+    <item>RBBB with left anterior fascicular block</item>
+    <item>4</item>
+    <item>RBAF</item>
+  </string-array>
+  <string-array name="STAT_6_1_721">
+    <item>RBBB with left anterior fascicular block now present</item>
+    <item>4</item>
+    <item>RBAFP</item>
+  </string-array>
+  <string-array name="STAT_6_1_728">
+    <item>RBBB with RAD - possible left posterior fascicular block</item>
+    <item>4</item>
+    <item>RBPF</item>
+  </string-array>
+  <string-array name="STAT_6_1_729">
+    <item>RBBB with left posterior fascicular block now present</item>
+    <item>4</item>
+    <item>RBPFP</item>
+  </string-array>
+  <string-array name="STAT_6_1_768">
+    <item>IV conduction defect</item>
+    <item>4</item>
+    <item>MRBBB</item>
+  </string-array>
+  <string-array name="STAT_6_1_832">
+    <item>Marked ST elevation - consider Brugada pattern</item>
+    <item>4</item>
+    <item>CBRG1</item>
+  </string-array>
+  <string-array name="STAT_6_1_835">
+    <item>Brugada pattern now under consideration</item>
+    <item>4</item>
+    <item>BRGNP</item>
+  </string-array>
+  <string-array name="STAT_6_1_1032">
+    <item>WPW pattern not detected</item>
+    <item>0</item>
+    <item>WPWND</item>
+  </string-array>
+  <string-array name="STAT_6_1_1088">
+    <item>Possible WPW pattern</item>
+    <item>3</item>
+    <item>CWPWA</item>
+  </string-array>
+  <string-array name="STAT_6_1_1096">
+    <item>Possible WPW pattern</item>
+    <item>3</item>
+    <item>CWPWB</item>
+  </string-array>
+  <string-array name="STAT_6_1_1152">
+    <item>Possible WPW pattern</item>
+    <item>3</item>
+    <item>PWPWA</item>
+  </string-array>
+  <string-array name="STAT_6_1_1160">
+    <item>Possible WPW pattern</item>
+    <item>3</item>
+    <item>PWPWB</item>
+  </string-array>
+  <string-array name="STAT_6_1_1216">
+    <item>WPW pattern</item>
+    <item>4</item>
+    <item>WPWA</item>
+  </string-array>
+  <string-array name="STAT_6_1_1224">
+    <item>WPW pattern</item>
+    <item>4</item>
+    <item>WPWB</item>
+  </string-array>
+  <string-array name="STAT_6_1_1232">
+    <item>WPW pattern - probable left posterolateral accessory pathway</item>
+    <item>4</item>
+    <item>WLPLAP</item>
+  </string-array>
+  <string-array name="STAT_6_1_1236">
+    <item>WPW pattern - probable left posteroseptal accessory pathway</item>
+    <item>4</item>
+    <item>WLPSAP</item>
+  </string-array>
+  <string-array name="STAT_6_1_1240">
+    <item>WPW pattern - probable left anterolateral accessory pathway</item>
+    <item>4</item>
+    <item>WLALAP</item>
+  </string-array>
+  <string-array name="STAT_6_1_1244">
+    <item>WPW pattern - probable right posteroseptal accessory pathway</item>
+    <item>4</item>
+    <item>WRPSAP</item>
+  </string-array>
+  <string-array name="STAT_6_1_1248">
+    <item>WPW pattern - probable midseptal accessory pathway</item>
+    <item>4</item>
+    <item>WMSAP</item>
+  </string-array>
+  <string-array name="STAT_6_1_1252">
+    <item>WPW pattern - probable anteroseptal accessory pathway</item>
+    <item>4</item>
+    <item>WASAP</item>
+  </string-array>
+  <string-array name="STAT_6_1_1256">
+    <item>WPW pattern - probable right anterolateral accessory pathway</item>
+    <item>4</item>
+    <item>WRALAP</item>
+  </string-array>
+  <string-array name="STAT_6_1_1260">
+    <item>WPW pattern - probable right posterolateral accessory pathway</item>
+    <item>4</item>
+    <item>WRPLAP</item>
+  </string-array>
+  <string-array name="STAT_7_0_9">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_10">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_11">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_17">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_18">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_19">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_25">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_26">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_27">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_33">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_34">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_35">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_41">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_42">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_43">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_49">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_50">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_51">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_57">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_58">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_59">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_65">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_66">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_67">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_68">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_69">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_70">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_71">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_72">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_73">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_74">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_75">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_76">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_77">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_78">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_79">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_81">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_82">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_83">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_84">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_85">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_86">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_87">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_88">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_89">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_90">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_91">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_97">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_98">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_99">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_104">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_105">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_106">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_0_120">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_7_1_576">
+    <item>Possible left ventricular hypertrophy</item>
+    <item>3</item>
+    <item>POLVH</item>
+  </string-array>
+  <string-array name="STAT_7_1_577">
+    <item>Possible left ventricular hypertrophy</item>
+    <item>3</item>
+    <item>POLVHST</item>
+  </string-array>
+  <string-array name="STAT_7_1_578">
+    <item>Possible left ventricular hypertrophy</item>
+    <item>3</item>
+    <item>POLVHIS</item>
+  </string-array>
+  <string-array name="STAT_7_1_581">
+    <item>Possible left ventricular hypertrophy, possible digitalis effect</item>
+    <item>3</item>
+    <item>POLVHDG</item>
+  </string-array>
+  <string-array name="STAT_7_1_582">
+    <item>Possible left ventricular hypertrophy</item>
+    <item>3</item>
+    <item>POLVHD</item>
+  </string-array>
+  <string-array name="STAT_7_1_584">
+    <item>Left ventricular hypertrophy by voltage only</item>
+    <item>3</item>
+    <item>CLVH</item>
+  </string-array>
+  <string-array name="STAT_7_1_640">
+    <item>Left ventricular hypertrophy</item>
+    <item>4</item>
+    <item>PLVH</item>
+  </string-array>
+  <string-array name="STAT_7_1_641">
+    <item>Left ventricular hypertrophy</item>
+    <item>4</item>
+    <item>PLVHST</item>
+  </string-array>
+  <string-array name="STAT_7_1_642">
+    <item>Left ventricular hypertrophy</item>
+    <item>4</item>
+    <item>PLVHIS</item>
+  </string-array>
+  <string-array name="STAT_7_1_645">
+    <item>Left ventricular hypertrophy, possible digitalis effect</item>
+    <item>4</item>
+    <item>PLVHDG</item>
+  </string-array>
+  <string-array name="STAT_7_1_646">
+    <item>Left ventricular hypertrophy</item>
+    <item>4</item>
+    <item>PLVHD</item>
+  </string-array>
+  <string-array name="STAT_7_1_648">
+    <item>Borderline high QRS voltage - probable normal variant</item>
+    <item>2</item>
+    <item>PNOR</item>
+  </string-array>
+  <string-array name="STAT_7_1_656">
+    <item>Borderline high QRS voltage - probable normal variant</item>
+    <item>2</item>
+    <item>CNOR</item>
+  </string-array>
+  <string-array name="STAT_7_1_704">
+    <item>Left ventricular hypertrophy</item>
+    <item>4</item>
+    <item>LVH</item>
+  </string-array>
+  <string-array name="STAT_7_1_705">
+    <item>Left ventricular hypertrophy</item>
+    <item>4</item>
+    <item>LVHST</item>
+  </string-array>
+  <string-array name="STAT_7_1_706">
+    <item>Left ventricular hypertrophy</item>
+    <item>4</item>
+    <item>LVHIS</item>
+  </string-array>
+  <string-array name="STAT_7_1_709">
+    <item>Left ventricular hypertrophy, possible digitalis effect</item>
+    <item>4</item>
+    <item>LVHDIG</item>
+  </string-array>
+  <string-array name="STAT_7_1_710">
+    <item>Left ventricular hypertrophy</item>
+    <item>4</item>
+    <item>LVHD</item>
+  </string-array>
+  <string-array name="STAT_7_1_1032">
+    <item />
+    <item>0</item>
+    <item>CRVH</item>
+  </string-array>
+  <string-array name="STAT_7_1_1088">
+    <item>Possible right ventricular hypertrophy</item>
+    <item>3</item>
+    <item>PORVH</item>
+  </string-array>
+  <string-array name="STAT_7_1_1089">
+    <item>Possible right ventricular hypertrophy</item>
+    <item>3</item>
+    <item>PORVHST</item>
+  </string-array>
+  <string-array name="STAT_7_1_1093">
+    <item>Possible right ventricular hypertrophy, possible digitalis effect</item>
+    <item>3</item>
+    <item>PORVHDG</item>
+  </string-array>
+  <string-array name="STAT_7_1_1152">
+    <item>Right ventricular hypertrophy</item>
+    <item>4</item>
+    <item>PRVH</item>
+  </string-array>
+  <string-array name="STAT_7_1_1153">
+    <item>Right ventricular hypertrophy</item>
+    <item>4</item>
+    <item>PRVHST</item>
+  </string-array>
+  <string-array name="STAT_7_1_1157">
+    <item>Right ventricular hypertrophy, possible digitalis effect</item>
+    <item>4</item>
+    <item>PRVHDG</item>
+  </string-array>
+  <string-array name="STAT_7_1_1216">
+    <item>Right ventricular hypertrophy</item>
+    <item>4</item>
+    <item>RVH</item>
+  </string-array>
+  <string-array name="STAT_7_1_1217">
+    <item>Right ventricular hypertrophy</item>
+    <item>4</item>
+    <item>RVHST</item>
+  </string-array>
+  <string-array name="STAT_7_1_1221">
+    <item>Right ventricular hypertrophy, possible digitalis effect</item>
+    <item>4</item>
+    <item>RVHDIG</item>
+  </string-array>
+  <string-array name="STAT_7_1_1600">
+    <item>Possible biventricular hypertrophy</item>
+    <item>4</item>
+    <item>POBVH</item>
+  </string-array>
+  <string-array name="STAT_7_1_1601">
+    <item>Possible biventricular hypertrophy</item>
+    <item>4</item>
+    <item>POBVHST</item>
+  </string-array>
+  <string-array name="STAT_7_1_1602">
+    <item>Possible biventricular hypertrophy</item>
+    <item>4</item>
+    <item>POBVHIS</item>
+  </string-array>
+  <string-array name="STAT_7_1_1606">
+    <item>Possible biventricular hypertrophy</item>
+    <item>4</item>
+    <item>POSBVHDG</item>
+  </string-array>
+  <string-array name="STAT_7_1_1664">
+    <item>Biventricular hypertrophy</item>
+    <item>4</item>
+    <item>PBVH</item>
+  </string-array>
+  <string-array name="STAT_7_1_1665">
+    <item>Biventricular hypertrophy</item>
+    <item>4</item>
+    <item>PBVHST</item>
+  </string-array>
+  <string-array name="STAT_7_1_1666">
+    <item>Biventricular hypertrophy</item>
+    <item>4</item>
+    <item>PBVHIS</item>
+  </string-array>
+  <string-array name="STAT_7_1_1670">
+    <item>Biventricular hypertrophy</item>
+    <item>4</item>
+    <item>PBVHDG</item>
+  </string-array>
+  <string-array name="STAT_7_1_1728">
+    <item>Biventricular hypertrophy</item>
+    <item>4</item>
+    <item>BVH</item>
+  </string-array>
+  <string-array name="STAT_7_1_1729">
+    <item>Biventricular hypertrophy</item>
+    <item>4</item>
+    <item>BVHST</item>
+  </string-array>
+  <string-array name="STAT_7_1_1730">
+    <item>Biventricular hypertrophy</item>
+    <item>4</item>
+    <item>BVHIS</item>
+  </string-array>
+  <string-array name="STAT_7_1_1734">
+    <item>Biventricular hypertrophy</item>
+    <item>4</item>
+    <item>BVHDIG</item>
+  </string-array>
+  <string-array name="STAT_8_0_1">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_2">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_3">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_4">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_5">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_6">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_7">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_8">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_9">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_10">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_11">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_12">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_15">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_16">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_17">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_18">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_19">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_22">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_23">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_24">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_25">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_26">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_29">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_30">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_31">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_32">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_33">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_36">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_37">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_38">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_39">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_40">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_43">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_44">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_45">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_46">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_47">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_50">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_51">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_52">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_53">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_54">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_57">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_58">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_59">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_60">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_61">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_63">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_64">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_65">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_66">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_67">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_68">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_69">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_70">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_71">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_72">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_73">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_74">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_75">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_76">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_77">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_79">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_2_128">
+    <item>Q waves may be due to cardiomyopathy</item>
+    <item>0</item>
+    <item>CQ</item>
+  </string-array>
+  <string-array name="STAT_8_2_129">
+    <item>Serial changes compared to previous ECG</item>
+    <item>0</item>
+    <item>SCP</item>
+  </string-array>
+  <string-array name="STAT_8_2_130">
+    <item>ST resolution compared to previous ECG</item>
+    <item>0</item>
+    <item>STRCP</item>
+  </string-array>
+  <string-array name="STAT_8_2_131">
+    <item>T resolution compared to previous ECG</item>
+    <item>0</item>
+    <item>TRCP</item>
+  </string-array>
+  <string-array name="STAT_8_2_132">
+    <item>ST-T resolution compared to previous ECG</item>
+    <item>0</item>
+    <item>STTRCP</item>
+  </string-array>
+  <string-array name="STAT_8_0_137">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_138">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_139">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_145">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_146">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_147">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_153">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_154">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_155">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_161">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_162">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_163">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_169">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_170">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_171">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_177">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_178">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_179">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_185">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_193">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_194">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_195">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_201">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_202">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_203">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_209">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_210">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_211">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_217">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_218">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_219">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_225">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_226">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_227">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_233">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_234">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_235">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_241">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_242">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_243">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_249">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_250">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_0_251">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_8_1_576">
+    <item>Inferior infarct - age undetermined</item>
+    <item>4</item>
+    <item>IIAU</item>
+  </string-array>
+  <string-array name="STAT_8_1_584">
+    <item>*** INFERIOR INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>AII</item>
+  </string-array>
+  <string-array name="STAT_8_1_592">
+    <item>Inferior infarct - age undetermined</item>
+    <item>4</item>
+    <item>RII</item>
+  </string-array>
+  <string-array name="STAT_8_1_600">
+    <item>Inferior infarct - age undetermined</item>
+    <item>4</item>
+    <item>OII</item>
+  </string-array>
+  <string-array name="STAT_8_1_608">
+    <item>Inferior infarct - age undetermined</item>
+    <item>4</item>
+    <item>IIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_616">
+    <item>*** INFERIOR INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>IIPA</item>
+  </string-array>
+  <string-array name="STAT_8_1_624">
+    <item>*** INFERIOR INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>IIPOA</item>
+  </string-array>
+  <string-array name="STAT_8_1_648">
+    <item>POSSIBLE ACUTE INFERIOR INFARCT</item>
+    <item>4</item>
+    <item>PAII</item>
+  </string-array>
+  <string-array name="STAT_8_1_656">
+    <item>Small inferior Q waves: infarct cannot be excluded</item>
+    <item>3</item>
+    <item>PRII</item>
+  </string-array>
+  <string-array name="STAT_8_1_664">
+    <item>Small inferior Q waves: infarct cannot be excluded</item>
+    <item>3</item>
+    <item>POII</item>
+  </string-array>
+  <string-array name="STAT_8_1_672">
+    <item>Small inferior Q waves: infarct cannot be excluded</item>
+    <item>3</item>
+    <item>PIIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_712">
+    <item>POSSIBLE ACUTE INFERIOR INFARCT</item>
+    <item>4</item>
+    <item>POAII</item>
+  </string-array>
+  <string-array name="STAT_8_1_720">
+    <item>Small inferior Q waves: infarct cannot be excluded</item>
+    <item>3</item>
+    <item>PORII</item>
+  </string-array>
+  <string-array name="STAT_8_1_728">
+    <item>Small inferior Q waves: infarct cannot be excluded</item>
+    <item>3</item>
+    <item>POOII</item>
+  </string-array>
+  <string-array name="STAT_8_1_736">
+    <item>Small inferior Q waves: infarct cannot be excluded</item>
+    <item>3</item>
+    <item>POIISQ</item>
+  </string-array>
+  <string-array name="STAT_8_1_768">
+    <item>Abnormal Q waves of undetermined cause</item>
+    <item>4</item>
+    <item>AVCP1</item>
+  </string-array>
+  <string-array name="STAT_8_1_776">
+    <item>Serial changes of inferior infarct</item>
+    <item>4</item>
+    <item>SCII</item>
+  </string-array>
+  <string-array name="STAT_8_1_784">
+    <item>Inferior infarct as previously</item>
+    <item>4</item>
+    <item>IIAB</item>
+  </string-array>
+  <string-array name="STAT_8_1_792">
+    <item>Inferior Q waves may be due to cardiomyopathy</item>
+    <item>4</item>
+    <item>IIQC</item>
+  </string-array>
+  <string-array name="STAT_8_1_800">
+    <item>Possible inferior infarct - age undetermined</item>
+    <item>4</item>
+    <item>POIIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_808">
+    <item>Small inferior Q waves noted: probably normal ECG</item>
+    <item>0</item>
+    <item>POIPN</item>
+  </string-array>
+  <string-array name="STAT_8_1_1088">
+    <item>Lateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>LI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1096">
+    <item>*** LATERAL INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>LIPOAC</item>
+  </string-array>
+  <string-array name="STAT_8_1_1104">
+    <item>Lateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>RLI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1112">
+    <item>Lateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>OLI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1120">
+    <item>Lateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>LIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_1128">
+    <item>*** LATERAL INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>LIPA</item>
+  </string-array>
+  <string-array name="STAT_8_1_1136">
+    <item>*** LATERAL INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>LIPOA</item>
+  </string-array>
+  <string-array name="STAT_8_1_1160">
+    <item>POSSIBLE ACUTE LATERAL INFARCT</item>
+    <item>4</item>
+    <item>PACLI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1168">
+    <item>Possible lateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>PRLI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1176">
+    <item>Possible lateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>POLI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1184">
+    <item>Possible lateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>PLIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_1224">
+    <item>POSSIBLE ACUTE LATERAL INFARCT</item>
+    <item>4</item>
+    <item>POACLI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1232">
+    <item>Possible lateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>PORLI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1240">
+    <item>Possible lateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>POOLI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1248">
+    <item>Possible lateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>POLIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_1280">
+    <item>Abnormal Q waves of undetermined cause</item>
+    <item>4</item>
+    <item>AVCD</item>
+  </string-array>
+  <string-array name="STAT_8_1_1288">
+    <item>Serial changes of lateral infarct</item>
+    <item>4</item>
+    <item>SCLI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1296">
+    <item>Lateral infarct as previously</item>
+    <item>4</item>
+    <item>LIAB</item>
+  </string-array>
+  <string-array name="STAT_8_1_1304">
+    <item>Lateral Q waves may be due to cardiomyopathy</item>
+    <item>4</item>
+    <item>LIQC</item>
+  </string-array>
+  <string-array name="STAT_8_1_1320">
+    <item>Small lateral Q waves noted: probably normal ECG</item>
+    <item>0</item>
+    <item>POLPN</item>
+  </string-array>
+  <string-array name="STAT_8_1_1600">
+    <item>Anteroseptal infarct - age undetermined</item>
+    <item>4</item>
+    <item>ASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1608">
+    <item>*** ANTEROSEPTAL INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>AASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1616">
+    <item>Anteroseptal infarct - age undetermined</item>
+    <item>4</item>
+    <item>RASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1624">
+    <item>Anteroseptal infarct - age undetermined</item>
+    <item>4</item>
+    <item>OASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1632">
+    <item>Anteroseptal infarct - age undetermined</item>
+    <item>4</item>
+    <item>ASIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_1640">
+    <item>*** ANTEROSEPTAL INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>ASIPA</item>
+  </string-array>
+  <string-array name="STAT_8_1_1648">
+    <item>*** ANTEROSEPTAL INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>ASIPOA</item>
+  </string-array>
+  <string-array name="STAT_8_1_1672">
+    <item>POSSIBLE ACUTE ANTEROSEPTAL INFARCT</item>
+    <item>4</item>
+    <item>PAASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1680">
+    <item>Possible anteroseptal infarct - age undetermined</item>
+    <item>4</item>
+    <item>PRASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1688">
+    <item>Possible anteroseptal infarct - age undetermined</item>
+    <item>4</item>
+    <item>POASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1696">
+    <item>Possible anteroseptal infarct - age undetermined</item>
+    <item>4</item>
+    <item>PASIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_1736">
+    <item>POSSIBLE ACUTE ANTEROSEPTAL INFARCT</item>
+    <item>4</item>
+    <item>POAASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1744">
+    <item>Possible anteroseptal infarct - age undetermined</item>
+    <item>4</item>
+    <item>PORASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1752">
+    <item>Possible anteroseptal infarct - age undetermined</item>
+    <item>4</item>
+    <item>POOASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1760">
+    <item>Possible anteroseptal infarct - age undetermined</item>
+    <item>4</item>
+    <item>POASIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_1792">
+    <item>Abnormal Q waves of undetermined cause</item>
+    <item>4</item>
+    <item>AVCP2</item>
+  </string-array>
+  <string-array name="STAT_8_1_1800">
+    <item>Serial changes of anteroseptal infarct</item>
+    <item>4</item>
+    <item>SCASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1808">
+    <item>Anteroseptal infarct as previously</item>
+    <item>4</item>
+    <item>ASIAB</item>
+  </string-array>
+  <string-array name="STAT_8_1_1856">
+    <item>Anteroseptal QRS changes may be due to ventricular hypertrophy</item>
+    <item>4</item>
+    <item>ASVH</item>
+  </string-array>
+  <string-array name="STAT_8_1_1864">
+    <item>Anteroseptal QRS changes may be due to corrected transposition</item>
+    <item>4</item>
+    <item>ASCT</item>
+  </string-array>
+  <string-array name="STAT_8_1_1928">
+    <item>Cannot rule out anteroseptal infarct - age undetermined</item>
+    <item>4</item>
+    <item>CASLVH</item>
+  </string-array>
+  <string-array name="STAT_8_1_1936">
+    <item>Cannot rule out anteroseptal infarct - age undetermined</item>
+    <item>4</item>
+    <item>CASLVHR</item>
+  </string-array>
+  <string-array name="STAT_8_1_1944">
+    <item>QRS changes may be due to LVH but cannot rule out anteroseptal infarct</item>
+    <item>4</item>
+    <item>LVHASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_1952">
+    <item>QRS changes may be due to LVH but cannot rule out anteroseptal infarct</item>
+    <item>4</item>
+    <item>LVHASIR</item>
+  </string-array>
+  <string-array name="STAT_8_1_1984">
+    <item>Poor R wave progression consistent with pulmonary disease</item>
+    <item>4</item>
+    <item>ASCRRD</item>
+  </string-array>
+  <string-array name="STAT_8_1_1992">
+    <item>Poor R wave progression - cannot rule out anteroseptal infarct</item>
+    <item>4</item>
+    <item>CCRASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2064">
+    <item>Poor R wave progression</item>
+    <item>2</item>
+    <item>PNV</item>
+  </string-array>
+  <string-array name="STAT_8_1_2072">
+    <item>~</item>
+    <item>0</item>
+    <item>CHPRVH</item>
+  </string-array>
+  <string-array name="STAT_8_1_2112">
+    <item>Anterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>ANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2120">
+    <item>*** ANTERIOR INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>AANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2128">
+    <item>Anterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>RANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2136">
+    <item>Anterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>OANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2144">
+    <item>Anterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>ANIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_2152">
+    <item>*** ANTERIOR INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>ANIPA</item>
+  </string-array>
+  <string-array name="STAT_8_1_2160">
+    <item>*** ANTERIOR INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>ANIPOA</item>
+  </string-array>
+  <string-array name="STAT_8_1_2184">
+    <item>POSSIBLE ACUTE ANTERIOR INFARCT</item>
+    <item>4</item>
+    <item>PAANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2192">
+    <item>Possible anterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>PRANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2200">
+    <item>Possible anterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>POANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2208">
+    <item>Possible anterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>PANIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_2248">
+    <item>POSSIBLE ACUTE ANTERIOR INFARCT</item>
+    <item>4</item>
+    <item>POAANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2256">
+    <item>Possible anterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>PORANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2264">
+    <item>Possible anterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>POOANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2272">
+    <item>Possible anterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>POANIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_2304">
+    <item>Abnormal Q waves of undetermined cause</item>
+    <item>4</item>
+    <item>AVCP3</item>
+  </string-array>
+  <string-array name="STAT_8_1_2312">
+    <item>Serial changes of anterior infarct</item>
+    <item>4</item>
+    <item>SCANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2320">
+    <item>Anterior infarct as previously</item>
+    <item>4</item>
+    <item>ANIAB</item>
+  </string-array>
+  <string-array name="STAT_8_1_2368">
+    <item>Anterior QRS changes may be due to ventricular hypertrophy</item>
+    <item>4</item>
+    <item>ANVH</item>
+  </string-array>
+  <string-array name="STAT_8_1_2376">
+    <item>Anterior QRS changes may be due to corrected transposition</item>
+    <item>4</item>
+    <item>ANCT</item>
+  </string-array>
+  <string-array name="STAT_8_1_2440">
+    <item>Cannot rule out anterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>CANLVH</item>
+  </string-array>
+  <string-array name="STAT_8_1_2448">
+    <item>Cannot rule out anterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>CANLVHR</item>
+  </string-array>
+  <string-array name="STAT_8_1_2456">
+    <item>QRS changes V3/V4 may be due to LVH but cannot rule out anterior infarct</item>
+    <item>4</item>
+    <item>LVHANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2464">
+    <item>QRS changes V3/V4 may be due to LVH but cannot rule out anterior infarct</item>
+    <item>4</item>
+    <item>LVHANIR</item>
+  </string-array>
+  <string-array name="STAT_8_1_2496">
+    <item>Anterior QRS changes are probably related to pulmonary disease</item>
+    <item>4</item>
+    <item>ANCCRD</item>
+  </string-array>
+  <string-array name="STAT_8_1_2504">
+    <item>Possible anterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>CCRANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2624">
+    <item>Septal infarct - age undetermined</item>
+    <item>4</item>
+    <item>SEI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2632">
+    <item>*** SEPTAL INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>ASEI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2696">
+    <item>POSSIBLE ACUTE SEPTAL INFARCT</item>
+    <item>4</item>
+    <item>PASEI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2704">
+    <item>Possible septal infarct - age undetermined</item>
+    <item>4</item>
+    <item>PRSEI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2712">
+    <item>Possible septal infarct - age undetermined</item>
+    <item>4</item>
+    <item>PROSEI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2720">
+    <item>Possible septal infarct - age undetermined</item>
+    <item>4</item>
+    <item>PSEIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_2752">
+    <item>Possible septal infarct - age undetermined</item>
+    <item>4</item>
+    <item>POSEIAU</item>
+  </string-array>
+  <string-array name="STAT_8_1_2760">
+    <item>POSSIBLE ACUTE SEPTAL INFARCT</item>
+    <item>4</item>
+    <item>POASEI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2768">
+    <item>Possible septal infarct - age undetermined</item>
+    <item>4</item>
+    <item>PORSEI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2776">
+    <item>Possible septal infarct - age undetermined</item>
+    <item>4</item>
+    <item>POOSEI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2784">
+    <item>Possible septal infarct - age undetermined</item>
+    <item>4</item>
+    <item>POSEIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_2816">
+    <item>Abnormal Q waves of undetermined cause</item>
+    <item>4</item>
+    <item>AVCP4</item>
+  </string-array>
+  <string-array name="STAT_8_1_2824">
+    <item>Serial changes of septal infarct</item>
+    <item>4</item>
+    <item>SCSEI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2832">
+    <item>Septal infarct as previously</item>
+    <item>4</item>
+    <item>SEIAB</item>
+  </string-array>
+  <string-array name="STAT_8_1_2880">
+    <item>Septal QRS changes may be due to ventricular hypertrophy</item>
+    <item>4</item>
+    <item>SEVH</item>
+  </string-array>
+  <string-array name="STAT_8_1_2888">
+    <item>Septal QRS changes may be due to corrected transposition</item>
+    <item>4</item>
+    <item>SECT</item>
+  </string-array>
+  <string-array name="STAT_8_1_2952">
+    <item>Cannot rule out septal infarct - age undetermined</item>
+    <item>4</item>
+    <item>CSELVH</item>
+  </string-array>
+  <string-array name="STAT_8_1_2960">
+    <item>Cannot rule out septal infarct - age undetermined</item>
+    <item>4</item>
+    <item>CSELVHR</item>
+  </string-array>
+  <string-array name="STAT_8_1_2968">
+    <item>QRS changes in V2 may be due to LVH but cannot rule out septal infarct</item>
+    <item>4</item>
+    <item>LVHSEI</item>
+  </string-array>
+  <string-array name="STAT_8_1_2976">
+    <item>QRS changes in V2 may be due to LVH but cannot rule out septal infarct</item>
+    <item>4</item>
+    <item>LVHSEIR</item>
+  </string-array>
+  <string-array name="STAT_8_1_3008">
+    <item>Poor R wave progression may be due to pulmonary disease</item>
+    <item>4</item>
+    <item>SECCRD</item>
+  </string-array>
+  <string-array name="STAT_8_1_3016">
+    <item>Poor R wave progression - cannot rule out septal infarct</item>
+    <item>4</item>
+    <item>CCRSEI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3024">
+    <item>Q in V1/V2 may be normal variant but septal infarct cannot be excluded</item>
+    <item>3</item>
+    <item>QNVSI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3032">
+    <item>Q in V1/V2 may be due to lead placement error though septal infarct cannot be excluded</item>
+    <item>3</item>
+    <item>QLPSI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3040">
+    <item>Q in V1/V2 may be due to LVH though septal infarct cannot be excluded</item>
+    <item>4</item>
+    <item>QLVHSI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3136">
+    <item>Anterolateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>ALI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3144">
+    <item>*** ANTEROLATERAL INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>AALI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3152">
+    <item>Anterolateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>RALI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3160">
+    <item>Anterolateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>OALI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3168">
+    <item>Anterolateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>ALIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_3176">
+    <item>*** ANTEROLATERAL INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>ALIPA</item>
+  </string-array>
+  <string-array name="STAT_8_1_3184">
+    <item>*** ANTEROLATERAL INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>ALIPOA</item>
+  </string-array>
+  <string-array name="STAT_8_1_3200">
+    <item>Possible anterolateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>PALIAU</item>
+  </string-array>
+  <string-array name="STAT_8_1_3208">
+    <item>POSSIBLE ACUTE ANTEROLATERAL INFARCT</item>
+    <item>4</item>
+    <item>PAALI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3216">
+    <item>Possible anterolateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>PRALI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3224">
+    <item>Possible anterolateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>POALIAU</item>
+  </string-array>
+  <string-array name="STAT_8_1_3232">
+    <item>Possible anterolateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>PALIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_3264">
+    <item>Possible anterolateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>POALIUA</item>
+  </string-array>
+  <string-array name="STAT_8_1_3272">
+    <item>POSSIBLE ACUTE ANTEROLATERAL INFARCT</item>
+    <item>4</item>
+    <item>POAALI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3280">
+    <item>Possible anterolateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>PORALI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3288">
+    <item>Possible anterolateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>POOALI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3296">
+    <item>Possible anterolateral infarct - age undetermined</item>
+    <item>4</item>
+    <item>POALIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_3328">
+    <item>Abnormal Q waves of undetermined cause</item>
+    <item>4</item>
+    <item>AVCP5</item>
+  </string-array>
+  <string-array name="STAT_8_1_3336">
+    <item>Serial changes of anterolateral infarct</item>
+    <item>4</item>
+    <item>SCALI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3344">
+    <item>Anterolateral infarct as previously</item>
+    <item>4</item>
+    <item>ALIAB</item>
+  </string-array>
+  <string-array name="STAT_8_1_3648">
+    <item>Extensive infarct - age undetermined</item>
+    <item>4</item>
+    <item>WDI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3649">
+    <item>*** EXTENSIVE INFARCT WITH SOME ACUTE CHANGES ***</item>
+    <item>4</item>
+    <item>WDIAAL</item>
+  </string-array>
+  <string-array name="STAT_8_1_3650">
+    <item>*** EXTENSIVE INFARCT WITH SOME ACUTE CHANGES ***</item>
+    <item>4</item>
+    <item>WDIAIAS</item>
+  </string-array>
+  <string-array name="STAT_8_1_3651">
+    <item>*** EXTENSIVE INFARCT WITH SOME ACUTE CHANGES ***</item>
+    <item>4</item>
+    <item>WDIAIL</item>
+  </string-array>
+  <string-array name="STAT_8_1_3652">
+    <item>*** EXTENSIVE INFARCT WITH SOME ACUTE CHANGES ***</item>
+    <item>4</item>
+    <item>WDIAL</item>
+  </string-array>
+  <string-array name="STAT_8_1_3653">
+    <item>*** EXTENSIVE INFARCT WITH SOME ACUTE CHANGES ***</item>
+    <item>4</item>
+    <item>WDIAI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3654">
+    <item>*** EXTENSIVE INFARCT WITH SOME ACUTE CHANGES ***</item>
+    <item>4</item>
+    <item>WDIAAS</item>
+  </string-array>
+  <string-array name="STAT_8_1_3656">
+    <item>*** EXTENSIVE INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>AWDI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3664">
+    <item>Extensive infarct - age undetermined</item>
+    <item>4</item>
+    <item>RWDI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3672">
+    <item>Extensive infarct - age undetermined</item>
+    <item>4</item>
+    <item>OWDI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3680">
+    <item>Extensive infarct - age undetermined</item>
+    <item>4</item>
+    <item>WDIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_3688">
+    <item>*** EXTENSIVE INFARCT - POSSIBLY ACUTE ***</item>
+    <item>4</item>
+    <item>WDIPA</item>
+  </string-array>
+  <string-array name="STAT_8_1_3712">
+    <item>Possible extensive infarct - age undetermined</item>
+    <item>4</item>
+    <item>PWDI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3713">
+    <item>POSSIBLE EXTENSIVE INFARCT with acute anterolateral changes</item>
+    <item>4</item>
+    <item>PWDIAAL</item>
+  </string-array>
+  <string-array name="STAT_8_1_3714">
+    <item>POSSIBLE EXTENSIVE INFARCT with acute inferior and anteroseptal changes</item>
+    <item>4</item>
+    <item>PWDIAIAS</item>
+  </string-array>
+  <string-array name="STAT_8_1_3715">
+    <item>POSSIBLE EXTENSIVE INFARCT with acute inferior and lateral changes</item>
+    <item>4</item>
+    <item>PWDIAIL</item>
+  </string-array>
+  <string-array name="STAT_8_1_3716">
+    <item>POSSIBLE EXTENSIVE INFARCT with acute lateral changes</item>
+    <item>4</item>
+    <item>PWDIAL</item>
+  </string-array>
+  <string-array name="STAT_8_1_3717">
+    <item>POSSIBLE EXTENSIVE INFARCT with acute inferior changes</item>
+    <item>4</item>
+    <item>PWDIAI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3718">
+    <item>POSSIBLE EXTENSIVE INFARCT with acute anteroseptal changes</item>
+    <item>4</item>
+    <item>PWDIAAS</item>
+  </string-array>
+  <string-array name="STAT_8_1_3720">
+    <item>POSSIBLE ACUTE EXTENSIVE INFARCT</item>
+    <item>4</item>
+    <item>PAWDI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3728">
+    <item>Possible extensive infarct - age undetermined</item>
+    <item>4</item>
+    <item>PRWDI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3736">
+    <item>Possible extensive infarct - age undetermined</item>
+    <item>4</item>
+    <item>POWDI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3744">
+    <item>Possible extensive infarct - age undetermined</item>
+    <item>4</item>
+    <item>PWDIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_3840">
+    <item>Abnormal Q waves of undetermined cause</item>
+    <item>4</item>
+    <item>AVCP6</item>
+  </string-array>
+  <string-array name="STAT_8_1_3848">
+    <item>Serial changes of extensive infarct</item>
+    <item>4</item>
+    <item>SCWI</item>
+  </string-array>
+  <string-array name="STAT_8_1_3856">
+    <item>Extensive infarct as previously</item>
+    <item>4</item>
+    <item>WDIAB</item>
+  </string-array>
+  <string-array name="STAT_8_1_4304">
+    <item>Possible posterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>PORTPI</item>
+  </string-array>
+  <string-array name="STAT_8_1_4320">
+    <item>Possible posterior infarct - age undetermined</item>
+    <item>4</item>
+    <item>POTPIU</item>
+  </string-array>
+  <string-array name="STAT_8_1_4560">
+    <item>Possible posterior extension of infarct</item>
+    <item>4</item>
+    <item>TPRA</item>
+  </string-array>
+  <string-array name="STAT_8_1_4568">
+    <item>Tall R V1/V2 probably reflect the infarct</item>
+    <item>4</item>
+    <item>APRI</item>
+  </string-array>
+  <string-array name="STAT_8_1_5384">
+    <item>Serial changes of inferior and lateral infarct</item>
+    <item>4</item>
+    <item>SCILI</item>
+  </string-array>
+  <string-array name="STAT_8_1_5392">
+    <item>Inferior and lateral infarct as previously</item>
+    <item>4</item>
+    <item>ILIAB</item>
+  </string-array>
+  <string-array name="STAT_8_1_5896">
+    <item>Serial changes of inferior and anteroseptal infarct</item>
+    <item>4</item>
+    <item>SCIASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_5904">
+    <item>Inferior and anteroseptal infarct as previously</item>
+    <item>4</item>
+    <item>IASIAB</item>
+  </string-array>
+  <string-array name="STAT_8_1_6408">
+    <item>Serial changes of inferior and anterior infarct</item>
+    <item>4</item>
+    <item>SCIANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_6416">
+    <item>Inferior and anterior infarct as previously</item>
+    <item>4</item>
+    <item>IANIAB</item>
+  </string-array>
+  <string-array name="STAT_8_1_6920">
+    <item>Serial changes of inferior and septal infarct</item>
+    <item>4</item>
+    <item>SCISE</item>
+  </string-array>
+  <string-array name="STAT_8_1_6928">
+    <item>Inferior and septal infarct as previously</item>
+    <item>4</item>
+    <item>ISEIAB</item>
+  </string-array>
+  <string-array name="STAT_8_1_9992">
+    <item>Serial changes of lateral and anteroseptal infarct</item>
+    <item>4</item>
+    <item>SCLASI</item>
+  </string-array>
+  <string-array name="STAT_8_1_10000">
+    <item>Lateral and anteroseptal infarct as previously</item>
+    <item>4</item>
+    <item>LASIAB</item>
+  </string-array>
+  <string-array name="STAT_8_1_10504">
+    <item>Serial changes of lateral and anterior infarct</item>
+    <item>4</item>
+    <item>SCLANI</item>
+  </string-array>
+  <string-array name="STAT_8_1_10512">
+    <item>Lateral and anterior infarct as previously</item>
+    <item>4</item>
+    <item>LANIAB</item>
+  </string-array>
+  <string-array name="STAT_8_1_11016">
+    <item>Serial changes of lateral and septal infarct</item>
+    <item>4</item>
+    <item>SCLSEI</item>
+  </string-array>
+  <string-array name="STAT_8_1_11024">
+    <item>Lateral and septal infarct as previously</item>
+    <item>4</item>
+    <item>LSEIAB</item>
+  </string-array>
+  <string-array name="STAT_9_0_5">
+    <item>Marked anteroseptal ST depression</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_6">
+    <item>Anteroseptal ST depression</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_7">
+    <item>Marked inferior ST depression</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_8">
+    <item>Marked lateral ST depression</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_9">
+    <item>Widespread ST depression</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_20">
+    <item>End QRS notching/slurring</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_65">
+    <item>Lateral ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_66">
+    <item>Septal ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_68">
+    <item>Anterior ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_69">
+    <item>Anterolateral ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_70">
+    <item>Anteroseptal ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_72">
+    <item>Inferior ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_73">
+    <item>Inferior and lateral ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_74">
+    <item>Inferior and septal ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_76">
+    <item>Inferior and anterior ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_78">
+    <item>Inferior and ant/septal ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_79">
+    <item>Widespread ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_129">
+    <item>Lateral ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_130">
+    <item>Septal ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_132">
+    <item>Anterior ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_133">
+    <item>Anterolateral ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_134">
+    <item>Anteroseptal ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_136">
+    <item>Inferior ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_137">
+    <item>Inferior and lateral ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_138">
+    <item>Inferior and septal ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_140">
+    <item>Inferior and anterior ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_142">
+    <item>Inferior and ant/septal ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_143">
+    <item>Widespread ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_193">
+    <item>Lateral ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_194">
+    <item>Septal ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_196">
+    <item>Anterior ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_197">
+    <item>Anterolateral ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_198">
+    <item>Anteroseptal ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_200">
+    <item>Inferior ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_201">
+    <item>Inferior and lateral ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_202">
+    <item>Inferior and septal ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_204">
+    <item>Inferior and anterior ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_206">
+    <item>Inferior and ant/septal ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_0_207">
+    <item>Widespread ST elevation</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_9_1_576">
+    <item>~ is probably reciprocal to inferior infarct</item>
+    <item>4</item>
+    <item>PRECII</item>
+  </string-array>
+  <string-array name="STAT_9_1_640">
+    <item>~, CONSIDER ACUTE INFARCT</item>
+    <item>4</item>
+    <item>CRMI</item>
+  </string-array>
+  <string-array name="STAT_9_1_704">
+    <item>~, CONSIDER ACUTE INFARCT (proximal LAD occlusion)</item>
+    <item>4</item>
+    <item>CRMILO</item>
+  </string-array>
+  <string-array name="STAT_9_1_768">
+    <item>~ accompanies the infarct</item>
+    <item>4</item>
+    <item>PRECAS</item>
+  </string-array>
+  <string-array name="STAT_9_1_832">
+    <item>~, CONSIDER ACUTE INFARCT (left main occlusion / multivessel disease)</item>
+    <item>4</item>
+    <item>CRMIMO</item>
+  </string-array>
+  <string-array name="STAT_9_1_4224">
+    <item>~ is consistent with pericarditis</item>
+    <item>3</item>
+    <item>COPE</item>
+  </string-array>
+  <string-array name="STAT_9_1_4288">
+    <item>~ - consider early repolarization/pericarditis</item>
+    <item>3</item>
+    <item>CERP</item>
+  </string-array>
+  <string-array name="STAT_9_1_4480">
+    <item>~</item>
+    <item>0</item>
+    <item>RSC</item>
+  </string-array>
+  <string-array name="STAT_9_1_4544">
+    <item>~ - possible early repolarization</item>
+    <item>2</item>
+    <item>MOSTENS</item>
+  </string-array>
+  <string-array name="STAT_9_1_4545">
+    <item>~ is nonspecific</item>
+    <item>2</item>
+    <item>STENS</item>
+  </string-array>
+  <string-array name="STAT_9_1_8320">
+    <item>~ is consistent with pericarditis</item>
+    <item>4</item>
+    <item>CONPE2</item>
+  </string-array>
+  <string-array name="STAT_9_1_8321">
+    <item>~ - consider pericarditis</item>
+    <item>3</item>
+    <item>CSPE</item>
+  </string-array>
+  <string-array name="STAT_9_1_8322">
+    <item>~ suggests pericarditis</item>
+    <item>4</item>
+    <item>SGPE</item>
+  </string-array>
+  <string-array name="STAT_9_1_8323">
+    <item>~ suggests post operative pericarditis</item>
+    <item>4</item>
+    <item>POP</item>
+  </string-array>
+  <string-array name="STAT_9_1_8576">
+    <item>~</item>
+    <item>0</item>
+    <item>RSEQC</item>
+  </string-array>
+  <string-array name="STAT_9_1_8640">
+    <item>~ suggests early repolarization</item>
+    <item>2</item>
+    <item>MSTENS</item>
+  </string-array>
+  <string-array name="STAT_9_1_12353">
+    <item>~, CONSIDER ACUTE INFARCT</item>
+    <item>4</item>
+    <item>CRLI</item>
+  </string-array>
+  <string-array name="STAT_9_1_12354">
+    <item>~, CONSIDER ACUTE INFARCT</item>
+    <item>4</item>
+    <item>CRSEI</item>
+  </string-array>
+  <string-array name="STAT_9_1_12356">
+    <item>~, CONSIDER ACUTE INFARCT</item>
+    <item>4</item>
+    <item>CRANI</item>
+  </string-array>
+  <string-array name="STAT_9_1_12357">
+    <item>~, CONSIDER ACUTE INFARCT</item>
+    <item>4</item>
+    <item>CRALI</item>
+  </string-array>
+  <string-array name="STAT_9_1_12358">
+    <item>~, CONSIDER ACUTE INFARCT</item>
+    <item>4</item>
+    <item>CRASI</item>
+  </string-array>
+  <string-array name="STAT_9_1_12360">
+    <item>~, CONSIDER ACUTE INFARCT</item>
+    <item>4</item>
+    <item>CRII</item>
+  </string-array>
+  <string-array name="STAT_9_1_12361">
+    <item>~, CONSIDER ACUTE INFARCT</item>
+    <item>4</item>
+    <item>CRILI</item>
+  </string-array>
+  <string-array name="STAT_9_1_12362">
+    <item>~, CONSIDER ACUTE INFARCT</item>
+    <item>4</item>
+    <item>CRISEI</item>
+  </string-array>
+  <string-array name="STAT_9_1_12364">
+    <item>~, CONSIDER ACUTE INFARCT</item>
+    <item>4</item>
+    <item>CRIANI</item>
+  </string-array>
+  <string-array name="STAT_9_1_12366">
+    <item>~, CONSIDER ACUTE INFARCT</item>
+    <item>4</item>
+    <item>CRIASI</item>
+  </string-array>
+  <string-array name="STAT_9_1_12367">
+    <item>~, CONSIDER ACUTE INFARCT</item>
+    <item>4</item>
+    <item>CRWDI</item>
+  </string-array>
+  <string-array name="STAT_9_1_12368">
+    <item>*** CONSIDER ACUTE ST ELEVATION MI ***</item>
+    <item>4</item>
+    <item>STEAMI</item>
+  </string-array>
+  <string-array name="STAT_9_1_12369">
+    <item>Consider occlusion (site unknown)</item>
+    <item>4</item>
+    <item>CSUO</item>
+  </string-array>
+  <string-array name="STAT_9_1_12370">
+    <item>Consider LAD occlusion</item>
+    <item>4</item>
+    <item>CLADO</item>
+  </string-array>
+  <string-array name="STAT_9_1_12371">
+    <item>Consider LCx occlusion</item>
+    <item>4</item>
+    <item>CLCXO</item>
+  </string-array>
+  <string-array name="STAT_9_1_12372">
+    <item>Consider RCA occlusion</item>
+    <item>4</item>
+    <item>CRCAO</item>
+  </string-array>
+  <string-array name="STAT_9_1_12416">
+    <item>~ is consistent with pericarditis</item>
+    <item>3</item>
+    <item>CONPE</item>
+  </string-array>
+  <string-array name="STAT_9_1_12480">
+    <item>~ is nonspecific</item>
+    <item>2</item>
+    <item>ABCF</item>
+  </string-array>
+  <string-array name="STAT_9_1_12544">
+    <item>~ may be a normal variant for age</item>
+    <item>2</item>
+    <item>NVA</item>
+  </string-array>
+  <string-array name="STAT_9_1_12608">
+    <item>~ - cannot rule out myocardial injury</item>
+    <item>2</item>
+    <item>RMIS</item>
+  </string-array>
+  <string-array name="STAT_9_1_12672">
+    <item>~ may be a normal variant</item>
+    <item>2</item>
+    <item>PANV</item>
+  </string-array>
+  <string-array name="STAT_9_1_12800">
+    <item>~ - probable extension of infarct</item>
+    <item>4</item>
+    <item>PLEI</item>
+  </string-array>
+  <string-array name="STAT_9_1_16384">
+    <item>~ - early repolarization pattern</item>
+    <item>0</item>
+    <item>ERP</item>
+  </string-array>
+  <string-array name="STAT_9_1_16385">
+    <item>Early repolarization pattern with ascending ST segment</item>
+    <item>3</item>
+    <item>ERPAST</item>
+  </string-array>
+  <string-array name="STAT_9_1_16386">
+    <item>Early repolarization pattern with descending ST segment</item>
+    <item>3</item>
+    <item>ERPDST</item>
+  </string-array>
+  <string-array name="STAT_9_1_29248">
+    <item>~ - probable post operative pericarditis</item>
+    <item>3</item>
+    <item>PPOP</item>
+  </string-array>
+  <string-array name="STAT_10_2_1">
+    <item>~</item>
+    <item>0</item>
+    <item>CPR</item>
+  </string-array>
+  <string-array name="STAT_10_2_2">
+    <item>~</item>
+    <item>0</item>
+    <item>CPRH</item>
+  </string-array>
+  <string-array name="STAT_10_2_3">
+    <item>~</item>
+    <item>0</item>
+    <item>CPRRH</item>
+  </string-array>
+  <string-array name="STAT_10_0_5">
+    <item>Lateral T wave abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_6">
+    <item>Lateral ST abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_7">
+    <item>Lateral ST-T abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_8">
+    <item>ST junctional depression</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_9">
+    <item>Septal T wave abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_10">
+    <item>Septal ST abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_11">
+    <item>Septal ST-T abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_13">
+    <item>Septal and lateral T wave abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_14">
+    <item>Septal and lateral ST abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_15">
+    <item>Septal and lateral ST-T abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_17">
+    <item>Anterior T wave abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_18">
+    <item>Anterior ST abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_19">
+    <item>Anterior ST-T abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_21">
+    <item>Anterolateral T wave abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_22">
+    <item>Anterolateral ST abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_23">
+    <item>Anterolateral ST-T abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_25">
+    <item>Anteroseptal T wave abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_26">
+    <item>Anteroseptal ST abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_27">
+    <item>Anteroseptal ST-T abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_29">
+    <item>Ant/septal and lateral T wave abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_30">
+    <item>Ant/septal and lateral ST abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_31">
+    <item>Ant/septal and lateral ST-T abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_33">
+    <item>Inferior T wave abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_34">
+    <item>Inferior ST abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_35">
+    <item>Inferior ST-T abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_37">
+    <item>Inferior/lateral T wave abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_38">
+    <item>Inferior/lateral ST abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_39">
+    <item>Inferior/lateral ST-T abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_41">
+    <item>Inferior and septal T wave abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_42">
+    <item>Inferior and septal ST abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_43">
+    <item>Inferior and septal ST-T abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_49">
+    <item>Inferior and anterior T wave abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_50">
+    <item>Inferior and anterior ST abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_51">
+    <item>Inferior and anterior ST-T abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_57">
+    <item>Inferior and ant/septal T wave abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_58">
+    <item>Inferior and ant/septal ST abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_59">
+    <item>Inferior and ant/septal ST-T abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_61">
+    <item>Widespread T wave abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_62">
+    <item>Widespread ST abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_0_63">
+    <item>Widespread ST-T abnormality</item>
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_10_1_64">
+    <item>~ is probably due to cardiac surgery</item>
+    <item>4</item>
+    <item>PPOC</item>
+  </string-array>
+  <string-array name="STAT_10_1_128">
+    <item>~ is consistent with digitalis effect</item>
+    <item>4</item>
+    <item>DEPC</item>
+  </string-array>
+  <string-array name="STAT_10_1_192">
+    <item>~ is consistent with pulmonary embolism</item>
+    <item>4</item>
+    <item>CONPTE</item>
+  </string-array>
+  <string-array name="STAT_10_1_256">
+    <item>~ is nonspecific</item>
+    <item>3</item>
+    <item>REPA</item>
+  </string-array>
+  <string-array name="STAT_10_1_640">
+    <item>~ is nonspecific</item>
+    <item>3</item>
+    <item>NONSC</item>
+  </string-array>
+  <string-array name="STAT_10_1_704">
+    <item>~ is nonspecific</item>
+    <item>3</item>
+    <item>NSSTC</item>
+  </string-array>
+  <string-array name="STAT_10_1_768">
+    <item>~ is consistent with endocrine disease</item>
+    <item>4</item>
+    <item>NSCEN</item>
+  </string-array>
+  <string-array name="STAT_10_1_832">
+    <item>~ is possibly secondary to hypertension</item>
+    <item>4</item>
+    <item>NSCHY</item>
+  </string-array>
+  <string-array name="STAT_10_1_896">
+    <item>~ is possibly secondary to congenital heart disease</item>
+    <item>4</item>
+    <item>NSCCHD</item>
+  </string-array>
+  <string-array name="STAT_10_1_960">
+    <item>~ is possibly secondary to valvular heart disease</item>
+    <item>4</item>
+    <item>NSCVHD</item>
+  </string-array>
+  <string-array name="STAT_10_1_1024">
+    <item>~ is possibly secondary to respiratory disease</item>
+    <item>4</item>
+    <item>NSCRD</item>
+  </string-array>
+  <string-array name="STAT_10_1_1088">
+    <item>~ is possibly secondary to hypertension/digitalis effect</item>
+    <item>4</item>
+    <item>NSCDHY</item>
+  </string-array>
+  <string-array name="STAT_10_1_1152">
+    <item>~ is possibly secondary to valvular heart disease/digitalis</item>
+    <item>4</item>
+    <item>NSCVHDG</item>
+  </string-array>
+  <string-array name="STAT_10_1_1280">
+    <item>~ is nonspecific</item>
+    <item>3</item>
+    <item>EQIS</item>
+  </string-array>
+  <string-array name="STAT_10_1_1344">
+    <item>~ is nonspecific</item>
+    <item>3</item>
+    <item>EQS</item>
+  </string-array>
+  <string-array name="STAT_10_1_1408">
+    <item>~ is consistent with digitalis effect</item>
+    <item>3</item>
+    <item>EQISD</item>
+  </string-array>
+  <string-array name="STAT_10_1_1472">
+    <item>~ is probably due to digitalis effect</item>
+    <item>2</item>
+    <item>MCD</item>
+  </string-array>
+  <string-array name="STAT_10_1_1536">
+    <item>~ is borderline</item>
+    <item>2</item>
+    <item>BCNCF</item>
+  </string-array>
+  <string-array name="STAT_10_1_1600">
+    <item>~ is borderline</item>
+    <item>2</item>
+    <item>BCUCF</item>
+  </string-array>
+  <string-array name="STAT_10_1_1920">
+    <item>~ is age related : consider juvenile T waves</item>
+    <item>0</item>
+    <item>CNJT</item>
+  </string-array>
+  <string-array name="STAT_10_1_1984">
+    <item>~ is non specific: may be normal for age and race</item>
+    <item>3</item>
+    <item>CNAR</item>
+  </string-array>
+  <string-array name="STAT_10_1_2048">
+    <item>~ may be age and gender related : consider normal variant</item>
+    <item>2</item>
+    <item>UNM</item>
+  </string-array>
+  <string-array name="STAT_10_1_2112">
+    <item>~ may be age and gender related : consider normal variant</item>
+    <item>2</item>
+    <item>EQYW</item>
+  </string-array>
+  <string-array name="STAT_10_1_2176">
+    <item>~ is age and gender related</item>
+    <item>4</item>
+    <item>ABAS</item>
+  </string-array>
+  <string-array name="STAT_10_1_2177">
+    <item>~ is age and gender related - possible digitalis effect</item>
+    <item>4</item>
+    <item>ABASD</item>
+  </string-array>
+  <string-array name="STAT_10_1_2240">
+    <item>~ is borderline for age and gender</item>
+    <item>3</item>
+    <item>BABAS</item>
+  </string-array>
+  <string-array name="STAT_10_1_2241">
+    <item>~ is borderline for age and gender - possible digitalis effect</item>
+    <item>3</item>
+    <item>BABASD</item>
+  </string-array>
+  <string-array name="STAT_10_1_2304">
+    <item>~</item>
+    <item>0</item>
+    <item>NIO</item>
+  </string-array>
+  <string-array name="STAT_10_1_2560">
+    <item>~ suggests myocardial ischemia</item>
+    <item>4</item>
+    <item>SSIS</item>
+  </string-array>
+  <string-array name="STAT_10_1_2561">
+    <item>~ suggests ischemia/digitalis effect</item>
+    <item>4</item>
+    <item>SSISD</item>
+  </string-array>
+  <string-array name="STAT_10_1_2624">
+    <item>~ suggests myocardial infarct</item>
+    <item>4</item>
+    <item>SSMI</item>
+  </string-array>
+  <string-array name="STAT_10_1_2625">
+    <item>~ may be due to myocardial infarct or CVA</item>
+    <item>4</item>
+    <item>MICVA</item>
+  </string-array>
+  <string-array name="STAT_10_1_2626">
+    <item>~ suggests myocardial infarct</item>
+    <item>4</item>
+    <item>SSIN</item>
+  </string-array>
+  <string-array name="STAT_10_1_2688">
+    <item>~ suggests myocardial injury/ischemia</item>
+    <item>4</item>
+    <item>SSII</item>
+  </string-array>
+  <string-array name="STAT_10_1_2752">
+    <item>~ may be due to myocardial ischemia</item>
+    <item>4</item>
+    <item>ABIS</item>
+  </string-array>
+  <string-array name="STAT_10_1_2753">
+    <item>~ suggests possible myocardial ischemia/digitalis effect</item>
+    <item>4</item>
+    <item>ABISD</item>
+  </string-array>
+  <string-array name="STAT_10_1_2816">
+    <item>~ is nonspecific</item>
+    <item>3</item>
+    <item>BABIS</item>
+  </string-array>
+  <string-array name="STAT_10_1_2817">
+    <item>~ - possible digitalis effect</item>
+    <item>3</item>
+    <item>BABISD</item>
+  </string-array>
+  <string-array name="STAT_10_1_2880">
+    <item>~ is consistent with myocardial ischemia</item>
+    <item>4</item>
+    <item>POIS</item>
+  </string-array>
+  <string-array name="STAT_10_1_2881">
+    <item>~ is consistent with ischemia/digitalis effect</item>
+    <item>4</item>
+    <item>POISD</item>
+  </string-array>
+  <string-array name="STAT_10_1_2944">
+    <item>~ suggests digitalis effect/ischemia</item>
+    <item>4</item>
+    <item>PODIS</item>
+  </string-array>
+  <string-array name="STAT_10_1_3008">
+    <item>~ may be due to myocardial ischemia</item>
+    <item>4</item>
+    <item>ADDIS</item>
+  </string-array>
+  <string-array name="STAT_10_1_3072">
+    <item>~ may be secondary to hypertension/ischemia</item>
+    <item>4</item>
+    <item>ISHY</item>
+  </string-array>
+  <string-array name="STAT_10_1_3073">
+    <item>~ may be due to digitalis/hypertension</item>
+    <item>4</item>
+    <item>ISDHY</item>
+  </string-array>
+  <string-array name="STAT_10_1_3204">
+    <item>Sequential changes of lateral infarct previously detected</item>
+    <item>4</item>
+    <item>SCLIPD</item>
+  </string-array>
+  <string-array name="STAT_10_1_3208">
+    <item>Sequential changes of septal infarct previously detected</item>
+    <item>4</item>
+    <item>SCSEIPD</item>
+  </string-array>
+  <string-array name="STAT_10_1_3212">
+    <item>Sequential changes of septal and lateral infarct previously detected</item>
+    <item>4</item>
+    <item>SCSELIPD</item>
+  </string-array>
+  <string-array name="STAT_10_1_3216">
+    <item>Sequential changes of anterior infarct previously detected</item>
+    <item>4</item>
+    <item>SCANIPD</item>
+  </string-array>
+  <string-array name="STAT_10_1_3220">
+    <item>Sequential changes of anterolateral infarct previously detected</item>
+    <item>4</item>
+    <item>SCALIPD</item>
+  </string-array>
+  <string-array name="STAT_10_1_3224">
+    <item>Sequential changes of anteroseptal infarct previously detected</item>
+    <item>4</item>
+    <item>SCASIPD</item>
+  </string-array>
+  <string-array name="STAT_10_1_3232">
+    <item>Sequential changes of inferior infarct previously detected</item>
+    <item>4</item>
+    <item>SCIIPD</item>
+  </string-array>
+  <string-array name="STAT_10_1_3236">
+    <item>Sequential changes of inferior and lateral infarct previously detected</item>
+    <item>4</item>
+    <item>SCILIPD</item>
+  </string-array>
+  <string-array name="STAT_10_1_3240">
+    <item>Sequential changes of inferior and septal infarct previously detected</item>
+    <item>4</item>
+    <item>SCISEIPD</item>
+  </string-array>
+  <string-array name="STAT_10_1_3248">
+    <item>Sequential changes of inferior and anterior infarct previously detected</item>
+    <item>4</item>
+    <item>SCIANIPD</item>
+  </string-array>
+  <string-array name="STAT_10_1_3256">
+    <item>Sequential changes of inferior and anteroseptal infarct previously detected</item>
+    <item>4</item>
+    <item>SCIASIPD</item>
+  </string-array>
+  <string-array name="STAT_10_1_3260">
+    <item>Sequential changes of myocardial infarct previously detected</item>
+    <item>4</item>
+    <item>SCIPD</item>
+  </string-array>
+  <string-array name="STAT_10_1_3264">
+    <item>Resolution of changes compared to a previous ECG</item>
+    <item>4</item>
+    <item>RCCP</item>
+  </string-array>
+  <string-array name="STAT_10_1_3328">
+    <item>Sequential changes compared to a previous ECG</item>
+    <item>4</item>
+    <item>SCCP</item>
+  </string-array>
+  <string-array name="STAT_10_1_3520">
+    <item>~ may be due to the hypertrophy and/or ischemia</item>
+    <item>4</item>
+    <item>ISHYI</item>
+  </string-array>
+  <string-array name="STAT_10_1_3584">
+    <item>~ may be due to the hypertrophy and/or ischemia/digitalis effect</item>
+    <item>4</item>
+    <item>ISDHYI</item>
+  </string-array>
+  <string-array name="STAT_10_1_3648">
+    <item>~ is probably due to the ventricular hypertrophy</item>
+    <item>4</item>
+    <item>PVH</item>
+  </string-array>
+  <string-array name="STAT_10_1_3712">
+    <item>~ is probably due to the ventricular hypertrophy/digitalis effect</item>
+    <item>4</item>
+    <item>PDVH</item>
+  </string-array>
+  <string-array name="STAT_10_1_3776">
+    <item>~ is noted in addition</item>
+    <item>4</item>
+    <item>NAH</item>
+  </string-array>
+  <string-array name="STAT_10_1_7304">
+    <item>Sequential changes of septal infarct with accompanying lateral ischemic abnormality</item>
+    <item>4</item>
+    <item>SCSEIL</item>
+  </string-array>
+  <string-array name="STAT_10_1_7328">
+    <item>Sequential changes of inferior infarct with accompanying lateral ischemic abnormality</item>
+    <item>4</item>
+    <item>SCIIL</item>
+  </string-array>
+  <string-array name="STAT_10_1_11396">
+    <item>Sequential changes of lateral infarct with accompanying septal ischemic abnormality</item>
+    <item>4</item>
+    <item>SCLISE</item>
+  </string-array>
+  <string-array name="STAT_10_1_11424">
+    <item>Sequential changes of inferior infarct with accompanying septal ischemic abnormality</item>
+    <item>4</item>
+    <item>SCIISE</item>
+  </string-array>
+  <string-array name="STAT_10_1_15520">
+    <item>Sequential changes of inferior infarct with accompanying anteroseptal ischemic abnormality</item>
+    <item>4</item>
+    <item>SCIIAS</item>
+  </string-array>
+  <string-array name="STAT_10_1_19616">
+    <item>Sequential changes of inferior infarct with accompanying anterior ischemic abnormality</item>
+    <item>4</item>
+    <item>SCIIAN</item>
+  </string-array>
+  <string-array name="STAT_10_1_23684">
+    <item>Sequential changes of lateral infarct with accompanying inferior ischemic abnormality</item>
+    <item>4</item>
+    <item>SCLIIN</item>
+  </string-array>
+  <string-array name="STAT_10_1_23688">
+    <item>Sequential changes of septal infarct with accompanying inferior ischemic abnormality</item>
+    <item>4</item>
+    <item>SCSEIIN</item>
+  </string-array>
+  <string-array name="STAT_10_1_23696">
+    <item>Sequential changes of anterior infarct with accompanying inferior ischemic abnormality</item>
+    <item>4</item>
+    <item>SCANIIN</item>
+  </string-array>
+  <string-array name="STAT_10_1_23704">
+    <item>Sequential changes of anteroseptal infarct with accompanying inferior ischemic abnormality</item>
+    <item>4</item>
+    <item>SCASIIN</item>
+  </string-array>
+  <string-array name="STAT_11_0_9">
+    <item />
+    <item>0</item>
+    <item />
+  </string-array>
+  <string-array name="STAT_11_1_513">
+    <item>Tall T waves - consider acute ischemia or hyperkalemia</item>
+    <item>3</item>
+    <item>TTCH</item>
+  </string-array>
+  <string-array name="STAT_11_1_514">
+    <item>Tall T waves - consider acute ischemia or hyperkalemia</item>
+    <item>3</item>
+    <item>TTRI</item>
+  </string-array>
+  <string-array name="STAT_11_1_515">
+    <item>Tall T waves - consider hyperkalemia</item>
+    <item>3</item>
+    <item>TTCHP</item>
+  </string-array>
+  <string-array name="STAT_11_1_1025">
+    <item>Low QRS voltages in limb leads</item>
+    <item>2</item>
+    <item>LQL</item>
+  </string-array>
+  <string-array name="STAT_11_1_1026">
+    <item>Low QRS voltages in precordial leads</item>
+    <item>2</item>
+    <item>LQP</item>
+  </string-array>
+  <string-array name="STAT_11_1_1027">
+    <item>Generalized low QRS voltages</item>
+    <item>3</item>
+    <item>LQW</item>
+  </string-array>
+  <string-array name="STAT_11_1_1028">
+    <item>Generalized low QRS voltages - consider pericardial effusion</item>
+    <item>3</item>
+    <item>VLQW</item>
+  </string-array>
+  <string-array name="STAT_12_1_1">
+    <item>~</item>
+    <item>0</item>
+    <item>WNL</item>
+  </string-array>
+  <string-array name="STAT_12_1_2">
+    <item>~</item>
+    <item>0</item>
+    <item>NL</item>
+  </string-array>
+  <string-array name="STAT_12_1_3">
+    <item>~</item>
+    <item>0</item>
+    <item>WNLFA</item>
+  </string-array>
+  <string-array name="STAT_12_1_9">
+    <item>Within normal limits as previously</item>
+    <item>0</item>
+    <item>WNLAB</item>
+  </string-array>
+  <string-array name="STAT_12_1_10">
+    <item>~</item>
+    <item>8</item>
+    <item>TACHON</item>
+  </string-array>
+  <string-array name="STAT_12_1_11">
+    <item>~</item>
+    <item>9</item>
+    <item>BRADON</item>
+  </string-array>
+  <string-array name="STAT_12_1_12">
+    <item>~</item>
+    <item>10</item>
+    <item>PVCON</item>
+  </string-array>
+  <string-array name="STAT_12_1_13">
+    <item>~</item>
+    <item>11</item>
+    <item>PACON</item>
+  </string-array>
+  <string-array name="STAT_12_1_17">
+    <item>ECG now within normal limits</item>
+    <item>0</item>
+    <item>NWNL</item>
+  </string-array>
+  <string-array name="STAT_12_1_64">
+    <item>This ECG has been compared to ECG(s) dated</item>
+    <item>0</item>
+    <item>CF</item>
+  </string-array>
+  <string-array name="STAT_13_1_1">
+    <item>Repeat ecg advised</item>
+    <item>0</item>
+    <item>RAAF</item>
+  </string-array>
+  <string-array name="STAT_13_1_2">
+    <item>Repeat ecg advised</item>
+    <item>0</item>
+    <item>RASC</item>
+  </string-array>
+  <string-array name="STAT_13_1_3">
+    <item>--- Recording unsuitable for analysis - please repeat ---</item>
+    <item>7</item>
+    <item>RAETE</item>
+  </string-array>
+  <string-array name="STAT_13_1_4">
+    <item>Repeat ecg advised</item>
+    <item>0</item>
+    <item>RADC</item>
+  </string-array>
+  <string-array name="STAT_13_1_5">
+    <item>Serial ecg recordings advised</item>
+    <item>0</item>
+    <item>SRA</item>
+  </string-array>
+  <string-array name="STAT_13_1_6">
+    <item>Repeat ecg on held inspiration</item>
+    <item>0</item>
+    <item>RHI</item>
+  </string-array>
+  <string-array name="STAT_13_1_7">
+    <item>Repeat ecg advised</item>
+    <item>0</item>
+    <item>RPQ</item>
+  </string-array>
+  <string-array name="STAT_13_1_8">
+    <item>Technically unsatisfactory recording</item>
+    <item>0</item>
+    <item>TUR</item>
+  </string-array>
+  <string-array name="STAT_13_1_9">
+    <item>Possible electrode positioning error</item>
+    <item>0</item>
+    <item>EPE</item>
+  </string-array>
+  <string-array name="STAT_13_1_10">
+    <item>Pediatric ECG</item>
+    <item>0</item>
+    <item>PAECG</item>
+  </string-array>
+  <string-array name="STAT_13_1_11">
+    <item>ECG not interpreted</item>
+    <item>0</item>
+    <item>NOTIC</item>
+  </string-array>
+  <string-array name="STAT_14_1_8">
+    <item>Normal ECG</item>
+    <item>0</item>
+    <item>N</item>
+  </string-array>
+  <string-array name="STAT_14_1_9">
+    <item>Normal ECG based on available leads</item>
+    <item>0</item>
+    <item>ALN</item>
+  </string-array>
+  <string-array name="STAT_14_1_10">
+    <item>Borderline ECG</item>
+    <item>0</item>
+    <item>BN</item>
+  </string-array>
+  <string-array name="STAT_14_1_11">
+    <item>Borderline ECG</item>
+    <item>0</item>
+    <item>BA</item>
+  </string-array>
+  <string-array name="STAT_14_1_12">
+    <item>Abnormal ECG</item>
+    <item>0</item>
+    <item>A</item>
+  </string-array>
+  <string-array name="STAT_14_1_13">
+    <item>Technical error</item>
+    <item>0</item>
+    <item>TE</item>
+  </string-array>
+  <string-array name="STAT_14_1_14">
+    <item>Unclassified ECG</item>
+    <item>0</item>
+    <item>NA</item>
+  </string-array>
+  <string-array name="STAT_14_1_15">
+    <item>Analysis error</item>
+    <item>0</item>
+    <item>AE</item>
+  </string-array>
+  <string-array name="STAT_14_1_16">
+    <item>Normal ECG except for rate</item>
+    <item>0</item>
+    <item>TON</item>
+  </string-array>
+  <string-array name="STAT_14_1_17">
+    <item>Normal ECG except for rate</item>
+    <item>0</item>
+    <item>BON</item>
+  </string-array>
+  <string-array name="STAT_14_1_18">
+    <item>Normal ECG except for rhythm</item>
+    <item>0</item>
+    <item>VON</item>
+  </string-array>
+  <string-array name="STAT_14_1_19">
+    <item>Normal ECG except for rhythm</item>
+    <item>0</item>
+    <item>SVON</item>
+  </string-array>
+  <string-array name="STAT_14_1_20">
+    <item>Normal ECG</item>
+    <item>0</item>
+    <item>NV</item>
+  </string-array>
+  <string-array name="STAT_14_1_88">
+    <item>No significant change</item>
+    <item>0</item>
+    <item>NSC</item>
+  </string-array>
+  <string-array name="STAT_14_1_89">
+    <item>Descriptive differences only</item>
+    <item>0</item>
+    <item>DES</item>
+  </string-array>
+  <string-array name="STAT_14_1_90">
+    <item>Some abnormalities no longer present</item>
+    <item>0</item>
+    <item>SANLP</item>
+  </string-array>
+  <string-array name="STAT_14_1_91">
+    <item>Significant changes</item>
+    <item>0</item>
+    <item>SC</item>
+  </string-array>
+  <string-array name="STAT_14_1_92">
+    <item>Significant rhythm change</item>
+    <item>0</item>
+    <item>SRC</item>
+  </string-array>
+  <string-array name="STAT_14_1_93">
+    <item>Significant changes including rhythm</item>
+    <item>0</item>
+    <item>SCIR</item>
+  </string-array>
+  <string-array name="STAT_14_1_104">
+    <item>No serial comparison made</item>
+    <item>0</item>
+    <item>NOSC</item>
+  </string-array>
+  <string-array name="STAT_16_1_1">
+    <item>*** ACUTE STEMI ***</item>
+    <item>0</item>
+    <item>CV_STEMI</item>
+  </string-array>
+  <string-array name="STAT_16_1_2">
+    <item>*** ACUTE MI / ISCHEMIA ***</item>
+    <item>0</item>
+    <item>CV_AMIISC</item>
+  </string-array>
+  <string-array name="STAT_16_1_3">
+    <item>*** EXTREME TACHYCARDIA ***</item>
+    <item>0</item>
+    <item>CV_EXTTACH</item>
+  </string-array>
+  <string-array name="STAT_16_1_4">
+    <item>*** EXTREME BRADYCARDIA ***</item>
+    <item>0</item>
+    <item>CV_EXTBRAD</item>
+  </string-array>
+  <string-array name="STAT_16_1_5">
+    <item>*** SIGNIFICANT ARRHYTHMIA ***</item>
+    <item>0</item>
+    <item>CV_SIGARR</item>
+  </string-array>
+  <string-array name="STAT_16_1_6">
+    <item>*** PROLONGED QTc INTERVAL ***</item>
+    <item>0</item>
+    <item>CV_PROQTC</item>
+  </string-array>
+  <string-array name="STAT_16_1_7">
+    <item>*** POSSIBLE ACUTE STEMI ***</item>
+    <item>0</item>
+    <item>CV_PSTEMI</item>
+  </string-array>
+  <string-array name="STAT_16_1_8">
+    <item>*** BORDERLINE ACUTE STEMI ***</item>
+    <item>0</item>
+    <item>CV_BSTEMI</item>
+  </string-array>
+  <string-array name="STAT_16_1_9">
+    <item>*** MEETS ACUTE STEMI CRITERIA ***</item>
+    <item>0</item>
+    <item>CV_MSTEMI</item>
+  </string-array>
+  <string-array name="STAT_16_1_10">
+    <item>*** MEETS ST ELEVATION MI CRITERIA ***</item>
+    <item>0</item>
+    <item>CV_PMSTEMI</item>
+  </string-array>
+  <string-array name="STAT_17_1_1">
+    <item>Sinus rhythm</item>
+    <item>0</item>
+    <item>SR</item>
+  </string-array>
+  <string-array name="STAT_17_1_2">
+    <item>Sinus tachycardia</item>
+    <item>2</item>
+    <item>ST</item>
+  </string-array>
+  <string-array name="STAT_17_1_3">
+    <item>Sinus bradycardia</item>
+    <item>2</item>
+    <item>SB</item>
+  </string-array>
+  <string-array name="STAT_17_1_4">
+    <item>Sinus arrhythmia</item>
+    <item>0</item>
+    <item>SA</item>
+  </string-array>
+  <string-array name="STAT_17_1_5">
+    <item>Sinus tachycardia with sinus arrhythmia</item>
+    <item>2</item>
+    <item>IST</item>
+  </string-array>
+  <string-array name="STAT_17_1_6">
+    <item>Sinus bradycardia with sinus arrhythmia</item>
+    <item>2</item>
+    <item>ISB</item>
+  </string-array>
+  <string-array name="STAT_17_1_7">
+    <item>Atrial tachycardia</item>
+    <item>4</item>
+    <item>AT</item>
+  </string-array>
+  <string-array name="STAT_17_1_8">
+    <item>Atrial flutter</item>
+    <item>4</item>
+    <item>AFL</item>
+  </string-array>
+  <string-array name="STAT_17_1_9">
+    <item>Atrial fibrillation</item>
+    <item>4</item>
+    <item>AF</item>
+  </string-array>
+  <string-array name="STAT_17_1_11">
+    <item>Junctional rhythm</item>
+    <item>4</item>
+    <item>AVJR</item>
+  </string-array>
+  <string-array name="STAT_17_1_12">
+    <item>Accelerated junctional rhythm</item>
+    <item>4</item>
+    <item>AVJT</item>
+  </string-array>
+  <string-array name="STAT_17_1_13">
+    <item>Junctional bradycardia</item>
+    <item>4</item>
+    <item>AVJB</item>
+  </string-array>
+  <string-array name="STAT_17_1_15">
+    <item>Supraventricular tachycardia</item>
+    <item>4</item>
+    <item>SVT</item>
+  </string-array>
+  <string-array name="STAT_17_1_19">
+    <item />
+    <item>0</item>
+    <item>VT</item>
+  </string-array>
+  <string-array name="STAT_17_1_65">
+    <item />
+    <item>0</item>
+    <item>PSR</item>
+  </string-array>
+  <string-array name="STAT_17_1_66">
+    <item />
+    <item>0</item>
+    <item>PST</item>
+  </string-array>
+  <string-array name="STAT_17_1_67">
+    <item />
+    <item>0</item>
+    <item>PSB</item>
+  </string-array>
+  <string-array name="STAT_17_1_68">
+    <item />
+    <item>0</item>
+    <item>PSA</item>
+  </string-array>
+  <string-array name="STAT_17_1_69">
+    <item />
+    <item>0</item>
+    <item>PIST</item>
+  </string-array>
+  <string-array name="STAT_17_1_70">
+    <item />
+    <item>0</item>
+    <item>PISB</item>
+  </string-array>
+  <string-array name="STAT_17_1_71">
+    <item>Probable atrial tachycardia</item>
+    <item>4</item>
+    <item>PAT</item>
+  </string-array>
+  <string-array name="STAT_17_1_72">
+    <item>Probable atrial flutter</item>
+    <item>4</item>
+    <item>PAFL</item>
+  </string-array>
+  <string-array name="STAT_17_1_73">
+    <item>Probable atrial fibrillation</item>
+    <item>4</item>
+    <item>PAF</item>
+  </string-array>
+  <string-array name="STAT_17_1_75">
+    <item>Probable junctional rhythm</item>
+    <item>4</item>
+    <item>PAVJR</item>
+  </string-array>
+  <string-array name="STAT_17_1_76">
+    <item>Probable accelerated junctional rhythm</item>
+    <item>4</item>
+    <item>PACJR</item>
+  </string-array>
+  <string-array name="STAT_17_1_77">
+    <item />
+    <item>0</item>
+    <item>PAVJB</item>
+  </string-array>
+  <string-array name="STAT_17_1_79">
+    <item>Probable supraventricular tachycardia</item>
+    <item>4</item>
+    <item>PSVT</item>
+  </string-array>
+  <string-array name="STAT_17_1_83">
+    <item>Probable ventricular tachycardia</item>
+    <item>4</item>
+    <item>WCTPVT</item>
+  </string-array>
+  <string-array name="STAT_17_1_85">
+    <item>Consider ventricular flutter/fibrillation</item>
+    <item>4</item>
+    <item>VF</item>
+  </string-array>
+  <string-array name="STAT_17_1_88">
+    <item>Accelerated idioventricular rhythm</item>
+    <item>4</item>
+    <item>AIR</item>
+  </string-array>
+  <string-array name="STAT_17_1_89">
+    <item>Possible idioventricular rhythm</item>
+    <item>4</item>
+    <item>POIR</item>
+  </string-array>
+  <string-array name="STAT_17_1_103">
+    <item>Possible atrial tachycardia</item>
+    <item>4</item>
+    <item>POAT</item>
+  </string-array>
+  <string-array name="STAT_17_1_104">
+    <item>Possible atrial flutter</item>
+    <item>4</item>
+    <item>POAFL</item>
+  </string-array>
+  <string-array name="STAT_17_1_105">
+    <item>Possible atrial fibrillation</item>
+    <item>4</item>
+    <item>POAF</item>
+  </string-array>
+  <string-array name="STAT_17_1_107">
+    <item>Possible junctional rhythm</item>
+    <item>4</item>
+    <item>POAVJR</item>
+  </string-array>
+  <string-array name="STAT_17_1_108">
+    <item>Possible accelerated junctional rhythm</item>
+    <item>4</item>
+    <item>POACJR</item>
+  </string-array>
+  <string-array name="STAT_17_1_109">
+    <item>Possible junctional bradycardia</item>
+    <item>4</item>
+    <item>POAVJB</item>
+  </string-array>
+  <string-array name="STAT_17_1_111">
+    <item>Wide QRS tachycardia - possible supraventricular tachycardia</item>
+    <item>4</item>
+    <item>WCTPOSVT</item>
+  </string-array>
+  <string-array name="STAT_17_1_113">
+    <item>Possible ventricular escape rhythm</item>
+    <item>4</item>
+    <item>POVER</item>
+  </string-array>
+  <string-array name="STAT_17_1_115">
+    <item>Wide QRS tachycardia - possible ventricular tachycardia</item>
+    <item>4</item>
+    <item>WCTPOVT</item>
+  </string-array>
+  <string-array name="STAT_17_1_116">
+    <item>A-V dissociation</item>
+    <item>4</item>
+    <item>CAVD</item>
+  </string-array>
+  <string-array name="STAT_17_1_129">
+    <item>Atrial pacing</item>
+    <item>4</item>
+    <item>RAP</item>
+  </string-array>
+  <string-array name="STAT_17_1_130">
+    <item>Ventricular pacing</item>
+    <item>4</item>
+    <item>RVP</item>
+  </string-array>
+  <string-array name="STAT_17_1_131">
+    <item>A-V sequential pacemaker</item>
+    <item>4</item>
+    <item>RAVSP</item>
+  </string-array>
+  <string-array name="STAT_17_1_133">
+    <item>A-V sequential pacemaker</item>
+    <item>4</item>
+    <item>AVIPA</item>
+  </string-array>
+  <string-array name="STAT_17_1_135">
+    <item>A-V sequential pacemaker</item>
+    <item>4</item>
+    <item>AVSVP</item>
+  </string-array>
+  <string-array name="STAT_17_1_136">
+    <item>Pacemaker rhythm</item>
+    <item>4</item>
+    <item>ICPR</item>
+  </string-array>
+  <string-array name="STAT_17_1_145">
+    <item>Possible ectopic atrial rhythm</item>
+    <item>2</item>
+    <item>EAR</item>
+  </string-array>
+  <string-array name="STAT_17_1_146">
+    <item>Possible ectopic atrial tachycardia</item>
+    <item>2</item>
+    <item>EAT</item>
+  </string-array>
+  <string-array name="STAT_17_1_147">
+    <item>Possible ectopic atrial bradycardia</item>
+    <item>2</item>
+    <item>EAB</item>
+  </string-array>
+  <string-array name="STAT_17_1_148">
+    <item>Irregular ectopic atrial rhythm</item>
+    <item>2</item>
+    <item>IEAR</item>
+  </string-array>
+  <string-array name="STAT_17_1_149">
+    <item>Irregular ectopic atrial tachycardia</item>
+    <item>4</item>
+    <item>IEAT</item>
+  </string-array>
+  <string-array name="STAT_17_1_150">
+    <item>Irregular ectopic atrial bradycardia</item>
+    <item>4</item>
+    <item>IEAB</item>
+  </string-array>
+  <string-array name="STAT_17_1_193">
+    <item>Rhythm is now sinus</item>
+    <item>0</item>
+    <item>SRNOW</item>
+  </string-array>
+  <string-array name="STAT_17_1_194">
+    <item>Rhythm is now sinus tachycardia</item>
+    <item>2</item>
+    <item>STNOW</item>
+  </string-array>
+  <string-array name="STAT_17_1_195">
+    <item>Rhythm is now sinus bradycardia</item>
+    <item>2</item>
+    <item>SBNOW</item>
+  </string-array>
+  <string-array name="STAT_17_1_196">
+    <item>Rhythm is now sinus arrhythmia</item>
+    <item>0</item>
+    <item>SANOW</item>
+  </string-array>
+  <string-array name="STAT_17_1_197">
+    <item>Rhythm is now sinus tachycardia with sinus arrhythmia</item>
+    <item>2</item>
+    <item>ISTNOW</item>
+  </string-array>
+  <string-array name="STAT_17_1_198">
+    <item>Rhythm is now sinus bradycardia with sinus arrhythmia</item>
+    <item>2</item>
+    <item>ISBNOW</item>
+  </string-array>
+  <string-array name="STAT_17_1_201">
+    <item>Rhythm is now atrial fibrillation</item>
+    <item>4</item>
+    <item>AFNOW</item>
+  </string-array>
+  <string-array name="STAT_17_1_248">
+    <item>Regular supraventricular rhythm</item>
+    <item>2</item>
+    <item>RSR</item>
+  </string-array>
+  <string-array name="STAT_17_1_249">
+    <item>Irregular supraventricular rhythm</item>
+    <item>3</item>
+    <item>ISR</item>
+  </string-array>
+  <string-array name="STAT_17_1_250">
+    <item>Undetermined rhythm</item>
+    <item>1</item>
+    <item>RR</item>
+  </string-array>
+  <string-array name="STAT_17_1_251">
+    <item>Undetermined rhythm</item>
+    <item>2</item>
+    <item>IR</item>
+  </string-array>
+  <string-array name="STAT_17_1_255">
+    <item>Undetermined rhythm</item>
+    <item>4</item>
+    <item>UR</item>
+  </string-array>
+  <string-array name="STAT_17_1_259">
+    <item>Marked sinus bradycardia</item>
+    <item>4</item>
+    <item>SBSAB</item>
+  </string-array>
+  <string-array name="STAT_17_1_403">
+    <item>^GRI_17@259</item>
+    <item>4</item>
+    <item>CDE1</item>
+  </string-array>
+  <string-array name="STAT_17_1_527">
+    <item>Probable supraventricular tachycardia</item>
+    <item>4</item>
+    <item>PSVAT</item>
+  </string-array>
+  <string-array name="STAT_17_1_1858">
+    <item>Probable atrial tachycardia</item>
+    <item>2</item>
+    <item>PSAT</item>
+  </string-array>
+  <string-array name="STAT_17_1_2114">
+    <item>Probable sinus tachycardia</item>
+    <item>2</item>
+    <item>PSTL</item>
+  </string-array>
+  <string-array name="STAT_17_1_28164">
+    <item />
+    <item>0</item>
+    <item>SAMOB</item>
+  </string-array>
+  <string-array name="STAT_17_1_28165">
+    <item />
+    <item>0</item>
+    <item>ISTMI</item>
+  </string-array>
+  <string-array name="STAT_17_1_28166">
+    <item />
+    <item>0</item>
+    <item>ISBMI</item>
+  </string-array>
+  <string-array name="STAT_18_1_8">
+    <item>~ with PVC(s)</item>
+    <item>2</item>
+    <item>VES</item>
+  </string-array>
+  <string-array name="STAT_18_1_9">
+    <item />
+    <item>0</item>
+    <item>POVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_10">
+    <item>~ with frequent PVCs</item>
+    <item>4</item>
+    <item>FVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_16">
+    <item>~ with multifocal PVCs</item>
+    <item>4</item>
+    <item>MVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_18">
+    <item>~ with frequent multifocal PVCs</item>
+    <item>4</item>
+    <item>FMVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_24">
+    <item>~ with interpolated PVC(s)</item>
+    <item>2</item>
+    <item>IVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_30">
+    <item />
+    <item>0</item>
+    <item>PFVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_32">
+    <item>~ with multifocal interpolated PVCs</item>
+    <item>4</item>
+    <item>MIVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_34">
+    <item>~ with paroxysmal idioventricular rhythm</item>
+    <item>4</item>
+    <item>PIVR</item>
+  </string-array>
+  <string-array name="STAT_18_1_40">
+    <item>~ with multifocal PVCs</item>
+    <item>4</item>
+    <item>MLVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_41">
+    <item>~ with multifocal interpolated PVCs</item>
+    <item>4</item>
+    <item>MLIVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_42">
+    <item>~ with frequent multifocal PVCs</item>
+    <item>4</item>
+    <item>FMLVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_44">
+    <item />
+    <item>0</item>
+    <item>PMLVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_48">
+    <item />
+    <item>0</item>
+    <item>RTVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_50">
+    <item />
+    <item>0</item>
+    <item>FRTVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_56">
+    <item />
+    <item>0</item>
+    <item>MRTVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_58">
+    <item />
+    <item>0</item>
+    <item>FMRTVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_60">
+    <item>~ with PVC(s)</item>
+    <item>2</item>
+    <item>VC</item>
+  </string-array>
+  <string-array name="STAT_18_1_61">
+    <item>~ with non-sustained ventricular tachycardia</item>
+    <item>4</item>
+    <item>NSVT</item>
+  </string-array>
+  <string-array name="STAT_18_1_62">
+    <item>~ with intermittent conduction defect</item>
+    <item>4</item>
+    <item>INTCD</item>
+  </string-array>
+  <string-array name="STAT_18_1_64">
+    <item />
+    <item>0</item>
+    <item>EDVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_65">
+    <item />
+    <item>0</item>
+    <item>POEDVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_66">
+    <item />
+    <item>0</item>
+    <item>FEDVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_72">
+    <item>~ with rapid ventricular response</item>
+    <item>4</item>
+    <item>RVR</item>
+  </string-array>
+  <string-array name="STAT_18_1_73">
+    <item>~ with uncontrolled ventricular response</item>
+    <item>4</item>
+    <item>UVR</item>
+  </string-array>
+  <string-array name="STAT_18_1_74">
+    <item>~ with slow ventricular response</item>
+    <item>4</item>
+    <item>SVR</item>
+  </string-array>
+  <string-array name="STAT_18_1_88">
+    <item>~ with PAC(s)</item>
+    <item>2</item>
+    <item>AES</item>
+  </string-array>
+  <string-array name="STAT_18_1_89">
+    <item />
+    <item>0</item>
+    <item>AVJES</item>
+  </string-array>
+  <string-array name="STAT_18_1_90">
+    <item>~ with PAC(s)</item>
+    <item>2</item>
+    <item>SVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_91">
+    <item />
+    <item>0</item>
+    <item>BLPACS</item>
+  </string-array>
+  <string-array name="STAT_18_1_92">
+    <item>~ with frequent PACs</item>
+    <item>3</item>
+    <item>FSVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_93">
+    <item />
+    <item>0</item>
+    <item>SPB</item>
+  </string-array>
+  <string-array name="STAT_18_1_95">
+    <item>~ with aberrantly conducted supraventricular complexes</item>
+    <item>2</item>
+    <item>PACSVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_96">
+    <item>~ with 1st degree A-V block</item>
+    <item>4</item>
+    <item>FDAVB</item>
+  </string-array>
+  <string-array name="STAT_18_1_97">
+    <item>~ with borderline 1st degree A-V block</item>
+    <item>2</item>
+    <item>BFDAVB</item>
+  </string-array>
+  <string-array name="STAT_18_1_98">
+    <item>~ with 2nd degree A-V block, Mobitz I (Wenckebach)</item>
+    <item>4</item>
+    <item>WEN</item>
+  </string-array>
+  <string-array name="STAT_18_1_99">
+    <item>~ with 2nd degree A-V block, Mobitz II</item>
+    <item>4</item>
+    <item>MII</item>
+  </string-array>
+  <string-array name="STAT_18_1_100">
+    <item>~ with 2:1 A-V block</item>
+    <item>4</item>
+    <item>2AVB</item>
+  </string-array>
+  <string-array name="STAT_18_1_101">
+    <item>~ with 3:1 A-V block</item>
+    <item>4</item>
+    <item>3AVB</item>
+  </string-array>
+  <string-array name="STAT_18_1_102">
+    <item>~ with 4:1 A-V block</item>
+    <item>4</item>
+    <item>4AVB</item>
+  </string-array>
+  <string-array name="STAT_18_1_103">
+    <item>~ with high degree A-V block</item>
+    <item>4</item>
+    <item>HDAVB</item>
+  </string-array>
+  <string-array name="STAT_18_1_104">
+    <item />
+    <item>0</item>
+    <item>2SAB</item>
+  </string-array>
+  <string-array name="STAT_18_1_105">
+    <item />
+    <item>0</item>
+    <item>HDSAB</item>
+  </string-array>
+  <string-array name="STAT_18_1_106">
+    <item />
+    <item>0</item>
+    <item>ASDAVB</item>
+  </string-array>
+  <string-array name="STAT_18_1_107">
+    <item />
+    <item>0</item>
+    <item>HDSDAVB</item>
+  </string-array>
+  <string-array name="STAT_18_1_108">
+    <item>~ with varying 2nd degree A-V block</item>
+    <item>4</item>
+    <item>VSDAVB</item>
+  </string-array>
+  <string-array name="STAT_18_1_109">
+    <item>~ with complete A-V block</item>
+    <item>4</item>
+    <item>CAVB</item>
+  </string-array>
+  <string-array name="STAT_18_1_110">
+    <item>~ with 2nd degree (Mobitz I) SA block</item>
+    <item>4</item>
+    <item>SAMI</item>
+  </string-array>
+  <string-array name="STAT_18_1_111">
+    <item>~ with 2nd degree (Mobitz II) SA block</item>
+    <item>4</item>
+    <item>SAMII</item>
+  </string-array>
+  <string-array name="STAT_18_1_112">
+    <item />
+    <item>0</item>
+    <item>AEB</item>
+  </string-array>
+  <string-array name="STAT_18_1_113">
+    <item />
+    <item>0</item>
+    <item>AVJEB</item>
+  </string-array>
+  <string-array name="STAT_18_1_114">
+    <item />
+    <item>0</item>
+    <item>SVEB</item>
+  </string-array>
+  <string-array name="STAT_18_1_115">
+    <item />
+    <item>0</item>
+    <item>VEB</item>
+  </string-array>
+  <string-array name="STAT_18_1_116">
+    <item>~ with bigeminal PACs</item>
+    <item>4</item>
+    <item>BAES</item>
+  </string-array>
+  <string-array name="STAT_18_1_120">
+    <item />
+    <item>0</item>
+    <item>AVJRB</item>
+  </string-array>
+  <string-array name="STAT_18_1_121">
+    <item />
+    <item>0</item>
+    <item>VECHO</item>
+  </string-array>
+  <string-array name="STAT_18_1_122">
+    <item />
+    <item>0</item>
+    <item>AECHO</item>
+  </string-array>
+  <string-array name="STAT_18_1_123">
+    <item>~ with bigeminal PVCs</item>
+    <item>4</item>
+    <item>BVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_124">
+    <item />
+    <item>0</item>
+    <item>TR</item>
+  </string-array>
+  <string-array name="STAT_18_1_126">
+    <item />
+    <item>0</item>
+    <item>VCB</item>
+  </string-array>
+  <string-array name="STAT_18_1_127">
+    <item>~ with fusion complexes</item>
+    <item>4</item>
+    <item>VFC</item>
+  </string-array>
+  <string-array name="STAT_18_1_128">
+    <item>~ or aberrant ventricular conduction</item>
+    <item>4</item>
+    <item>AVC</item>
+  </string-array>
+  <string-array name="STAT_18_1_129">
+    <item />
+    <item>0</item>
+    <item>PPHAVC</item>
+  </string-array>
+  <string-array name="STAT_18_1_132">
+    <item>Demand atrial pacing</item>
+    <item>4</item>
+    <item>DAP</item>
+  </string-array>
+  <string-array name="STAT_18_1_133">
+    <item>Demand pacing</item>
+    <item>4</item>
+    <item>DVP</item>
+  </string-array>
+  <string-array name="STAT_18_1_134">
+    <item>Demand pacing</item>
+    <item>4</item>
+    <item>DAVSP</item>
+  </string-array>
+  <string-array name="STAT_18_1_135">
+    <item>Demand pacing</item>
+    <item>4</item>
+    <item>DAVPA</item>
+  </string-array>
+  <string-array name="STAT_18_1_136">
+    <item>Demand pacing</item>
+    <item>4</item>
+    <item>DAVSVP</item>
+  </string-array>
+  <string-array name="STAT_18_1_138">
+    <item />
+    <item>0</item>
+    <item>IAPA</item>
+  </string-array>
+  <string-array name="STAT_18_1_139">
+    <item />
+    <item>0</item>
+    <item>IDAPA</item>
+  </string-array>
+  <string-array name="STAT_18_1_140">
+    <item>~</item>
+    <item>0</item>
+    <item>SIP</item>
+  </string-array>
+  <string-array name="STAT_18_1_146">
+    <item />
+    <item>0</item>
+    <item>POVPAR</item>
+  </string-array>
+  <string-array name="STAT_18_1_147">
+    <item />
+    <item>0</item>
+    <item>IVPE</item>
+  </string-array>
+  <string-array name="STAT_18_1_152">
+    <item />
+    <item>0</item>
+    <item>MRQV</item>
+  </string-array>
+  <string-array name="STAT_18_1_153">
+    <item />
+    <item>0</item>
+    <item>POAC</item>
+  </string-array>
+  <string-array name="STAT_18_1_154">
+    <item />
+    <item>0</item>
+    <item>PSVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_155">
+    <item />
+    <item>0</item>
+    <item>ACSVES</item>
+  </string-array>
+  <string-array name="STAT_18_1_248">
+    <item>~ with unclassified aberrant complexes</item>
+    <item>4</item>
+    <item>UAC</item>
+  </string-array>
+  <string-array name="STAT_18_1_249">
+    <item>~ with undetermined ectopic complexes</item>
+    <item>4</item>
+    <item>UEC</item>
+  </string-array>
+  <string-array name="STAT_18_1_250">
+    <item />
+    <item>0</item>
+    <item>PUEC</item>
+  </string-array>
+  <string-array name="STAT_18_1_251">
+    <item />
+    <item>0</item>
+    <item>POUEC</item>
+  </string-array>
+  <string-array name="STAT_18_1_252">
+    <item>~ with undetermined irregularity</item>
+    <item>4</item>
+    <item>UI</item>
+  </string-array>
+  <string-array name="STAT_18_1_32530">
+    <item />
+    <item>0</item>
+    <item>FUS</item>
+  </string-array>
+  <string-array name="STAT_18_1_33033">
+    <item />
+    <item>0</item>
+    <item>PHAVC</item>
+  </string-array>
+  <string-array name="STAT_18_1_35972">
+    <item>Demand atrial pacing</item>
+    <item>4</item>
+    <item>DAPIN</item>
+  </string-array>
+  <string-array name="STAT_18_1_35973">
+    <item>Demand pacing</item>
+    <item>4</item>
+    <item>DVPIN</item>
+  </string-array>
+  <string-array name="STAT_18_1_35974">
+    <item>Demand pacing</item>
+    <item>4</item>
+    <item>DAVSIN</item>
+  </string-array>
+  <string-array name="STAT_18_1_35976">
+    <item>Demand pacing</item>
+    <item>4</item>
+    <item>DAVSVPIN</item>
+  </string-array>
+  <string-array name="STAT_18_1_37386">
+    <item />
+    <item>0</item>
+    <item>VPAR</item>
+  </string-array>
+  <string-array name="STAT_96_1_1">
+    <item>~ I</item>
+    <item>0</item>
+    <item>I</item>
+  </string-array>
+  <string-array name="STAT_96_1_2">
+    <item>~ II</item>
+    <item>0</item>
+    <item>II</item>
+  </string-array>
+  <string-array name="STAT_96_1_3">
+    <item>~ III</item>
+    <item>0</item>
+    <item>III</item>
+  </string-array>
+  <string-array name="STAT_96_1_4">
+    <item>~ aVR</item>
+    <item>0</item>
+    <item>aVR</item>
+  </string-array>
+  <string-array name="STAT_96_1_5">
+    <item>~ aVL</item>
+    <item>0</item>
+    <item>aVL</item>
+  </string-array>
+  <string-array name="STAT_96_1_6">
+    <item>~ aVF</item>
+    <item>0</item>
+    <item>aVF</item>
+  </string-array>
+  <string-array name="STAT_96_1_7">
+    <item>~ V1</item>
+    <item>0</item>
+    <item>V1</item>
+  </string-array>
+  <string-array name="STAT_96_1_8">
+    <item>~ V2</item>
+    <item>0</item>
+    <item>V2</item>
+  </string-array>
+  <string-array name="STAT_96_1_9">
+    <item>~ V3</item>
+    <item>0</item>
+    <item>V3</item>
+  </string-array>
+  <string-array name="STAT_96_1_10">
+    <item>~ V4</item>
+    <item>0</item>
+    <item>V4</item>
+  </string-array>
+  <string-array name="STAT_96_1_11">
+    <item>~ V5</item>
+    <item>0</item>
+    <item>V5</item>
+  </string-array>
+  <string-array name="STAT_96_1_12">
+    <item>~ V6</item>
+    <item>0</item>
+    <item>V6</item>
+  </string-array>
+  <string-array name="STAT_96_1_13">
+    <item>~ ADD1</item>
+    <item>0</item>
+    <item>ADD1</item>
+  </string-array>
+  <string-array name="STAT_96_1_14">
+    <item>~ ADD2</item>
+    <item>0</item>
+    <item>ADD2</item>
+  </string-array>
+  <string-array name="STAT_96_1_15">
+    <item>~ ADD3</item>
+    <item>0</item>
+    <item>ADD3</item>
+  </string-array>
+  <string-array name="STAT_96_1_16">
+    <item>~ X</item>
+    <item>0</item>
+    <item>X</item>
+  </string-array>
+  <string-array name="STAT_96_1_17">
+    <item>~ Y</item>
+    <item>0</item>
+    <item>Y</item>
+  </string-array>
+  <string-array name="STAT_96_1_18">
+    <item>~ Z</item>
+    <item>0</item>
+    <item>Z</item>
+  </string-array>
+  <string-array name="STAT_96_1_21">
+    <item>~ V2R</item>
+    <item>0</item>
+    <item>V2R</item>
+  </string-array>
+  <string-array name="STAT_96_1_22">
+    <item>~ V3R</item>
+    <item>0</item>
+    <item>V3R</item>
+  </string-array>
+  <string-array name="STAT_96_1_23">
+    <item>~ V4R</item>
+    <item>0</item>
+    <item>V4R</item>
+  </string-array>
+  <string-array name="STAT_96_1_24">
+    <item>~ V5R</item>
+    <item>0</item>
+    <item>V5R</item>
+  </string-array>
+  <string-array name="STAT_96_1_25">
+    <item>~ V6R</item>
+    <item>0</item>
+    <item>V6R</item>
+  </string-array>
+  <string-array name="STAT_96_1_26">
+    <item>~ V7R</item>
+    <item>0</item>
+    <item>V7R</item>
+  </string-array>
+  <string-array name="STAT_96_1_27">
+    <item>~ V8R</item>
+    <item>0</item>
+    <item>V8R</item>
+  </string-array>
+  <string-array name="STAT_96_1_28">
+    <item>~ V9R</item>
+    <item>0</item>
+    <item>V9R</item>
+  </string-array>
+  <string-array name="STAT_96_1_32">
+    <item>~ V7</item>
+    <item>0</item>
+    <item>V7</item>
+  </string-array>
+  <string-array name="STAT_96_1_33">
+    <item>~ V8</item>
+    <item>0</item>
+    <item>V8</item>
+  </string-array>
+  <string-array name="STAT_96_1_34">
+    <item>~ V9</item>
+    <item>0</item>
+    <item>V9</item>
+  </string-array>
+  <string-array name="STAT_96_1_35">
+    <item>~ V10</item>
+    <item>0</item>
+  </string-array>
+</resources>

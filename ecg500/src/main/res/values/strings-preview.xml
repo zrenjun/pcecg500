@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="preview_text_analysis">Analysis</string>
+  <string name="preview_text_save">Save</string>
+  <string name="preview_text_print">Print</string>
+  <string name="preview_text_macure">Measure</string>
+  <string name="preview_text_diagnosis">Diagnosis</string>
+  <string name="preview_text_interphase">Interval</string>
+  <string name="preview_text_amplitude">Amplitude</string>
+  <string name="preview_text_copy">Copy</string>
+  <string name="preview_text_extended">Extend</string>
+  <string name="preview_text_continuous">Continue</string>
+  <string name="preview_text_delete">Delete</string>
+  <string name="preview_text_print_cancel">Print cancelled</string>
+  <string name="preview_text_report_save">Export PDF</string>
+  <string name="preview_text_download_ecgdata">No data. Do you want to download data?</string>
+  <string name="preview_text_diagnosis_result">Diagnosis Result</string>
+  <string name="preview_text_sign_doctor">Signature</string>
+  <string name="preview_text_diagnosis_sign">Signature</string>
+  <string name="preview_text_diagnosis_sign_empty">Signature can not be empty!</string>
+  <string name="preview_text_diagnosis_ok">OK</string>
+  <string name="preview_text_diagnosis_clear">Clear</string>
+  <string name="preview_text_diagnosis_glossary">Glossary</string>
+  <string name="preview_text_diagnosis_add">Add</string>
+  <string name="preview_text_diagnosis_search">Search</string>
+  <string name="preview_text_diagnosis_search_empty">No terminology found</string>
+  <string name="preview_text_diagnosis_custom">User Defined</string>
+  <string name="preview_text_diagnosis_input_empty">Input cannot be empty!</string>
+  <string name="preview_text_diagnosis_rr_time">Sampling Time:</string>
+  <string name="preview_text_diagnosis_rr_total_blogs">Total QRS:</string>
+  <string name="preview_text_diagnosis_rr_heartrate">Heart Rate:</string>
+  <string name="preview_text_diagnosis_rr_mean_interval">Avg RR Interval:</string>
+  <string name="preview_text_diagnosis_rr_max_interval">Max RR Interval:</string>
+  <string name="preview_text_diagnosis_rr_min_interval">Min RR Interval:</string>
+  <string name="preview_text_diagnosis_rr_max_min">Max/Min:</string>
+  <string name="preview_text_diagnosis_rr_total_power">Total Power:</string>
+  <string name="preview_text_diagnosis_rr_second">Sec</string>
+  <string name="preview_text_send_print_task_ing">Sending to print</string>
+  <string name="preview_text_send_print_task_success">Send print successfully</string>
+  <string name="preview_text_send_print_task_fail">Send print failed</string>
+  <string name="preview_text_send_print_task_cancel">Print cancelled</string>
+  <string name="preview_text_send_print_task_list_ing">Sending print task %d…</string>
+  <string name="preview_text_send_print_task_list_success">Send print task %d successfully</string>
+  <string name="preview_text_send_print_task_list_fail">Send print task %d failed</string>
+  <string name="preview_text_send_print_task_list_cancel">Cancel the print task %d</string>
+  <string name="preview_text_send_print_task_list_success_all">Send %d print tasks successfully</string>
+  <string name="preview_text_send_data_isuploaded">Data has been uploaded, please do not upload again!</string>
+
+  <string name="preview_text_reanalysis">Reanalysis</string>
+  <string name="preview_text_reanalysis_warn">This operation will cover the original analysis result. Do you want to continue?</string>
+</resources>

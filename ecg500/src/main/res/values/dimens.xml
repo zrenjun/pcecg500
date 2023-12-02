@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="text_medium">16dp</dimen>
+    <dimen name="main_mode_text_big">60dp</dimen>
+</resources>

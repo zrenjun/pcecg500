@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="setting_array_tip_warn">
+    <item>Lead off</item>
+    <item>HR overrange</item>
+    <item>Recorder head hot</item>
+    <item>Recorder door not closed</item>
+    <item>Recorder out of paper</item>
+    <item>Low battery!</item>
+    <item>Battery depleted. Power off soon.</item>
+    <item>AC interference</item>
+    <item>EMG interference</item>
+    <item>Baseline drift interference</item>
+    <item>Insufficient memory space</item>
+  </string-array>
+  <string-array name="array_lead_name_aha_standard">
+    <item>I</item>
+    <item>II</item>
+    <item>III</item>
+    <item>aVR</item>
+    <item>aVL</item>
+    <item>aVF</item>
+    <item>V1</item>
+    <item>V2</item>
+    <item>V3</item>
+    <item>V4</item>
+    <item>V5</item>
+    <item>V6</item>
+    <item>V3R</item>
+    <item>V4R</item>
+    <item>V5R</item>
+    <item>V7</item>
+    <item>V8</item>
+    <item>V9</item>
+  </string-array>
+  <string-array name="array_lead_name_aha_cabrera">
+    <item>aVL</item>
+    <item>I</item>
+    <item>-aVR</item>
+    <item>II</item>
+    <item>aVF</item>
+    <item>III</item>
+    <item>V1</item>
+    <item>V2</item>
+    <item>V3</item>
+    <item>V4</item>
+    <item>V5</item>
+    <item>V6</item>
+    <item>V3R</item>
+    <item>V4R</item>
+    <item>V5R</item>
+    <item>V7</item>
+    <item>V8</item>
+    <item>V9</item>
+  </string-array>
+  <string-array name="array_lead_name_iec_standard">
+    <item>I</item>
+    <item>II</item>
+    <item>III</item>
+    <item>aVR</item>
+    <item>aVL</item>
+    <item>aVF</item>
+    <item>C1</item>
+    <item>C2</item>
+    <item>C3</item>
+    <item>C4</item>
+    <item>C5</item>
+    <item>C6</item>
+    <item>C3R</item>
+    <item>C4R</item>
+    <item>C5R</item>
+    <item>C7</item>
+    <item>C8</item>
+    <item>C9</item>
+  </string-array>
+  <string-array name="array_lead_name_iec_cabrera">
+    <item>aVL</item>
+    <item>I</item>
+    <item>-aVR</item>
+    <item>II</item>
+    <item>aVF</item>
+    <item>III</item>
+    <item>C1</item>
+    <item>C2</item>
+    <item>C3</item>
+    <item>C4</item>
+    <item>C5</item>
+    <item>C6</item>
+    <item>C3R</item>
+    <item>C4R</item>
+    <item>C5R</item>
+    <item>C7</item>
+    <item>C8</item>
+    <item>C9</item>
+  </string-array>
+  <string-array name="array_test_macure_value">
+    <item />
+    <item>P amplitude (mV)</item>
+    <item>Q amplitude (mV)</item>
+    <item>R amplitude (mV)</item>
+    <item>S amplitude (mV)</item>
+    <item>T amplitude (mV)</item>
+    <item>ST1 amplitude (mV)</item>
+    <item>STJ amplitude (mV)</item>
+    <item>ST20 amplitude (mV)</item>
+    <item>ST40 amplitude (mV)</item>
+    <item>ST60 amplitude (mV)</item>
+    <item>ST80 amplitude (mV)</item>
+    <item>Q duration (ms)</item>
+    <item>R duration (ms)</item>
+    <item>S duration (ms)</item>
+  </string-array>
+</resources>
