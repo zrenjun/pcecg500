@@ -8,7 +8,7 @@
 > implementation project(path: ':ecg500')
 > ```
 
-![image-20220301164907404](C:\Users\zhourj\AppData\Roaming\Typora\typora-user-images\image-20220301164907404.png)          
+![image-20220301164907404](image-20220301164907404.png)          
 
 
 
@@ -16,14 +16,12 @@
 
 > ```
 > <manifest ...>
->   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 从SDCard读写数据权限 -->
->   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 >   <uses-feature android:name="android.hardware.usb.host" /> <!-- usb权限 -->
 >   <uses-sdk android:minSdkVersion="12" />
 >   ...
 >   <application>
->        <!-- 适配7.0 -->
->         <provider
+>       <!-- 适配7.0 -->
+>        <provider
 >             android:name="androidx.core.content.FileProvider"
 >             android:authorities="${applicationId}.fileprovider"
 >             android:exported="false"
@@ -32,20 +30,20 @@
 >                 android:name="android.support.FILE_PROVIDER_PATHS"
 >                 android:resource="@xml/provider_paths" />
 >         </provider>
->   
+>    
 >       <activity ...>
->           ...
+>          ...
 >            <!-- usb连接 -->
 >           <intent-filter>
 >               <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
 >           </intent-filter>
-> 
+>    
 >           <meta-data android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
->               android:resource="@xml/device_filter" />
+>            android:resource="@xml/device_filter" />
 >       </activity>
->   </application>
-> </manifest>
-> 
+>    </application>
+>    </manifest>
+>   
 > ```
 
 > ```

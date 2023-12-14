@@ -350,7 +350,7 @@ public abstract class BaseEcgPreviewTemplate {
 
         String text = "";
         // TODO: 2021/5/12 mwj 默认使用 演示模式
-        text = context.getString(R.string.main_text_ecg_mode_demo_mode);
+//        text = context.getString(R.string.main_text_ecg_mode_demo_mode);
 //        if (LoginManager.getInstance().isEmergencyUseMode()) {
 //            //紧急使用
 //            text = context.getString(R.string.main_text_ecg_mode_busy_use);
