@@ -1,23 +1,19 @@
-package com.lepu.pcecg500;
+package com.lepu.pcecg500
 
-import android.app.Application;
-import com.CommonApp;
-import com.net.KoinInit;
-import com.net.util.LogUtil;
-import com.tencent.bugly.crashreport.CrashReport;
+import android.app.Application
+import com.CommonApp.init
+import com.net.KoinInit.koinStart
+import com.net.util.LogUtil
 
 /**
  * 说明: java
  * zrj 2022/3/24 15:18
  */
-public class JavaApplication extends Application {
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        CommonApp.init(this);
-        CrashReport.initCrashReport(getApplicationContext(), "39b2b79695", false);
-        KoinInit.INSTANCE.koinStart(this);
-        LogUtil.INSTANCE.init(this);
+class JavaApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        init(this)
+        koinStart(this)
+        LogUtil.init(this)
     }
 }

@@ -1,8 +1,6 @@
 package com.lepu.pcecg500;
 
 import static org.koin.java.KoinJavaComponent.inject;
-
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
@@ -10,7 +8,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
@@ -25,20 +22,16 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
-import com.lepu.ecg500.entity.SettingsBean;
-import com.lepu.ecg500.entity.PatientInfoBean;
-import com.hoho.android.usbserial.driver.CdcAcmSerialDriver;
-import com.hoho.android.usbserial.driver.ProbeTable;
-import com.lepu.ecg500.usb.UsbData;
 import com.hoho.android.usbserial.driver.UsbSerialDriver;
 import com.hoho.android.usbserial.driver.UsbSerialPort;
 import com.hoho.android.usbserial.driver.UsbSerialProber;
 import com.hoho.android.usbserial.util.SerialInputOutputManager;
+import com.lepu.ecg500.entity.SettingsBean;
+import com.lepu.ecg500.entity.PatientInfoBean;
+import com.lepu.ecg500.usb.UsbData;
 import com.lepu.ecg500.usb.CollectIndex;
 import com.lepu.ecg500.util.ECGBytesToShort;
 import com.lepu.ecg500.view.LeadType;
@@ -46,8 +39,6 @@ import com.lepu.ecg500.view.MainEcgManager;
 import com.net.bean.Patient;
 import com.net.util.FileUtil;
 import com.net.vm.GetPDFViewModel;
-import com.permissionx.guolindev.PermissionX;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -184,18 +175,16 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
             short[][] tempEcgDataArray =
                     ecgDataUtil.bytesToLeadData(readBuffer, actualNumBytes, bean);//返回的是12导数据
             short[][] waveFormData = ecgDataUtil.leadSortThe12(tempEcgDataArray);
-            waveFormData = ecgDataUtil.filterLeadsData(waveFormData, bean); //是否使用滤波算法
-            short[][] finalWaveFormData = waveFormData;
             runOnUiThread(() -> {
                 if (actualNumBytes > 0) {
                     if (isStart) {
                         if (statusList.get(1) != 0) {
-                            if (leadOffState!=statusList.get(1)){
+                            if (leadOffState != statusList.get(1)) {
                                 status("导联脱落");
                                 leadOffState = statusList.get(1);
                             }
                         }
-                        allDetectInfo.add(finalWaveFormData);
+                        allDetectInfo.add(waveFormData);
                         currentDetectTime += updateTaskPeriodTime;
                         tvStart.setText((currentDetectTime + updateTaskPeriodTime) / 1000 + "s");
                         if (currentDetectTime >= normalTime) {
@@ -226,6 +215,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
                             leadOffState = 0x00;
                         }
                     }
+                    short[][] finalWaveFormData = ecgDataUtil.filterLeadsData(waveFormData, bean); //是否使用滤波算法;
                     MainEcgManager.getInstance().addEcgData(finalWaveFormData); //绘制心电波形图
                 }
             });
@@ -236,27 +226,6 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-        //xml文件生成需要
-        PermissionX.init(this)
-                .permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-                .setDialogTintColor(Color.parseColor("#008577"), Color.parseColor("#83e8dd"))
-                .onExplainRequestReason((scope, deniedList) ->
-                        scope.showRequestReasonDialog(
-                                deniedList,
-                                getString(R.string.hint),
-                                getString(R.string.confirm),
-                                getString(R.string.cancel)
-                        ))
-                .onForwardToSettings((scope, deniedList) ->
-                        scope.showForwardToSettingsDialog(
-                                deniedList,
-                                getString(R.string.permission),
-                                getString(R.string.confirm),
-                                getString(R.string.cancel)
-                        ))
-                .request((allGranted, grantedList, deniedList) -> {
-
-                });
 
         registerReceiver(broadcastReceiver, new IntentFilter(INTENT_ACTION_GRANT_USB));
 
@@ -400,13 +369,6 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         tvStart.setCompoundDrawables(drawable, null, null, null);
     }
 
-    static UsbSerialProber getCustomProber() {
-        ProbeTable customTable = new ProbeTable();
-        customTable.addProduct(0x16d0, 0x087e, CdcAcmSerialDriver.class); // e.g. Digispark CDC
-        return new UsbSerialProber(customTable);
-    }
-
-
     private void connect() {
         UsbDevice device = null;
         UsbManager usbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
@@ -419,9 +381,6 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
         UsbSerialDriver driver = UsbSerialProber.getDefaultProber().probeDevice(device);
-        if (driver == null) {
-            driver = getCustomProber().probeDevice(device);
-        }
         if (driver == null) {
             status("connection failed: no driver for device");
             return;

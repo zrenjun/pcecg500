@@ -58,17 +58,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
-    implementation 'androidx.work:work-runtime-ktx:2.7.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.work:work-runtime-ktx:2.8.1'
     implementation project(path: ':ecg500')
-    //日志
-    def bugly_version = 'latest.release'
-    implementation "com.tencent.bugly:crashreport:$bugly_version"
-    implementation "com.tencent.bugly:nativecrashreport:$bugly_version"
-    //权限
-    implementation 'com.permissionx.guolindev:permissionx:1.4.0'
 
 }
