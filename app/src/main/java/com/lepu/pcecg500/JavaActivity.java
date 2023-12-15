@@ -37,6 +37,7 @@ import com.lepu.ecg500.util.ECGBytesToShort;
 import com.lepu.ecg500.view.LeadType;
 import com.lepu.ecg500.view.MainEcgManager;
 import com.net.bean.Patient;
+import com.net.util.Constant;
 import com.net.util.FileUtil;
 import com.net.vm.GetPDFViewModel;
 import java.io.File;
@@ -120,6 +121,9 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
                 FileUtil.INSTANCE.shareFile(this, new File(s), viewViewModel.getValue().isPdf() ? "application/pdf" : "application/xml");
             }
             Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+        });
+        viewViewModel.getValue().getMLocalResult().observe(this, s -> {
+            Toast.makeText(this, s.toString(), Toast.LENGTH_SHORT).show();
         });
 
         viewViewModel.getValue().getMException().observe(this, s -> {
@@ -270,14 +274,14 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         patient.setCreatedDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         patient.setCreatedBy("lepu");
         patient.setName("路菲");
-        patient.setUserId("421023198902223431");//todo  替换客户自己管理平台账号
+        patient.setUserId(Constant.INSTANCE.getUserId());//todo  替换客户自己管理平台账号
         patient.setSex("女");
         patient.setTel("18612461315");
         patient.setAge("33");
         patient.setSmachineCode("gorlroq");
         patient.setDiagnosisMemo("胸痛");
         showProgressDialog();
-        viewViewModel.getValue().getAIPdf(ecgDataArray, bean, patient);
+        viewViewModel.getValue().getAIPdf(ecgDataArray, bean, patient,null,null);
     }
 
     //本地分析
@@ -294,7 +298,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         patientInfoBean.setAge("20");
         patientInfoBean.setBirthdate("2003-09-08");
         patientInfoBean.setLeadoffstate(leadOffState);
-        viewViewModel.getValue().getLocalPdf(ecgDataArray, patientInfoBean);
+        viewViewModel.getValue().getLocalPdf(ecgDataArray, patientInfoBean,null,null);
     }
 
     @Override

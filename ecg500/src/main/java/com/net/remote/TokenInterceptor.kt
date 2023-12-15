@@ -73,8 +73,8 @@ class TokenInterceptor : Interceptor {
                     .url(refreshUrl)
                     .post(
                         FormBody.Builder()
-                            .add("userId", "421023198902223431") //todo  替换客户自己管理平台账号
-                            .add("password", "zrj19890222")
+                            .add("userId", Constant.userId)
+                            .add("password", Constant.password)
                             .build()
                     ).build()
             ).execute().body?.string()
