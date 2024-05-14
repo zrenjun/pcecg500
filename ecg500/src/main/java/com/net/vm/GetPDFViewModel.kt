@@ -10,6 +10,7 @@ import com.google.gson.FieldAttributes
 import com.google.gson.GsonBuilder
 import com.lepu.ecg500.entity.EcgDataInfoBean
 import com.lepu.ecg500.entity.EcgSettingConfigEnum
+import com.lepu.ecg500.entity.MacureResultBean
 import com.lepu.ecg500.entity.PatientInfoBean
 import com.lepu.ecg500.entity.RecordSettingConfigEnum
 import com.lepu.ecg500.entity.SettingsBean
@@ -37,6 +38,7 @@ class GetPDFViewModel(private val repository: Repository) : BaseViewModel() {
 
     val mECGPdf: MutableLiveData<String> = MutableLiveData()
     val mLocalResult: MutableLiveData<List<String>> = MutableLiveData()
+    val mLocalResultBean: MutableLiveData<MacureResultBean> = MutableLiveData()
 
     private val dir = CommonApp.context.filesDir.absolutePath
     var isPdf = true
@@ -171,16 +173,13 @@ class GetPDFViewModel(private val repository: Repository) : BaseViewModel() {
                     patientInfoBean,
                     data
                 )
-
+                mLocalResultBean.postValue(macureResultBean)
                 LogUtil.e(macureResultBean.toJson())
-//                val diaResultSb = StringBuilder()
                 val result = mutableListOf<String>()
                 val aiResultBean = macureResultBean.aiResultBean
                 val diagnosisResult = EcgDataManager.getInstance().getDiagnosisResult(aiResultBean)
                 if (diagnosisResult != null && diagnosisResult.size > 0) {
                     for (i in diagnosisResult.indices) {
-//                        diaResultSb.append(String.format("%d . ", i + 1))
-//                        diaResultSb.append(diagnosisResult[i]).append("\t \t ")
                         result.add(diagnosisResult[i])
                     }
                 }

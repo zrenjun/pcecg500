@@ -12,8 +12,9 @@ import com.net.util.LogUtil
 class JavaApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        LogUtil.init(this)
         init(this)
         koinStart(this)
-        LogUtil.init(this)
+
     }
 }
