@@ -2,14 +2,13 @@ package com.lepu.ecg500.util;
 
 
 import com.Carewell.OmniEcg.jni.NotifyFilter;
-import com.lepu.ecg500.entity.SettingsBean;
 import com.Carewell.OmniEcg.jni.JniFilter;
 
 public class ECGBytesToShort {
 
-    public static final float SHORT_MV_GAIN = 5 / 2048F;
+    public static final float SHORT_MV_GAIN = 1;
 
-    private com.Carewell.Data.Filter filter = null;
+    private final com.Carewell.Data.Filter filter;
     private int index = 0;
 
     private boolean powerFrequencyChange = true;
@@ -19,14 +18,10 @@ public class ECGBytesToShort {
     }
 
     /**
-     * 循环获取，16个字节一帧，16个字节中第一个字节值为0x0f，第二个字节告诉8个导联那几个脱落
-     * 后面的12位依次代表8导联的数值，然后后面的一个字节值0xff，最后一个字节为前15个字节和的后8位。
-     * <p>
-     * 1+1+12+1+1
-     *
-     * @param readBuffer
+     * //7F(头) 81(Type 8导联) 0A(加密+循环(0-F判断是否丢包)) 00 00 06 00 06 00 FA FF 07 00 04 00 06 00 07 00(16byte=8x2) 00(导联脱落位) 00(起搏信号) 27
+     * 循环获取，22个字节一帧，  最后一个字节为前21个字节和的后8位。
      */
-    public short[][] bytesToLeadData(byte[] readBuffer, int actualNum, SettingsBean setting) {
+    public short[][] bytesToLeadData(byte[] readBuffer, int actualNum) {
         short[][] shortBuffer = new short[CommConst.CUEERNT_LEAD_COUNT]
                 [actualNum / CommConst.FRAME_COUNT];
         byte[] one_frame_buffer = new byte[CommConst.FRAME_COUNT];
@@ -35,13 +30,13 @@ public class ECGBytesToShort {
         short last = 0;
         int LEAD_GROUP_INDEX = 0;  //每次调用都需要清零
         for (int i = 0; i < actualNum; i++) {
-            if (i < actualNum - 1 && readBuffer[i] == 0x0f/* && readBuffer[i + 1] == 0x01*/) {
+            if (i < actualNum - 1 && readBuffer[i] == 0x7f) {
                 isStart = true;
             }
             if (isStart) {
                 one_frame_buffer[index] = readBuffer[i];
                 if (index < CommConst.FRAME_COUNT - 1) {
-                    last += (readBuffer[i] & 0xff);
+                    last += (short) (readBuffer[i] & 0xff);
                     index++;
                 } else {
                     isStart = false;
@@ -49,7 +44,7 @@ public class ECGBytesToShort {
                     last = 0;
                     index = 0;
                     if (calLast == readBuffer[i]) {
-                        ParseWaveform(one_frame_buffer, shortBuffer, LEAD_GROUP_INDEX, setting);
+                        parseWaveform(one_frame_buffer, shortBuffer, LEAD_GROUP_INDEX);
                         LEAD_GROUP_INDEX++;
                     } else {
                         continue;
@@ -64,7 +59,7 @@ public class ECGBytesToShort {
     /**
      * 清除过滤计数缓冲
      */
-    public void ClearFilterWave() {
+    public void clearFilterWave() {
         index = 0;
         filter.LowPass75HzFilterFree();
         filter.LowPass90HzFilterFree();
@@ -80,61 +75,26 @@ public class ECGBytesToShort {
 
     /**
      * 波形数据解析函数
-     *
-     * @param one_frame_buffer
-     * @param leads_data
-     * @param i
      */
-    private void ParseWaveform(byte[] one_frame_buffer, short[][] leads_data, int i, SettingsBean setting) {
-        //原始波形数据的放大倍数。
-        double avm = 2.556;
-
-        //原始波形数据的基础值。
-        int waveform_base_value = 0x800;    //计算正负100000000000(二进制)
-
-        // one_frame_buffer 正好保存了一帧的数据。
-        int leads_data_begin = 2;
-
-        //一次计算两个导联的数据
-        for (int j = 0; j < CommConst.LEAD_COUNT / 2; j++) {
-            int k = j * 2;
-            int m = j * 3;
-
-            //循环计算I、V1、V3、V5导联。
-            int low1 = one_frame_buffer[leads_data_begin + m] & 0xff;
-            int high1 = one_frame_buffer[leads_data_begin + m + 1] & 0xff;
-            high1 = high1 & 0x0F;
-            high1 = high1 << 8;
-            leads_data[k][i] = (short) (low1 + high1);
-            leads_data[k][i] = (short) (leads_data[k][i] - waveform_base_value);
-            leads_data[k][i] = new Double(leads_data[k][i] * avm).shortValue();
-
-            //循环计算II、V2、V4、V6导联。
-            int low2 = one_frame_buffer[leads_data_begin + m + 1] & 0xff;
-            int high2 = one_frame_buffer[leads_data_begin + m + 2] & 0xff;
-            low2 = low2 & 0xF0;
-            low2 = low2 >> 4;
-            high2 = high2 << 4;
-            leads_data[k + 1][i] = (short) (low2 + high2);
-            leads_data[k + 1][i] = (short) (leads_data[k + 1][i] - waveform_base_value);
-            leads_data[k + 1][i] = new Double(leads_data[k + 1][i] * avm).shortValue();
-
+    private void parseWaveform(byte[] one_frame_buffer, short[][] leads_data, int i) {
+        int leads_data_begin = 3;
+        for (int j = 0; j < CommConst.LEAD_COUNT ; j++) {
+            int low = one_frame_buffer[leads_data_begin + j * 2] & 0xff;
+            int high = one_frame_buffer[leads_data_begin + j * 2 + 1] & 0xff << 8;
+            leads_data[j][i] = (short) (low + high);
         }
-        ParseWaveOther4(leads_data, i);
+        parseWaveOther4(leads_data, i);
     }
 
     /**
      * 其他4个派生导联计算方式
-     *
-     * @param leads_data
-     * @param i
      */
-    public void ParseWaveOther4(short[][] leads_data, int i) {
+    public void parseWaveOther4(short[][] leads_data, int i) {
         final short value = 2;
         //III = II - I
         leads_data[CommConst.LEAD_COUNT][i] = (short) (leads_data[1][i] - leads_data[0][i]);
         //aVR = -(I + II) / 2;
-        leads_data[CommConst.LEAD_COUNT + 1][i] = (short) (0 - (leads_data[1][i] + leads_data[0][i]) / value);
+        leads_data[CommConst.LEAD_COUNT + 1][i] = (short) (-(leads_data[1][i] + leads_data[0][i]) / value);
         //aVF = (I - III) / 2;
         leads_data[CommConst.LEAD_COUNT + 2][i] = (short) ((leads_data[0][i] - leads_data[CommConst.LEAD_COUNT][i]) / value);
         //aVL = (II + III) / 2;
@@ -166,100 +126,56 @@ public class ECGBytesToShort {
 
     /**
      * 循环数组，过滤信号
-     *
-     * @param leadsData
-     * @param setting
-     * @return
      */
-    public short[][] filterLeadsData(short[][] leadsData, SettingsBean setting) {
+    public short[][] filterLeadsData(short[][] leadsData, int lp,  int ac)   {
         for (int i = 0; i < leadsData[0].length; i++) {
             for (int j = 0; j < leadsData.length; j++) {
                 //低通滤波
-                if (setting.getLowPassHz() == CommConst.FILTER_LOW_PASS_75) {
+                if (lp == CommConst.FILTER_LOW_PASS_75) {
                     leadsData[j][i] = filter.LowPass75HzFilter(j, leadsData[j][i], index);
-                } else if (setting.getLowPassHz() == CommConst.FILTER_LOW_PASS_90) {
+                } else if (lp == CommConst.FILTER_LOW_PASS_90) {
                     leadsData[j][i] = filter.LowPass90HzFilter(j, leadsData[j][i], index);
-                } else if (setting.getLowPassHz() == CommConst.FILTER_LOW_PASS_100) {
+                } else if (lp == CommConst.FILTER_LOW_PASS_100) {
                     leadsData[j][i] = filter.LowPass100HzFilter(j, leadsData[j][i], index);
-                } else if (setting.getLowPassHz() == CommConst.FILTER_LOW_PASS_165) {
+                } else if (lp == CommConst.FILTER_LOW_PASS_165) {
                     leadsData[j][i] = filter.LowPass165HzFilter(j, leadsData[j][i], index);
                 }
                 //肌电滤波
-                if (setting.getEMGHz() == CommConst.FILTER_EMG_25) {
-                    leadsData[j][i] = filter.EMG25Filter(j, leadsData[j][i], index);
-                } else if (setting.getEMGHz() == CommConst.FILTER_EMG_35) {
-                    leadsData[j][i] = filter.EMG35Filter(j, leadsData[j][i], index);
-                } else if (setting.getEMGHz() == CommConst.FILTER_EMG_45) {
-                    leadsData[j][i] = filter.EMG45Filter(j, leadsData[j][i], index);
-                }
+//                if (setting.getEMGHz() == CommConst.FILTER_EMG_25) {
+//                    leadsData[j][i] = filter.EMG25Filter(j, leadsData[j][i], index);
+//                } else if (setting.getEMGHz() == CommConst.FILTER_EMG_35) {
+//                    leadsData[j][i] = filter.EMG35Filter(j, leadsData[j][i], index);
+//                } else if (setting.getEMGHz() == CommConst.FILTER_EMG_45) {
+//                    leadsData[j][i] = filter.EMG45Filter(j, leadsData[j][i], index);
+//                }
             }
             index++;
         }
         //新的工频滤波
-        if (setting.getHUMHz() == CommConst.FILTER_HUM_50) {
-			int inputDataCount = leadsData[0].length;
-			JniFilter jniFilter = JniFilter.getInstance();
-			NotifyFilter notifyFilter = new NotifyFilter();
-			notifyFilter.setOutDataLen(inputDataCount);
-			float[][] mvDataArray = switchEcgDataArray(leadsData);
+        if (ac == CommConst.FILTER_HUM_50) {
+            int inputDataCount = leadsData[0].length;
+            JniFilter jniFilter = JniFilter.getInstance();
+            NotifyFilter notifyFilter = new NotifyFilter();
+            notifyFilter.setOutDataLen(inputDataCount);
+            float[][] mvDataArray = switchEcgDataArray(leadsData);
 
-			notifyFilter.setDataArray(mvDataArray);
-			boolean powerF = isPowerFrequencyChange();
+            notifyFilter.setDataArray(mvDataArray);
+            boolean powerF = isPowerFrequencyChange();
 
-			//50hz 工频
-			jniFilter.powerFrequency50attenuation(mvDataArray,mvDataArray[0].length,1.0f,powerF,notifyFilter);
-			mvDataArray = notifyFilter.getDataArray();
+            //50hz 工频
+            jniFilter.powerFrequency50attenuation(mvDataArray,mvDataArray[0].length,1.0f,powerF,notifyFilter);
+            mvDataArray = notifyFilter.getDataArray();
 
-			leadsData = switchEcgDataArray(mvDataArray);
-			setPowerFrequencyChange(false);
+            leadsData = switchEcgDataArray(mvDataArray);
+            setPowerFrequencyChange(false);
         }
         return leadsData;
     }
 
 
-    /// <summary>
-    /// FRANK导联转换法（8通道转换为X、Y、Z三通道数据）
-    /// </summary>
-    /// <param name="buffers"></param>
-    /// <returns></returns>
-    public short[][] FrankLeadData(short[][] buffers) {
-        try {
-            short[][] newBuffers = new short[3][];
-
-            float Va, Vc, Vi, Vf, Vm, Vh, Ve, temp;
-
-            int count = buffers[0].length;
-
-            for (int i = 0; i < 3; i++) {
-                newBuffers[i] = new short[count];
-            }
-
-            for (int i = 0; i < count; i++) {
-                temp = (float) ((buffers[0][i] - 2 * buffers[1][i]) / 3.0);
-                Va = buffers[5][i] + temp;
-                Vc = buffers[4][i] + temp;
-                Vi = buffers[2][i] + temp;
-                Vf = 0;
-                Vm = buffers[6][i] + temp;
-                Vh = buffers[7][i] + temp;
-                Ve = buffers[3][i] + temp;
-
-                newBuffers[0][i] = (short) (0.61 * Va + 0.171 * Vc - 0.781 * Vi); //对应Ｘ导联数据
-                newBuffers[1][i] = (short) (0.655 * Vf + 0.345 * Vm - 1.0 * Vh);//对应Ｙ导联数据
-                newBuffers[2][i] = (short) (-(0.133 * Va + 0.736 * Vm - 0.264 * Vi - 0.374 * Ve - 0.231 * Vc));//对应Z导联数据
-            }
-            return newBuffers;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
-        }
-    }
 
     /**
      * 将16位的short的低八位转换成byte
-     *
-     * @param s short
-     * @return byte[] 长度为2
      */
     public byte short8ToByte(short s) {
         return (byte) (s & 0xff);

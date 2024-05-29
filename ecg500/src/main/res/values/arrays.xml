@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string-array name="setting_array_tip_warn">
-    <item>Lead off</item>
-    <item>HR overrange</item>
-    <item>Recorder head hot</item>
-    <item>Recorder door not closed</item>
-    <item>Recorder out of paper</item>
-    <item>Low battery!</item>
-    <item>Battery depleted. Power off soon.</item>
-    <item>AC interference</item>
-    <item>EMG interference</item>
-    <item>Baseline drift interference</item>
-    <item>Insufficient memory space</item>
+    <item>导联脱落</item>
+    <item>心率超限</item>
+    <item>热敏头温度过高</item>
+    <item>记录仪仓门未关闭</item>
+    <item>记录仪缺纸</item>
+    <item>电池电量低</item>
+    <item>电量不足，即将关机</item>
+    <item>工频干扰</item>
+    <item>肌电干扰</item>
+    <item>基线漂移干扰</item>
+    <item>存储空间将满</item>
   </string-array>
   <string-array name="array_lead_name_aha_standard">
     <item>I</item>
@@ -95,19 +95,19 @@
   </string-array>
   <string-array name="array_test_macure_value">
     <item />
-    <item>P amplitude (mV)</item>
-    <item>Q amplitude (mV)</item>
-    <item>R amplitude (mV)</item>
-    <item>S amplitude (mV)</item>
-    <item>T amplitude (mV)</item>
-    <item>ST1 amplitude (mV)</item>
-    <item>STJ amplitude (mV)</item>
-    <item>ST20 amplitude (mV)</item>
-    <item>ST40 amplitude (mV)</item>
-    <item>ST60 amplitude (mV)</item>
-    <item>ST80 amplitude (mV)</item>
-    <item>Q duration (ms)</item>
-    <item>R duration (ms)</item>
-    <item>S duration (ms)</item>
+    <item>P 振幅(mV)</item>
+    <item>Q 振幅(mV)</item>
+    <item>R 振幅(mV)</item>
+    <item>S 振幅(mV)</item>
+    <item>T 振幅(mV)</item>
+    <item>ST1 振幅(mV)</item>
+    <item>STJ 振幅(mV)</item>
+    <item>ST20 振幅(mV)</item>
+    <item>ST40 振幅(mV)</item>
+    <item>ST60 振幅(mV)</item>
+    <item>ST80 振幅(mV)</item>
+    <item>Q 时限(ms)</item>
+    <item>R 时限(ms)</item>
+    <item>S 时限(ms)</item>
   </string-array>
 </resources>

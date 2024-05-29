@@ -1,23 +1,22 @@
 package com.net.vm
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.Carewell.OmniEcg.jni.JniTraditionalAnalysis
 import com.Carewell.OmniEcg.jni.JniTraditionalAnalysis.traditionalAnalysis
+import com.Carewell.OmniEcg.jni.toJson
 import com.CommonApp
 import com.google.gson.ExclusionStrategy
 import com.google.gson.FieldAttributes
 import com.google.gson.GsonBuilder
-import com.lepu.ecg500.entity.EcgDataInfoBean
+import com.lepu.ecg500.ecg12.EcgDataManager
+import com.lepu.ecg500.ecg12.LeadType
 import com.lepu.ecg500.entity.EcgSettingConfigEnum
 import com.lepu.ecg500.entity.MacureResultBean
 import com.lepu.ecg500.entity.PatientInfoBean
-import com.lepu.ecg500.entity.RecordSettingConfigEnum
-import com.lepu.ecg500.entity.SettingsBean
-import com.lepu.ecg500.util.CustomTool
-import com.lepu.ecg500.util.EcgDataManager
 import com.lepu.ecg500.util.XmlUtil
-import com.lepu.ecg500.view.LeadType
 import com.net.bean.AiECG12
 import com.net.bean.BatchECGRep
 import com.net.bean.Patient
@@ -25,11 +24,13 @@ import com.net.remote.Repository
 import com.net.remote.UrlDownload
 import com.net.util.LogUtil
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.ticker
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
+import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -58,11 +59,12 @@ class GetPDFViewModel(private val repository: Repository) : BaseViewModel() {
      */
 
     fun getAIPdf(
-        ecgDataArray: List<List<Short>>?,
-        setting: SettingsBean,
+        ecgDataArray: List<List<Short>>,
         patient: Patient,
         filePath: String?,
-        fileName: String?
+        fileName: String?,
+        startTime: Long,
+        endTime: Long
     ) {
         launch {
             withContext(Dispatchers.IO) {
@@ -84,22 +86,30 @@ class GetPDFViewModel(private val repository: Repository) : BaseViewModel() {
                     detectPoint = "12导联"
                     duns = patient.duns
                 }
+
+                val data = ArrayList<ShortArray>()
+                for (i in 0..11) {
+                    data.add(ecgDataArray[i].toShortArray())
+                }
+
                 //1.生成心电分析xml上传
-                val xml = XmlUtil.makeHl7Xml(
+                XmlUtil.makeHl7Xml(
                     CommonApp.context,
+                    "610423198612206399",
+                    null,
+                    data.toTypedArray(),
+                    LeadType.LEAD_12,
                     defaultFilePath,
                     defaultFileName,
-                    patient.name,
-                    patient.tel,
-                    ecgDataArray,
-                    LeadType.LEAD_12,
-                    setting
+                    startTime,
+                    endTime,
+                    "35",
+                    "0.67",
+                    "50"
                 )
-                if (xml.isNotEmpty()) {
-                    //3.获取结果id
-                    xmlPath = "${defaultFilePath}/${defaultFileName}.xml"
-                    upload(aiECG12, patient, File(xmlPath), defaultFilePath)
-                }
+                //3.获取结果id
+                xmlPath = "${defaultFilePath}/${defaultFileName}.xml"
+                upload(aiECG12, patient, File(xmlPath), defaultFilePath)
             }
         }
     }
@@ -113,98 +123,90 @@ class GetPDFViewModel(private val repository: Repository) : BaseViewModel() {
         ecgDataArray: List<List<Short>>,
         patientInfoBean: PatientInfoBean,
         filePath: String?,
-        fileName: String?
+        fileName: String?,
+        startTime: Long,
+        endTime: Long
     ) {
 
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                //心电信息设置
-                //基线漂移滤波 就是高通滤波.ads，baseline 都是基线漂移滤波，或者也是高通滤波
-                val ecgDataInfoBean = EcgDataInfoBean()
-                ecgDataInfoBean.gainArray = floatArrayOf(1f, 1f)
-                ecgDataInfoBean.filterLowpass =
-                    EcgSettingConfigEnum.LeadFilterType.FILTER_LOWPASS_75 //低通滤波
-                ecgDataInfoBean.filterAc = EcgSettingConfigEnum.LeadFilterType.FILTER_AC_50_HZ
-                ecgDataInfoBean.filterAcOpenState =
-                    EcgSettingConfigEnum.LeadFilterType.FILTER_AC_OPEN
-                ecgDataInfoBean.filterAds = EcgSettingConfigEnum.LeadFilterType.FILTER_BASELINE_067
-                ecgDataInfoBean.leadType = EcgSettingConfigEnum.LeadType.LEAD_12 //几个导联
-                ecgDataInfoBean.leadGainType = EcgSettingConfigEnum.LeadGainType.GAIN_10 //增益
-                ecgDataInfoBean.leadSpeedType = EcgSettingConfigEnum.LeadSpeedType.FORMFEED_25 //走速
-                val ecgDataItem = arrayOfNulls<ShortArray>(12)
-                for (i in 0..11) {
-                    val temp = ecgDataArray[i]
-                    val shortArray = ShortArray(temp.size)
-                    for (j in temp.indices) {
-                        shortArray[j] = temp[j]
-                    }
-                    ecgDataItem[i] = shortArray
-                }
                 //I/II/III/aVR/aVL/aVF/V1/V2/V3/V4/V5/V6
-                val data = arrayOfNulls<ShortArray>(8)
-                var index = 0
+                val data = ArrayList<ShortArray>()
+                var index: Int
                 for (i in 0..7) {
                     index = i
                     if (i > 1) {
                         index = i + 4
                     }
-                    val temp = ecgDataArray[index]
-                    val shortArray = ShortArray(temp.size)
-                    for (j in temp.indices) {
-                        shortArray[j] = temp[j]
-                    }
-                    data[i] = shortArray
+                    data.add(ecgDataArray[index].toShortArray())
                 }
-                ecgDataInfoBean.ecgDataArray = ecgDataItem
-
                 if (filePath != null) {
                     defaultFilePath = filePath
                 }
                 if (fileName != null) {
                     defaultFileName = fileName
                 }
-
                 XmlUtil.createDir(defaultFilePath)
                 //本地算法分析，分析出来数据
-                xmlPath = "${defaultFilePath}/${defaultFileName}.xml"
-                val macureResultBean = traditionalAnalysis(
+                val xmlPath = "${defaultFilePath}/${defaultFileName}.xml"
+                val resultBean = traditionalAnalysis(
                     xmlPath,
                     EcgSettingConfigEnum.LeadType.LEAD_12,
                     patientInfoBean,
-                    data
+                    data.toTypedArray()
                 )
-                mLocalResultBean.postValue(macureResultBean)
-                LogUtil.e(macureResultBean.toJson())
+                LogUtil.e(resultBean.toJson())
+                mLocalResultBean.postValue(resultBean)
+                //诊断结论
                 val result = mutableListOf<String>()
-                val aiResultBean = macureResultBean.aiResultBean
-                val diagnosisResult = EcgDataManager.getInstance().getDiagnosisResult(aiResultBean)
-                if (diagnosisResult != null && diagnosisResult.size > 0) {
-                    for (i in diagnosisResult.indices) {
-                        result.add(diagnosisResult[i])
+                resultBean.aiResultBean.aiResultDiagnosisBean.diagnosis.forEach {
+                    XmlUtil.map[it.code]?.apply {
+                        result.add(this)
                     }
                 }
-
                 mLocalResult.postValue(result)
-                val conf = CustomTool.getDefaultConfigBean()
-                //打开该注释，只会生成1页报告，即不会生成“平均模板”，“测量矩阵”的报告。 默认是生成3页报告
-                val reportSettingBeanList = conf.recordSettingBean.reportSettingBeanList
-                reportSettingBeanList[RecordSettingConfigEnum.ReportSetting.AVERAGE_TEMPLATE.ordinal].isValue =
-                    false //平均模板
-                reportSettingBeanList[RecordSettingConfigEnum.ReportSetting.MEASURE_MATRIX.ordinal].isValue =
-                    false //测量矩阵
-                //生成PDF文件  ,第2页中间报告是"平均模板"，第3页报告是"测量矩阵"
-                val pdfFile = EcgDataManager.getInstance().exportPdf(
+                //2.生成心电分析xml  参数根据UI设置
+                data.clear()
+                for (i in 0..11) {
+                    data.add(ecgDataArray[i].toShortArray())
+                }
+
+                XmlUtil.makeHl7Xml(
                     CommonApp.context,
-                    true,
-                    conf,
-                    patientInfoBean,
-                    macureResultBean,
-                    ecgDataInfoBean,
-                    System.currentTimeMillis(),
-                    "${defaultFilePath}/${defaultFileName}.pdf"
+                    patientInfoBean.patientNumber,
+                    resultBean,
+                    data.toTypedArray(),
+                    LeadType.LEAD_12,
+                    defaultFilePath,
+                    defaultFileName,
+                    startTime,
+                    endTime,
+                    "35",
+                    "0.67",
+                    "50"
                 )
-                val file = if (isPdf) pdfFile.absolutePath else xmlPath
-                mECGPdf.postValue(file)
+                //3.返回Bitmap 写文件保存或是直接展示
+                val imageBitmap = EcgDataManager.instance?.exportBmp(
+                    CommonApp.context,
+                    patientInfoBean,
+                    resultBean,
+                    data.toTypedArray(),
+                    startTime,
+                    "35",
+                    "0.67",
+                    "50"
+                )
+                val stream = FileOutputStream(File("${defaultFilePath}/${defaultFileName}.jpg"))
+                imageBitmap?.compress(Bitmap.CompressFormat.JPEG, 25, stream)
+                stream.flush()
+                stream.close()
+                //4.生成心电分析PDF
+                imageBitmap?.let {
+                   val pdfFile = EcgDataManager.instance?.exportPdf(it, "${defaultFilePath}/${defaultFileName}.pdf")
+                    val file = if (isPdf) pdfFile?.absolutePath?:"" else xmlPath
+                    mECGPdf.postValue(file)
+                }
+
             }
         }
     }
@@ -224,6 +226,7 @@ class GetPDFViewModel(private val repository: Repository) : BaseViewModel() {
     private var ticker: ReceiveChannel<Unit>? = null
 
     //间隔5秒获取报告
+    @OptIn(ObsoleteCoroutinesApi::class)
     private fun getAIReport(body: String, filePath: String) {
         ticker = ticker(5 * 1000L, 0)
         viewModelScope.launch {

@@ -62,6 +62,9 @@ dependencies {
     api "io.insert-koin:koin-android-compat:$koin_version"
 
     api 'com.github.mik3y:usb-serial-for-android:3.7.0'
+
+    api 'io.getstream:stream-log-android:1.1.4'
+    api 'io.getstream:stream-log-android-file:1.1.4'
 }
 
 afterEvaluate {

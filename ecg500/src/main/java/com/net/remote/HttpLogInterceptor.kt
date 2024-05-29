@@ -194,7 +194,7 @@ class HttpLogInterceptor @JvmOverloads constructor(var printResponseHeader: Bool
     }
 
     private fun log(msg: String) {
-        LogUtil.d(msg, tag)
+        LogUtil.v(msg, tag)
     }
 }
 

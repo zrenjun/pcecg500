@@ -2,7 +2,6 @@ package com
 
 import android.app.Application
 import android.content.Context
-import com.lepu.ecg500.util.CustomTool
 import kotlin.properties.Delegates
 
 
@@ -13,6 +12,5 @@ object CommonApp {
     @JvmStatic
     fun init(applicationContext: Application) {
         context = applicationContext
-        CustomTool.init(applicationContext)
     }
 }

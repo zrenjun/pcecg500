@@ -1,60 +1,50 @@
-package com.lepu.ecg500.util;
+package com.lepu.ecg500.util
+
+import com.hoho.android.usbserial.driver.UsbSerialPort
 
 
-public class CommConst {
+object CommConst {
+    const val FILTER_LOW_PASS_75: Int = 75 //低通75
+    const val FILTER_LOW_PASS_90: Int = 90 //低通90
+    const val FILTER_LOW_PASS_100: Int = 100 //低通100
+    const val FILTER_LOW_PASS_165: Int = 165 //低通165
+    const val FILTER_EMG_25: Int = 25 //肌电25
+    const val FILTER_EMG_35: Int = 35 //肌电25
+    const val FILTER_EMG_45: Int = 45 //肌电25
+    const val FILTER_HUM_50: Int = 50 //工频25
 
-    public static final int FILTER_LOW_PASS_75 = 75; //低通75
-    public static final int FILTER_LOW_PASS_90 = 90; //低通90
-    public static final int FILTER_LOW_PASS_100 = 100; //低通100
-    public static final int FILTER_LOW_PASS_165 = 165; //低通165
-    public static final int FILTER_EMG_25 = 25; //肌电25
-    public static final int FILTER_EMG_35 = 35; //肌电25
-    public static final int FILTER_EMG_45 = 45; //肌电25
-    public static final int FILTER_HUM_50 = 50; //工频25
-    public static final int FILTER_HP_005 = 5; //基漂 0.05
-    public static final int FILTER_HP_032 = 32; //基漂0.32
-    public static final int FILTER_HP_067 = 67; //基漂0.67
-
-
-
-    /*************************************芯片参数设置值********************************************/
     /**
      * 波特率setup the baud rate
      */
-    public static final int FT230X_BAUD_RATE = 200000;
+    const val FT230X_BAUD_RATE: Int = 460800
+
     /**
      * 停止标签值 stop bits
      */
-    public static final byte FT230X_STOP_BIT = 1;
+    const val FT230X_STOP_BIT: Byte = 1
+
     /**
      * 数据字节数量 data bits
      */
-    public static final byte FT230X_DATA_BIT = 8;
+    const val FT230X_DATA_BIT: Byte = 8
 
     /**
      * parity
      */
-    public static final byte FT230X_PARITY = 0;
-
-    /**
-     * flow control
-     */
-    public static final byte FT230X_FLOW_CONTROL = 0;
-
+    const val FT230X_PARITY: Byte = UsbSerialPort.PARITY_NONE.toByte()
 
     /**
      * 一帧包含的字节数量
      */
-    public static final int FRAME_COUNT = 16;
+    const val FRAME_COUNT: Int = 22
+
     /**
      * 导联数量
      */
-    public static final int LEAD_COUNT = 8;  //导联数量
+    const val LEAD_COUNT: Int = 8 //导联数量
 
     /**
      * 需要显示的总共导联数量
      */
-    public static final int CUEERNT_LEAD_COUNT = 12;
-
-
+    const val CUEERNT_LEAD_COUNT: Int = 12
 }

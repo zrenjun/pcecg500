@@ -1,5 +1,9 @@
 package com.lepu.pcecg500;
 
+import static com.lepu.ecg500.util.CommConst.FT230X_BAUD_RATE;
+import static com.lepu.ecg500.util.CommConst.FT230X_DATA_BIT;
+import static com.lepu.ecg500.util.CommConst.FT230X_PARITY;
+import static com.lepu.ecg500.util.CommConst.FT230X_STOP_BIT;
 import static org.koin.java.KoinJavaComponent.inject;
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
@@ -29,13 +33,12 @@ import com.hoho.android.usbserial.driver.UsbSerialDriver;
 import com.hoho.android.usbserial.driver.UsbSerialPort;
 import com.hoho.android.usbserial.driver.UsbSerialProber;
 import com.hoho.android.usbserial.util.SerialInputOutputManager;
-import com.lepu.ecg500.entity.SettingsBean;
+import com.lepu.ecg500.ecg12.LeadType;
+import com.lepu.ecg500.ecg12.MainEcgManager;
 import com.lepu.ecg500.entity.PatientInfoBean;
 import com.lepu.ecg500.usb.UsbData;
 import com.lepu.ecg500.usb.CollectIndex;
 import com.lepu.ecg500.util.ECGBytesToShort;
-import com.lepu.ecg500.view.LeadType;
-import com.lepu.ecg500.view.MainEcgManager;
 import com.net.bean.Patient;
 import com.net.util.Constant;
 import com.net.util.FileUtil;
@@ -49,6 +52,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import io.getstream.log.android.file.StreamLogFileManager;
 import kotlin.Lazy;
 
 /**
@@ -62,7 +66,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
     private static final String INTENT_ACTION_GRANT_USB = BuildConfig.APPLICATION_ID + ".GRANT_USB";
     private final Lazy<GetPDFViewModel> viewViewModel = inject(GetPDFViewModel.class);
 
-    private final int uiReadBufferSize = 3200;// 115K:1440B/100ms, 230k:2880B/100ms   //每次读取的字节数量
+    private final int uiReadBufferSize = 4400;//每次读取的字节数量
     private final byte[] readBuffer = new byte[uiReadBufferSize * 2];//将数据从缓冲数组中读取出来存放的数组
     private final int updateTaskPeriodTime = 200;//定时时间
     private final int normalTime = 15 * 1000;//采集总时长 10秒
@@ -73,7 +77,6 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
     private ECGBytesToShort ecgDataUtil; //滤波处理工具
     private Timer updateTimer = new Timer();
     private final LeadType leadType = LeadType.LEAD_12; //当前导联模式
-    private SettingsBean bean;  //设置信息
     private Boolean isStart = false; //是否正在采集数据
     private TextView tvStart;
     private Handler mainLooper;
@@ -83,7 +86,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
     private UsbPermission usbPermission = UsbPermission.Unknown;
     private boolean connected = false;
     private UsbData usbData;
-
+    private Long checkTimeStamp = 0L;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +100,6 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         //设置布局显示方式
         MainEcgManager.getInstance().updateMainEcgShowStyle(leadType);
         MainEcgManager.getInstance().setDrawEcgRealView(findViewById(R.id.ecgView));
-        bean = new SettingsBean();
         //控制按钮
         tvStart = findViewById(R.id.tv_start);
         tvStart.setOnClickListener(this);
@@ -177,7 +179,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         int actualNumBytes = collInd.actualNumBytes;  //一次从缓冲数组中读取字节的数量
         if (0x00 == statusList.get(0)) {
             short[][] tempEcgDataArray =
-                    ecgDataUtil.bytesToLeadData(readBuffer, actualNumBytes, bean);//返回的是12导数据
+                    ecgDataUtil.bytesToLeadData(readBuffer, actualNumBytes);//返回的是12导数据
             short[][] waveFormData = ecgDataUtil.leadSortThe12(tempEcgDataArray);
             runOnUiThread(() -> {
                 if (actualNumBytes > 0) {
@@ -193,7 +195,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
                         tvStart.setText((currentDetectTime + updateTaskPeriodTime) / 1000 + "s");
                         if (currentDetectTime >= normalTime) {
                             currentDetectTime = 0;
-                            ecgDataUtil.ClearFilterWave();
+                            ecgDataUtil.clearFilterWave();
                             isStart = false;
                             clickTvStart();
                             List<List<Short>> ecgDataArray = new ArrayList<>();
@@ -219,7 +221,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
                             leadOffState = 0x00;
                         }
                     }
-                    short[][] finalWaveFormData = ecgDataUtil.filterLeadsData(waveFormData, bean); //是否使用滤波算法;
+                    short[][] finalWaveFormData = ecgDataUtil.filterLeadsData(waveFormData, 35,50); //是否使用滤波算法;
                     MainEcgManager.getInstance().addEcgData(finalWaveFormData); //绘制心电波形图
                 }
             });
@@ -281,14 +283,16 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         patient.setSmachineCode("gorlroq");
         patient.setDiagnosisMemo("胸痛");
         showProgressDialog();
-        viewViewModel.getValue().getAIPdf(ecgDataArray, bean, patient,null,null);
+        viewViewModel.getValue().getAIPdf(ecgDataArray,  patient,null,null, checkTimeStamp,
+                checkTimeStamp + normalTime );
     }
 
     //本地分析
     @SuppressLint("SimpleDateFormat")
-    private void getLocalPdf(List<List<Short>> ecgDataArray) {
+    private void getLocalPdf(List<List<Short>>  ecgDataArray) {
         //病人信息设置, 请写真实用户信息和医生信息
         PatientInfoBean patientInfoBean = new PatientInfoBean();
+        patientInfoBean.setPatientNumber("430124198701116863");
         patientInfoBean.setArchivesName("moArchivesName");
         patientInfoBean.setFirstName("moFirstName");
         patientInfoBean.setLastName("moLastName");
@@ -298,7 +302,8 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         patientInfoBean.setAge("20");
         patientInfoBean.setBirthdate("2003-09-08");
         patientInfoBean.setLeadoffstate(leadOffState);
-        viewViewModel.getValue().getLocalPdf(ecgDataArray, patientInfoBean,null,null);
+        viewViewModel.getValue().getLocalPdf(ecgDataArray, patientInfoBean,null,null, checkTimeStamp,
+                checkTimeStamp + normalTime);
     }
 
     @Override
@@ -313,6 +318,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
             if (!connected) {
                 Toast.makeText(this, R.string.detect_not_connection_usb, Toast.LENGTH_LONG).show();
             } else {
+                checkTimeStamp = System.currentTimeMillis();
                 allDetectInfo.clear();
                 isStart = !isStart;
                 clickTvStart();
@@ -405,15 +411,15 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
                 status("connection failed: open failed");
             return;
         }
-
         try {
             usbSerialPort.open(usbConnection);
-            int baudRate = 200000;  // 串口设定 200K波特率，1start，8bits，1stop
-            usbSerialPort.setParameters(baudRate, 8, 1, UsbSerialPort.PARITY_NONE);
+            usbSerialPort.setParameters(FT230X_BAUD_RATE, FT230X_DATA_BIT, FT230X_STOP_BIT, FT230X_PARITY);   // 串口设定
             usbIoManager = new SerialInputOutputManager(usbSerialPort, this);
             usbIoManager.start();
             status("connected");
             connected = true;
+            usbIoManager.writeAsync(usbData.startCmd()); //开始采集命令
+
         } catch (Exception e) {
             status("connection exception: " + e.getMessage());
             disconnect();
@@ -422,16 +428,18 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
 
     private void disconnect() {
         connected = false;
-        if (usbIoManager != null) {
-            usbIoManager.setListener(null);
-            usbIoManager.stop();
-        }
-        usbIoManager = null;
         try {
+            if (usbIoManager != null) {
+                usbSerialPort.write(usbData.stopCmd(), 1000); //停止采集命令
+                usbIoManager.setListener(null);
+                usbIoManager.stop();
+            }
+            usbIoManager = null;
             usbSerialPort.close();
         } catch (IOException ignored) {
         }
         usbSerialPort = null;
+//        StreamLogFileManager.INSTANCE.share();
     }
 
     private void status(String str) {

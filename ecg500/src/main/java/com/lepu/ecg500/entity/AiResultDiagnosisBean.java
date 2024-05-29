@@ -41,16 +41,6 @@ public class AiResultDiagnosisBean implements Parcelable {
         this.minnesotacodes = minnesotacodes;
     }
 
-    //===================================
-
-//    public List<String> getListDiagnosis() {
-//        return listDiagnosis;
-//    }
-//
-//    public void setListDiagnosis(List<String> listDiagnosis) {
-//        this.listDiagnosis = listDiagnosis;
-//    }
-
     public static AiResultDiagnosisBean parseSimple(String dataString)
     {
         Gson gson = new Gson();

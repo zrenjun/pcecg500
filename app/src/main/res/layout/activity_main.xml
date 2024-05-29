@@ -59,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinnerGain" >
 
-        <com.lepu.ecg500.view.DrawEcgRealView
+        <com.lepu.ecg500.ecg12.DrawEcgRealView
             android:id="@+id/ecgView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

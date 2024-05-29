@@ -3,7 +3,7 @@ package com.lepu.ecg500.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
-import com.lepu.ecg500.util.CustomTool;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -20,7 +20,6 @@ public class PatientInfoBean implements Parcelable, Serializable {
     private String archivesName;//名字，已经拼接好。缓存了。由于算法获取的名字，性别，年龄，字段固定，所以名字先用以前的.  数据库表没有存
     private String archivesSex;//sex; 性别 0 男 1 女 2 未知
     private String archivesAge;//age; 年龄
-    private PatientSettingConfigEnum.AgeUnit ageUnit;//年龄单位
     private String birthdate;//出生日期
     private String height;//身高
     private String weight;//体重
@@ -39,13 +38,8 @@ public class PatientInfoBean implements Parcelable, Serializable {
     private String checkDepartment;
     private String checkTechnician;
     private EcgSettingConfigEnum.LeadType checkLeadType;//检查导联类型
-    private EcgSettingConfigEnum.LeadWorkModeType checkWorkMode;//检查模式
     private String otherContent;
     private boolean pacemaker = false;//是否有起搏器
-    /**
-     * 患者编号生成方式
-     */
-    private PatientSettingConfigEnum.IdMakeType idMakeType;
     private String checkNo;
 
     private String appointmentId;//预约id 主要方便预约列表采集数据和病例管理列表关联
@@ -67,35 +61,13 @@ public class PatientInfoBean implements Parcelable, Serializable {
         dest.writeString(this.firstName);
 
         StringBuilder sb = new StringBuilder();
-        // TODO: 2021/5/12 mwj 默认是中文
-        //SystemSettingConfigEnum.LanguageMode languageMode = SettingManager.getInstance().getConfigBeanTemp().getSystemSettingBean().getLanguageMode();
-        SystemSettingConfigEnum.LanguageMode languageMode = SystemSettingConfigEnum.LanguageMode.CHINESE;
-        if("en".equals(CustomTool.getCurLanguage())){
-            languageMode = SystemSettingConfigEnum.LanguageMode.ENGLISH;
-        }
-        if (languageMode== SystemSettingConfigEnum.LanguageMode.CHINESE){
-            if(!TextUtils.isEmpty(this.lastName)){
-                sb.append(this.lastName);
-            }
-        }else {
-            if(!TextUtils.isEmpty(this.firstName)){
-                sb.append(this.firstName);
-            }
+        if(!TextUtils.isEmpty(this.lastName)){
+            sb.append(this.lastName);
         }
 
         if(!TextUtils.isEmpty(this.middleName)){
             sb.append(this.middleName);
         }
-        if (languageMode== SystemSettingConfigEnum.LanguageMode.CHINESE){
-            if(!TextUtils.isEmpty(this.firstName)){
-                sb.append(this.firstName);
-            }
-        }else {
-            if(!TextUtils.isEmpty(this.lastName)){
-                sb.append(this.lastName);
-            }
-        }
-
         if(!TextUtils.isEmpty(sb.toString())){
             this.archivesName = sb.toString();
         }
@@ -104,7 +76,6 @@ public class PatientInfoBean implements Parcelable, Serializable {
 
         dest.writeString(this.archivesSex);
         dest.writeString(this.archivesAge);
-        dest.writeInt(this.ageUnit == null ? -1 :this.ageUnit.ordinal());
         dest.writeString(this.birthdate);
         dest.writeString(this.height);
         dest.writeString(this.weight);
@@ -123,10 +94,8 @@ public class PatientInfoBean implements Parcelable, Serializable {
         dest.writeString(this.checkDepartment);
         dest.writeString(this.checkTechnician);
         dest.writeInt(this.checkLeadType == null ? -1 : this.checkLeadType.ordinal());
-        dest.writeInt(this.checkWorkMode == null ? -1 : this.checkWorkMode.ordinal());
         dest.writeString(this.otherContent);
         dest.writeByte(this.pacemaker ? (byte) 1 : (byte) 0);
-        dest.writeInt(this.idMakeType == null ? -1 : this.idMakeType.ordinal());
         dest.writeString(this.checkNo);
         dest.writeString(this.appointmentId);
         dest.writeString(this.patientId);
@@ -147,8 +116,6 @@ public class PatientInfoBean implements Parcelable, Serializable {
         this.archivesName = in.readString();
         this.archivesSex = in.readString();
         this.archivesAge = in.readString();
-        int tmpAgeUnit = in.readInt();
-        this.ageUnit = tmpAgeUnit == -1 ? null : PatientSettingConfigEnum.AgeUnit.values()[tmpAgeUnit];
         this.birthdate = in.readString();
         this.height = in.readString();
         this.weight = in.readString();
@@ -168,12 +135,9 @@ public class PatientInfoBean implements Parcelable, Serializable {
         this.checkTechnician = in.readString();
         int tmpCheckCaseLeadType = in.readInt();
         this.checkLeadType = tmpCheckCaseLeadType == -1 ? null : EcgSettingConfigEnum.LeadType.values()[tmpCheckCaseLeadType];
-        int tmpCheckCaseWorkMode = in.readInt();
-        this.checkWorkMode = tmpCheckCaseWorkMode == -1 ? null : EcgSettingConfigEnum.LeadWorkModeType.values()[tmpCheckCaseWorkMode];
         this.otherContent = in.readString();
         this.pacemaker = in.readByte() != 0;
         int tmpIdMakeType = in.readInt();
-        this.idMakeType = tmpIdMakeType == -1 ? null : PatientSettingConfigEnum.IdMakeType.values()[tmpIdMakeType];
         this.checkNo=in.readString();
         this.appointmentId = in.readString();
         this.patientId=in.readString();
@@ -275,14 +239,6 @@ public class PatientInfoBean implements Parcelable, Serializable {
 
     public void setAge(String age) {
         this.archivesAge = age;
-    }
-
-    public PatientSettingConfigEnum.AgeUnit getAgeUnit() {
-        return ageUnit;
-    }
-
-    public void setAgeUnit(PatientSettingConfigEnum.AgeUnit ageUnit) {
-        this.ageUnit = ageUnit;
     }
 
     public String getBirthdate() {
@@ -429,14 +385,6 @@ public class PatientInfoBean implements Parcelable, Serializable {
         this.checkLeadType = checkLeadType;
     }
 
-    public EcgSettingConfigEnum.LeadWorkModeType getCheckWorkMode() {
-        return checkWorkMode;
-    }
-
-    public void setCheckWorkMode(EcgSettingConfigEnum.LeadWorkModeType checkWorkMode) {
-        this.checkWorkMode = checkWorkMode;
-    }
-
     public String getOtherContent() {
         return otherContent;
     }
@@ -461,13 +409,6 @@ public class PatientInfoBean implements Parcelable, Serializable {
         this.archivesName = archivesName;
     }
 
-    public PatientSettingConfigEnum.IdMakeType getIdMakeType() {
-        return idMakeType;
-    }
-
-    public void setIdMakeType(PatientSettingConfigEnum.IdMakeType idMakeType) {
-        this.idMakeType = idMakeType;
-    }
 
     public String getCheckNo() {
         return checkNo;
@@ -533,7 +474,6 @@ public class PatientInfoBean implements Parcelable, Serializable {
                 Objects.equals(archivesName, that.archivesName) &&
                 Objects.equals(archivesSex, that.archivesSex) &&
                 Objects.equals(archivesAge, that.archivesAge) &&
-                ageUnit == that.ageUnit &&
                 Objects.equals(birthdate, that.birthdate) &&
                 Objects.equals(height, that.height) &&
                 Objects.equals(weight, that.weight) &&
@@ -550,15 +490,13 @@ public class PatientInfoBean implements Parcelable, Serializable {
                 Objects.equals(checkDepartment, that.checkDepartment) &&
                 Objects.equals(checkTechnician, that.checkTechnician) &&
                 checkLeadType == that.checkLeadType &&
-                checkWorkMode == that.checkWorkMode &&
                 Objects.equals(otherContent, that.otherContent) &&
-                idMakeType == that.idMakeType&&
                 Objects.equals(checkNo, that.checkNo) ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(patientNumber, lastName, middleName, firstName, archivesName, archivesSex, archivesAge, ageUnit, birthdate, height, weight, bloodPressure, race, nowUseMedicine, historyDescribed, patientFrom, idNumber, bedNo, outPatientNo, inPatientNo, physicalNumber, applyDepartment, applyDoctor, checkDepartment, checkTechnician, checkLeadType, checkWorkMode, otherContent, pacemaker, idMakeType,checkNo, leadoffstate);
+        return Objects.hash(patientNumber, lastName, middleName, firstName, archivesName, archivesSex, archivesAge,  birthdate, height, weight, bloodPressure, race, nowUseMedicine, historyDescribed, patientFrom, idNumber, bedNo, outPatientNo, inPatientNo, physicalNumber, applyDepartment, applyDoctor, checkDepartment, checkTechnician, checkLeadType,  otherContent, pacemaker,checkNo, leadoffstate);
     }
 }
 

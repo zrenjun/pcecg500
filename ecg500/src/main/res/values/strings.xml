@@ -1,77 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-
-    <string name="Lead_mode_cabrera" translatable="false">Cabrera</string>
-    <string name="type_other" translatable="false">other</string>
-    <string name="type_no" translatable="false">no</string>
-
-    <string name="app_tip_exception_toast_user">Sorry, the program is about to exit.</string>
-    <string name="app_pre_page">Prev</string>
-    <string name="app_next_page">Next</string>
-    <string name="app_tip_low_power">Low battery!</string>
-    <string name="app_tip_low_power_too_low">Battery depleted. Power off soon.</string>
-    <string name="app_tip_storage_enough_max_95">Memory space will be full, and new records will overwrite the oldest records.</string>
-    <string name="app_tip_storage_enough_max_90">Memory space insufficient! Please delete the oldest report.</string>
-    <string name="app_tip_dialog">Tips:</string>
-    <string name="app_login_input_username">Username</string>
-    <string name="app_login_input_password">Password</string>
-    <string name="app_login_remember_password">Remember</string>
-    <string name="app_login_server_setting">Server Setup</string>
-    <string name="app_login_login">Login</string>
-    <string name="app_login_if_login_out">Do you want to log out?</string>
-    <string name="app_login_login_out">Logout</string>
-    <string name="app_login_login_auth">Login</string>
-    <string name="app_login_login_urgent">Emergency</string>
-    <string name="app_login_username_empty">User name cannot be empty!</string>
-    <string name="app_login_password_empty">Password cannot be empty!</string>
-    <string name="app_login_logining">Logging in...</string>
-    <string name="app_login_login_psd_err">Incorrect password!</string>
-    <string name="app_scan_camera_open_err">Camera error!</string>
-    <string name="app_scan_camera_not_found">Camera unavailable!</string>
-    <string name="app_pwd">Password</string>
-    <string name="app_pwd_show">Display Password</string>
-    <string name="app_login_fail_network_error">The network is not available. Do you want to set it now?</string>
-    <string name="app_login_login_success">Login successfully</string>
-    <string name="app_login_server">AI Server login</string>
-    <string name="app_login_local">Local login</string>
-
-    <string name="app_tip_exception_1" translatable="false">Exception occurred. Application has been restarted.</string>
-    <string name="app_tip_exception_2" translatable="false">Program exception, please restart the application.</string>
-    <string name="app_tip_permission_1" translatable="false">No access to external storage devices.</string>
-    <string name="app_tip_permission_3" translatable="false">Camera unavailable.</string>
-    <string name="app_tip" translatable="false">Tips</string>
-    <string name="app_ok" translatable="false">OK</string>
-    <string name="app_cancel" translatable="false">Cancel</string>
-    <string name="app_yes" translatable="false">Yes</string>
-    <string name="app_no" translatable="false">No</string>
-    <string name="app_save" translatable="false">Save</string>
-    <string name="app_back" translatable="false">Return</string>
-    <string name="app_close" translatable="false">Close</string>
-    <string name="app_open" translatable="false">Open</string>
-    <string name="app_auto" translatable="false">Auto</string>
-    <string name="app_lode_ing" translatable="false">Loading…</string>
-    <string name="app_export_ing" translatable="false">Exporting…</string>
-    <string name="app_init_ing" translatable="false">Initializing…</string>
-    <string name="app_am" translatable="false">am</string>
-    <string name="app_pm" translatable="false">pm</string>
-    <string name="app_close_device_message" translatable="false">Are you sure you want to turn off the device?</string>
-    <string name="app_quit" translatable="false">Exit</string>
-    <string name="app_tip_network_bad" translatable="false">Network unavailable.</string>
-    <string name="error_connect_timeout" translatable="false">Connection to server timed out, please try again.</string>
-    <string name="server_failure" translatable="false">Server error</string>
-    <string name="server_user_disabled" translatable="false">Invalid user</string>
-    <string name="server_user_locked" translatable="false">User locked</string>
-    <string name="server_user_not_exist" translatable="false">User does not exist</string>
-    <string name="server_pwd_incorrect" translatable="false">Password incorrect</string>
-    <string name="server_session_expired" translatable="false">Login timeout</string>
-    <string name="server_no_permission" translatable="false">No permission</string>
-    <string name="server_no_need_update" translatable="false">It is already the latest version</string>
-    <string name="app_server_404" translatable="false">The accessed resource does not exist</string>
-    <string name="app_save_local_ing" translatable="false">Saving locally…</string>
-    <string name="app_save_local_success" translatable="false">Local saved successfully!</string>
-    <string name="app_save_local_fail" translatable="false">Local save failed!</string>
-    <string name="app_test" translatable="false">test</string>
-    <string name="app_printer_model" translatable="false">Support printer models：\n •HP LaserJet Pro M203dw(network#USB)\n •HP LaserJet Pro MFP M148dw(network#USB)\n •HP LaserJet Pro 400 M401d(USB)\n •HP Color LaserJet Pro M254nw(network#USB)\n</string>
-
+    <string name="print_export_title">心电图报告</string>
+    <string name="print_export_patient_number">病历号</string>
+    <string name="print_export_patient_name">姓名</string>
+    <string name="print_export_patient_sex">性别</string>
+    <string name="print_export_patient_age">年龄</string>
+    <string name="print_export_patient_apply_department">申请科室</string>
+    <string name="print_export_patient_apply_doctor">申请医生</string>
+    <string name="print_export_patient_check_department">检查科室</string>
+    <string name="print_export_patient_check_doctor">检查医生</string>
+    <string name="print_export_patient_bed_number">床号</string>
+    <string name="print_measure_hr">HR</string>
+    <string name="print_measure_time_limit">时限</string>
+    <string name="print_measure_time_interval">间期</string>
+    <string name="print_measure_electric_axis">电轴</string>
+    <string name="print_measure_amplitude">振幅</string>
+    <string name="print_minnesota_code">明尼苏达码</string>
+    <string name="print_analysis_result">诊断结论</string>
+    <string name="print_report_to_confirm">报告需医生确认</string>
+    <string name="print_time_second">秒</string>
+    <string name="print_export_sex_man">男</string>
+    <string name="print_export_sex_woman">女</string>
+    <string name="print_export_bottom_info_checktime">检查时间:</string>
+    <string name="print_export_bottom_info">本报告仅供临床医生参考,不作为最终诊断证明。</string>
 </resources>
