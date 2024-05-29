@@ -86,6 +86,7 @@ class UsbData {
                 val b = readDataBuffer[f19Ind]
                 if (b.toInt() != 0) {
                     leadOffState = b
+//                    LogUtil.e(b.toInt())
                 }
             } else {
                 collectInd.iReadIndex++

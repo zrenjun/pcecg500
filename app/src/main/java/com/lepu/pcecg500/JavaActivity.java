@@ -443,6 +443,6 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void status(String str) {
-        Toast.makeText(this, str, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 }
