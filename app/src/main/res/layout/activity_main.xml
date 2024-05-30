@@ -29,20 +29,20 @@
         android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
         android:text="@string/speed"
         android:textSize="@dimen/sp_16"
         app:layout_constraintBottom_toBottomOf="@id/spinnerGain"
-        app:layout_constraintStart_toEndOf="@id/spinnerGain"
+        app:layout_constraintEnd_toStartOf="@id/spinnerSpeed"
         app:layout_constraintTop_toTopOf="@id/spinnerGain" />
 
     <Spinner
         android:id="@+id/spinnerSpeed"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/dp_36"
-        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_20"
         android:entries="@array/ecgSpeed"
-        app:layout_constraintStart_toEndOf="@id/tv1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/spinnerGain" />
 
 
@@ -115,7 +115,7 @@
         android:layout_marginStart="@dimen/dp_20"
         android:text="@string/share"
         app:layout_constraintBottom_toBottomOf="@id/spinnerShare"
-        app:layout_constraintStart_toEndOf="@id/tv_start"
+        app:layout_constraintEnd_toStartOf="@id/spinnerShare"
         app:layout_constraintTop_toTopOf="@id/spinnerShare" />
 
     <Spinner
@@ -124,7 +124,8 @@
         android:layout_height="@dimen/dp_36"
         android:layout_gravity="center"
         android:entries="@array/share"
-        app:layout_constraintStart_toEndOf="@id/tv5"
+        android:layout_marginEnd="@dimen/dp_20"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tv_start"
         app:layout_constraintBottom_toBottomOf="@id/tv_start" />
 

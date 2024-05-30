@@ -51,7 +51,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import io.getstream.log.android.file.StreamLogFileManager;
 import kotlin.Lazy;
 
@@ -60,12 +59,9 @@ import kotlin.Lazy;
  * zrj 2022/3/24 15:16
  */
 public class JavaActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener, SerialInputOutputManager.Listener {
-
     private enum UsbPermission {Unknown, Requested, Granted, Denied}
-
     private static final String INTENT_ACTION_GRANT_USB = BuildConfig.APPLICATION_ID + ".GRANT_USB";
     private final Lazy<GetPDFViewModel> viewViewModel = inject(GetPDFViewModel.class);
-
     private final int uiReadBufferSize = 4400;//每次读取的字节数量
     private final byte[] readBuffer = new byte[uiReadBufferSize * 2];//将数据从缓冲数组中读取出来存放的数组
     private final int updateTaskPeriodTime = 200;//定时时间
@@ -73,7 +69,6 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
     private final List<short[][]> allDetectInfo = new ArrayList<>(); //采集的全部的数据
     private int currentDetectTime = 0;//当前采集时间
     private final CollectIndex collInd = new CollectIndex();
-
     private ECGBytesToShort ecgDataUtil; //滤波处理工具
     private Timer updateTimer = new Timer();
     private final LeadType leadType = LeadType.LEAD_12; //当前导联模式
@@ -232,26 +227,14 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-
         registerReceiver(broadcastReceiver, new IntentFilter(INTENT_ACTION_GRANT_USB));
-
         if (usbPermission == UsbPermission.Unknown || usbPermission == UsbPermission.Granted)
             mainLooper.post(this::connect);
     }
 
     @Override
-    public void onPause() {
-        if (connected) {
-            status("disconnected");
-            disconnect();
-        }
-        unregisterReceiver(broadcastReceiver);
-        super.onPause();
-    }
-
-    @Override
     public void onNewData(byte[] data) {
-        mainLooper.post(() -> receive(data));
+        usbData.add(data);
     }
 
     @Override
@@ -261,11 +244,6 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
             disconnect();
             connect();
         });
-    }
-
-
-    private void receive(byte[] data) {
-        usbData.add(data);
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -310,6 +288,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy() {
         super.onDestroy();
         updateTimer.cancel();
+        unregisterReceiver(broadcastReceiver);
     }
 
     @Override
@@ -430,7 +409,6 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         connected = false;
         try {
             if (usbIoManager != null) {
-                usbSerialPort.write(usbData.stopCmd(), 1000); //停止采集命令
                 usbIoManager.setListener(null);
                 usbIoManager.stop();
             }

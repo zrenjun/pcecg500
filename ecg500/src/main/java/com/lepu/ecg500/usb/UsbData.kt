@@ -29,23 +29,6 @@ class UsbData {
         return cmd
     }
 
-    fun stopCmd(): ByteArray {
-        val cmd = ByteArray(12)
-        cmd[0] = 0x7f.toByte()
-        cmd[1] = 0xc1.toByte()
-        cmd[2] = 0x00.toByte()
-        cmd[3] = 0x02.toByte()
-        cmd[4] = 0x00.toByte()
-        cmd[5] = 0x00.toByte()
-        cmd[6] = 0x00.toByte()
-        cmd[7] = 0x00.toByte()
-        cmd[8] = 0x00.toByte()
-        cmd[9] = 0x00.toByte()
-        cmd[10] = 0x00.toByte()
-        cmd[11] = 0x42.toByte()
-        return cmd
-    }
-
     //7F(头) 81(Type 8导联) 0A(加密+循环(0-F判断是否丢包)) 00 00 06 00 06 00 FA FF 07 00 04 00 06 00 07 00(16byte=8x2) 00(导联脱落位) 00(起搏信号) 27
     fun collectReadData(numBytes: Int, buffer: ByteArray, collectInd: CollectIndex): List<Byte> {
         var num = numBytes
@@ -75,7 +58,10 @@ class UsbData {
             val f1Ind = collectInd.iReadIndex
             val f2Ind = (f1Ind + 1) % MAX_NUM_BYTES
             val f19Ind = (f1Ind + 19) % MAX_NUM_BYTES
-            if (readDataBuffer[f1Ind].toInt() == 0x7f && readDataBuffer[f2Ind] == 0x81.toByte()) {
+            val f22Ind = (f1Ind + 22) % MAX_NUM_BYTES
+            val f23Ind = (f1Ind + 23) % MAX_NUM_BYTES
+            if (readDataBuffer[f1Ind].toInt() == 0x7f && readDataBuffer[f2Ind] == 0x81.toByte()
+                && readDataBuffer[f22Ind].toInt() == 0x7f && readDataBuffer[f23Ind] == 0x81.toByte()) {
                 for (i in 0 until CommConst.FRAME_COUNT) {
                     buffer[copyInd] = readDataBuffer[collectInd.iReadIndex]
                     collectInd.iReadIndex++
@@ -86,7 +72,6 @@ class UsbData {
                 val b = readDataBuffer[f19Ind]
                 if (b.toInt() != 0) {
                     leadOffState = b
-//                    LogUtil.e(b.toInt())
                 }
             } else {
                 collectInd.iReadIndex++
@@ -105,9 +90,11 @@ class UsbData {
 
     @Volatile
     private var iWriteIndex = 0 //已经写入缓冲数组的下标
+
     init {
         readDataBuffer = ByteArray(MAX_NUM_BYTES)
     }
+
     @Synchronized
     fun initVal() {
         iWriteIndex = 0
@@ -119,7 +106,7 @@ class UsbData {
         // 7f, c2, 00, 00, 00, 81, 08, 01, 00, 56, 31, 2e, 30, 2e, 31, 2e, 31, 5f, 31, 00, 00, fe, //回复帧
         // 7f, 81, 08, 8d, f8, ff, 7f, 00, 80, 00, 80, 00, 80, 00, 80, 00, 80, 00, 80, 00, 00, 0b,  //数据
 //        LogUtil.v(bytesToHexString(data))
-        if (data[0] == 0x7f.toByte() && data[ 1] == 0x81.toByte()){
+        if (data[0] == 0x7f.toByte() && data[1] == 0x81.toByte()) {
             var writeCount = 0
             for (count in data.indices) {
                 readDataBuffer[iWriteIndex] = data[count]
@@ -132,7 +119,8 @@ class UsbData {
     }
 
 }
- fun bytesToHexString(src: ByteArray?): String {
+
+fun bytesToHexString(src: ByteArray?): String {
     val stringBuilder = StringBuilder("")
     if (src == null || src.isEmpty()) {
         return ""
