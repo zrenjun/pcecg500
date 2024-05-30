@@ -1,4 +1,4 @@
-#  简述使用流程
+#  demo地址：https://github.com/zrenjun/pcecg500
 
 
 
@@ -7,8 +7,6 @@
 > ```
 > implementation project(path: ':ecg500')
 > ```
-
-![image-20220301164907404](image-20220301164907404.png)          
 
 
 
@@ -93,10 +91,9 @@
 ## 6.本地心电传统分析
 
 > ```
-> implementation project(path: ':pc700pdf')
-> 
 > 具体参见：viewViewModel.getValue().getLocalPdf(ecgDataArray)
+> 结论：viewViewModel.getValue().getMLocalResult().observe()
+> 全部分析数据：viewViewModel.getValue().getMLocalResultBean().observe()
 > ```
->
 > 
 
