@@ -132,13 +132,14 @@ class GetPDFViewModel(private val repository: Repository) : BaseViewModel() {
             withContext(Dispatchers.IO) {
                 //I/II/III/aVR/aVL/aVF/V1/V2/V3/V4/V5/V6
                 val data = ArrayList<ShortArray>()
-                var index: Int
-                for (i in 0..7) {
-                    index = i
-                    if (i > 1) {
-                        index = i + 4
+                // 导联数据 12导联原始数据中取 I II V1 V2 V3 V4 V5 V6
+                ecgDataArray.forEachIndexed { index, shorts ->
+                    if (index < 2 || index > 5) {
+                        data.add(ecgDataArray[index].subList(shorts.size - 1000 * 10, shorts.size).toShortArray())
                     }
-                    data.add(ecgDataArray[index].toShortArray())
+                }
+                (0..6).forEach {
+                    data.add(ShortArray(1000 * 10))  //win android linux 统一算法代码 这个地方补7导数据 默认0 一起15导数据
                 }
                 if (filePath != null) {
                     defaultFilePath = filePath
