@@ -222,8 +222,8 @@ object XmlUtil {
                             "${result.aiResultBean.qrsAxis}"
 
                         "MDC_ECG_ANGLE_T_FRONT" -> attribute?.text = "${result.aiResultBean.tAxis}"
-                        "ZONCARE_ECG_RV5" -> attribute?.text = "${result.aiResultBean.rV5}"
-                        "ZONCARE_ECG_SV1" -> attribute?.text = "${result.aiResultBean.sV1}"
+                        "ZONCARE_ECG_RV5" -> attribute?.text = "${result.aiResultBean.rV5 / 1000f}"
+                        "ZONCARE_ECG_SV1" -> attribute?.text = "${result.aiResultBean.sV1 / 1000f}"
                         //结论
                         "MDC_ECG_INTERPRETATION" -> {
                             annotation.elements("component").forEachIndexed { index, any ->

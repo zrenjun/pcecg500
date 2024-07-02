@@ -95,7 +95,7 @@ class GetPDFViewModel(private val repository: Repository) : BaseViewModel() {
                 //1.生成心电分析xml上传
                 XmlUtil.makeHl7Xml(
                     CommonApp.context,
-                    "610423198612206399",
+                    patient.idcard ?: "610423198612206399",
                     null,
                     data.toTypedArray(),
                     LeadType.LEAD_12,
@@ -135,7 +135,10 @@ class GetPDFViewModel(private val repository: Repository) : BaseViewModel() {
                 // 导联数据 12导联原始数据中取 I II V1 V2 V3 V4 V5 V6
                 ecgDataArray.forEachIndexed { index, shorts ->
                     if (index < 2 || index > 5) {
-                        data.add(ecgDataArray[index].subList(shorts.size - 1000 * 10, shorts.size).toShortArray())
+                        data.add(
+                            ecgDataArray[index].subList(shorts.size - 1000 * 10, shorts.size)
+                                .toShortArray()
+                        )
                     }
                 }
                 (0..6).forEach {
@@ -203,8 +206,11 @@ class GetPDFViewModel(private val repository: Repository) : BaseViewModel() {
                 stream.close()
                 //4.生成心电分析PDF
                 imageBitmap?.let {
-                   val pdfFile = EcgDataManager.instance?.exportPdf(it, "${defaultFilePath}/${defaultFileName}.pdf")
-                    val file = if (isPdf) pdfFile?.absolutePath?:"" else xmlPath
+                    val pdfFile = EcgDataManager.instance?.exportPdf(
+                        it,
+                        "${defaultFilePath}/${defaultFileName}.pdf"
+                    )
+                    val file = if (isPdf) pdfFile?.absolutePath ?: "" else xmlPath
                     mECGPdf.postValue(file)
                 }
 
