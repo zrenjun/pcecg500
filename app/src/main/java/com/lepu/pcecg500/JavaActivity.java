@@ -190,7 +190,6 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
                         tvStart.setText((currentDetectTime + updateTaskPeriodTime) / 1000 + "s");
                         if (currentDetectTime >= normalTime) {
                             currentDetectTime = 0;
-                            ecgDataUtil.clearFilterWave();
                             isStart = false;
                             clickTvStart();
                             List<List<Short>> ecgDataArray = new ArrayList<>();

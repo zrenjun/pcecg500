@@ -1,13 +1,10 @@
 package com.lepu.ecg500.util
 
-import com.Carewell.Data.Filter
 import com.Carewell.OmniEcg.jni.JniFilter
 import com.Carewell.OmniEcg.jni.NotifyFilter
 
 
 class ECGBytesToShort {
-    private val filter = com.Carewell.Data.Filter()
-    private var index = 0
     private var isPowerFrequencyChange = true
 
     /**
@@ -49,22 +46,6 @@ class ECGBytesToShort {
         return shortBuffer
     }
 
-    /**
-     * 清除过滤计数缓冲
-     */
-    fun clearFilterWave() {
-        index = 0
-        filter.LowPass75HzFilterFree()
-        filter.LowPass90HzFilterFree()
-        filter.LowPass100HzFilterFree()
-        filter.LowPass165HzFilterFree()
-        //肌电滤波
-        filter.EMG25FilterFree()
-        filter.EMG35FilterFree()
-        filter.EMG45FilterFree()
-        //工频滤波
-        filter.HUMFilterFree()
-    }
 
     /**
      * 波形数据解析函数
@@ -124,47 +105,17 @@ class ECGBytesToShort {
     fun filterLeadsData(leadsData: Array<ShortArray>, lp: Int, ac: Int): Array<ShortArray> {
 
         var dataArray = leadsData
-        for (i in dataArray[0].indices) {
-            for (j in dataArray.indices) {
-                //低通滤波
-                when (lp) {
-                    CommConst.FILTER_LOW_PASS_75 ->
-                        dataArray[j][i] = filter.LowPass75HzFilter(j, dataArray[j][i], index)
-
-                    CommConst.FILTER_LOW_PASS_90 ->
-                        dataArray[j][i] = filter.LowPass90HzFilter(j, dataArray[j][i], index)
-
-                    CommConst.FILTER_LOW_PASS_100 ->
-                        dataArray[j][i] = filter.LowPass100HzFilter(j, dataArray[j][i], index)
-
-                    CommConst.FILTER_LOW_PASS_165 ->
-                        dataArray[j][i] = filter.LowPass165HzFilter(j, dataArray[j][i], index)
-
-                }
-                //                //肌电滤波
-//                if (setting.getEMGHz() == CommConst.FILTER_EMG_25) {
-//                    dataArray[j][i] = filter.EMG25Filter(j, dataArray[j][i], index);
-//                } else if (setting.getEMGHz() == CommConst.FILTER_EMG_35) {
-//                    dataArray[j][i] = filter.EMG35Filter(j, dataArray[j][i], index);
-//                } else if (setting.getEMGHz() == CommConst.FILTER_EMG_45) {
-//                    dataArray[j][i] = filter.EMG45Filter(j, dataArray[j][i], index);
-//                }
-            }
-            index++
-        }
         //新的工频滤波
         if (ac == CommConst.FILTER_HUM_50) {
-            val inputDataCount = dataArray[0].size
-            val jniFilter = JniFilter.getInstance()
             val notifyFilter = NotifyFilter()
-            notifyFilter.outDataLen = inputDataCount
+            notifyFilter.outDataLen = dataArray[0].size
             var mvDataArray = switchEcgDataArray(dataArray)
 
             notifyFilter.dataArray = mvDataArray
             val powerF = isPowerFrequencyChange
 
             //50hz 工频
-            jniFilter.powerFrequency50attenuation(
+            JniFilter.getInstance().powerFrequency50attenuation(
                 mvDataArray,
                 mvDataArray[0].size,
                 1.0f,
