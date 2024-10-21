@@ -28,7 +28,7 @@ public class EcgSettingConfigEnum {
         /**
          * 18导联
          **/
-        LEAD_6( 1);
+        LEAD_6( 10);
 
         private int value;
 
