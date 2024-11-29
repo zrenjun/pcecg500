@@ -6,7 +6,7 @@ plugins {
 //    Strongly consider using FLAG_IMMUTABLE, only use FLAG_MUTABLE if some functionality depends on the PendingIntent being mutable, e.g. if it needs to be used with inline replies or bubbles.
 android {
     compileSdk 33
-
+    namespace 'com.lepu.pcecg500'
     defaultConfig {
         applicationId "com.lepu.pcecg500"
         minSdk 21
@@ -64,6 +64,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
     implementation project(path: ':ecg500')
-
-
 }
+
+
+android.buildFeatures.buildConfig true

@@ -1,6 +1,5 @@
 package com.net.util
 
-import com.lepu.ecg500.BuildConfig
 
 
 /**
@@ -10,8 +9,7 @@ import com.lepu.ecg500.BuildConfig
  *
  */
 object Constant {
-    var AI_BASE_URL =
-        if (BuildConfig.DEBUG) "http://www.lepuaicloud.com" else "https://wisemedical.creative-sz.com" //生产服
+    var AI_BASE_URL = "http://www.lepuaicloud.com"  //测试环境
     const val TOKEN_KEY = "TOKEN_KEY"
     const val TOKEN_EXPIRES = "TOKEN_EXPIRES"
     //todo  替换客户自己管理平台账号

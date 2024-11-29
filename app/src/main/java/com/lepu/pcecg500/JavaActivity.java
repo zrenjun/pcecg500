@@ -1,9 +1,5 @@
 package com.lepu.pcecg500;
 
-import static com.lepu.ecg500.util.CommConst.FT230X_BAUD_RATE;
-import static com.lepu.ecg500.util.CommConst.FT230X_DATA_BIT;
-import static com.lepu.ecg500.util.CommConst.FT230X_PARITY;
-import static com.lepu.ecg500.util.CommConst.FT230X_STOP_BIT;
 import static org.koin.java.KoinJavaComponent.inject;
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
@@ -29,6 +25,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import com.Carewell.OmniEcg.jni.JniFilterNew;
 import com.hoho.android.usbserial.driver.UsbSerialDriver;
 import com.hoho.android.usbserial.driver.UsbSerialPort;
 import com.hoho.android.usbserial.driver.UsbSerialProber;
@@ -51,7 +48,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import io.getstream.log.android.file.StreamLogFileManager;
 import kotlin.Lazy;
 
 /**
@@ -60,10 +56,11 @@ import kotlin.Lazy;
  */
 public class JavaActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener, SerialInputOutputManager.Listener {
     private enum UsbPermission {Unknown, Requested, Granted, Denied}
+
     private static final String INTENT_ACTION_GRANT_USB = BuildConfig.APPLICATION_ID + ".GRANT_USB";
     private final Lazy<GetPDFViewModel> viewViewModel = inject(GetPDFViewModel.class);
-    private final int uiReadBufferSize = 4400;//每次读取的字节数量
-    private final byte[] readBuffer = new byte[uiReadBufferSize * 2];//将数据从缓冲数组中读取出来存放的数组
+    private int uiReadBufferSize = 3200;//每次读取的字节数量
+    private byte[] readBuffer;//将数据从缓冲数组中读取出来存放的数组
     private final int updateTaskPeriodTime = 200;//定时时间
     private final int normalTime = 15 * 1000;//采集总时长 10秒
     private final List<short[][]> allDetectInfo = new ArrayList<>(); //采集的全部的数据
@@ -80,8 +77,10 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
     private UsbSerialPort usbSerialPort;
     private UsbPermission usbPermission = UsbPermission.Unknown;
     private boolean connected = false;
+    private boolean isOldDevice = true;
     private UsbData usbData;
     private Long checkTimeStamp = 0L;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,21 +149,17 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
             updateTimer.cancel();
         }
         updateTimer = new Timer();
-        usbData.initVal();
         collInd.iReadIndex = 0;
         collInd.actualNumBytes = 0;
-        updateTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                runTask();
-            }
-        }, 200, 200);
+        JniFilterNew.getInstance().InitDCRecover(0);
+        JniFilterNew.getInstance().resetFilter();
     }
 
     private byte leadOffState = 0x00;
 
     @SuppressLint("SetTextI18n")
     public void runTask() {
+
         List<Byte> statusList;
         if (usbData.getTotalBytes() > uiReadBufferSize * 5) {
             statusList = usbData.collectReadData(uiReadBufferSize * 2, readBuffer, collInd);
@@ -174,7 +169,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         int actualNumBytes = collInd.actualNumBytes;  //一次从缓冲数组中读取字节的数量
         if (0x00 == statusList.get(0)) {
             short[][] tempEcgDataArray =
-                    ecgDataUtil.bytesToLeadData(readBuffer, actualNumBytes);//返回的是12导数据
+                    ecgDataUtil.bytesToLeadData(isOldDevice,readBuffer, actualNumBytes);//返回的是12导数据
             short[][] waveFormData = ecgDataUtil.leadSortThe12(tempEcgDataArray);
             runOnUiThread(() -> {
                 if (actualNumBytes > 0) {
@@ -215,7 +210,8 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
                             leadOffState = 0x00;
                         }
                     }
-                    short[][] finalWaveFormData = ecgDataUtil.filterLeadsData(waveFormData, 35,50); //是否使用滤波算法;
+
+                    short[][] finalWaveFormData = ecgDataUtil.filterLeadsData(waveFormData, 90, 50); //是否使用滤波算法;
                     MainEcgManager.getInstance().addEcgData(finalWaveFormData); //绘制心电波形图
                 }
             });
@@ -226,7 +222,13 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-        registerReceiver(broadcastReceiver, new IntentFilter(INTENT_ACTION_GRANT_USB));
+        IntentFilter filter = new IntentFilter(INTENT_ACTION_GRANT_USB);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(broadcastReceiver, filter, RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(broadcastReceiver, filter);
+        }
+
         if (usbPermission == UsbPermission.Unknown || usbPermission == UsbPermission.Granted)
             mainLooper.post(this::connect);
     }
@@ -260,13 +262,13 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         patient.setSmachineCode("gorlroq");
         patient.setDiagnosisMemo("胸痛");
         showProgressDialog();
-        viewViewModel.getValue().getAIPdf(ecgDataArray,  patient,null,null, checkTimeStamp,
-                checkTimeStamp + normalTime );
+        viewViewModel.getValue().getAIPdf(ecgDataArray, patient, null, null, checkTimeStamp,
+                checkTimeStamp + normalTime);
     }
 
     //本地分析
     @SuppressLint("SimpleDateFormat")
-    private void getLocalPdf(List<List<Short>>  ecgDataArray) {
+    private void getLocalPdf(List<List<Short>> ecgDataArray) {
         //病人信息设置, 请写真实用户信息和医生信息
         PatientInfoBean patientInfoBean = new PatientInfoBean();
         patientInfoBean.setPatientNumber("430124198701116863");
@@ -279,7 +281,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         patientInfoBean.setAge("20");
         patientInfoBean.setBirthdate("2003-09-08");
         patientInfoBean.setLeadoffstate(leadOffState);
-        viewViewModel.getValue().getLocalPdf(ecgDataArray, patientInfoBean,null,null, checkTimeStamp,
+        viewViewModel.getValue().getLocalPdf(ecgDataArray, patientInfoBean, null, null, checkTimeStamp,
                 checkTimeStamp + normalTime);
     }
 
@@ -368,6 +370,9 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
             status("connection failed: device not found");
             return;
         }
+        isOldDevice = device.getVendorId() == 1027;
+        uiReadBufferSize = isOldDevice ? 3200 : 4400;
+        readBuffer = new byte[uiReadBufferSize * 2];
         UsbSerialDriver driver = UsbSerialProber.getDefaultProber().probeDevice(device);
         if (driver == null) {
             status("connection failed: no driver for device");
@@ -390,14 +395,23 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
         try {
+            usbData.initVal(isOldDevice);
+            int baudRate = isOldDevice ? 200000 : 460800;  // 串口设定波特率，
             usbSerialPort.open(usbConnection);
-            usbSerialPort.setParameters(FT230X_BAUD_RATE, FT230X_DATA_BIT, FT230X_STOP_BIT, FT230X_PARITY);   // 串口设定
+            usbSerialPort.setParameters(baudRate, 8, 1, UsbSerialPort.PARITY_NONE);
             usbIoManager = new SerialInputOutputManager(usbSerialPort, this);
             usbIoManager.start();
             status("connected");
             connected = true;
-            usbIoManager.writeAsync(usbData.startCmd()); //开始采集命令
-
+            if (!isOldDevice) {
+                usbIoManager.writeAsync(usbData.startCmd()); //开始采集命令
+            }
+            updateTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    runTask();
+                }
+            }, 200, 200);
         } catch (Exception e) {
             status("connection exception: " + e.getMessage());
             disconnect();

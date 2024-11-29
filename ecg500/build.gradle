@@ -6,7 +6,7 @@ plugins {
 
 android {
     compileSdk 32
-
+    namespace 'com.lepu.ecg500'
     defaultConfig {
         minSdk 21
         targetSdk 32
