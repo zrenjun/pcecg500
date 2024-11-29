@@ -152,7 +152,6 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         collInd.iReadIndex = 0;
         collInd.actualNumBytes = 0;
         JniFilterNew.getInstance().InitDCRecover(0);
-        JniFilterNew.getInstance().resetFilter();
     }
 
     private byte leadOffState = 0x00;
@@ -169,7 +168,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         int actualNumBytes = collInd.actualNumBytes;  //一次从缓冲数组中读取字节的数量
         if (0x00 == statusList.get(0)) {
             short[][] tempEcgDataArray =
-                    ecgDataUtil.bytesToLeadData(isOldDevice,readBuffer, actualNumBytes);//返回的是12导数据
+                    ecgDataUtil.bytesToLeadData(isOldDevice,readBuffer, actualNumBytes);//返回的是8导数据
             short[][] waveFormData = ecgDataUtil.leadSortThe12(tempEcgDataArray);
             runOnUiThread(() -> {
                 if (actualNumBytes > 0) {
@@ -211,7 +210,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     }
 
-                    short[][] finalWaveFormData = ecgDataUtil.filterLeadsData(waveFormData, 90, 50); //是否使用滤波算法;
+                    short[][] finalWaveFormData = ecgDataUtil.filterLeadsData(waveFormData); //是否使用滤波算法;
                     MainEcgManager.getInstance().addEcgData(finalWaveFormData); //绘制心电波形图
                 }
             });

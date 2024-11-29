@@ -2,6 +2,8 @@ package com.lepu.ecg500.util
 
 import com.Carewell.OmniEcg.jni.JniFilterNew
 import com.ecg.entity.NotifyFilterBean
+import com.lepu.ecg500.ecg12.Const
+import com.lepu.ecg500.util.CommConst.LEAD_COUNT
 
 
 class ECGBytesToShort {
@@ -146,24 +148,26 @@ class ECGBytesToShort {
     /**
      * 循环数组，过滤信号
      */
-    fun filterLeadsData(leadsData: Array<ShortArray>, lp: Int, ac: Int): Array<ShortArray> {
-        var dataArray = leadsData
-
-        //新的工频滤波
-        if (ac == CommConst.FILTER_HUM_50) {//50hz 工频
-            val notifyFilter = NotifyFilterBean()
-            notifyFilter.outDataLen = dataArray[0].size
-            notifyFilter.dataArray = switchEcgDataArray(dataArray)
-            JniFilterNew.getInstance().powerFrequency50(
-                leadsData.map { it.map { it.toInt() }.toIntArray() }.toTypedArray(),
-                notifyFilter.dataArray.size,
-                notifyFilter,
-                12
-            )
-            dataArray = switchEcgDataArray(notifyFilter.dataArray)
-        }
-
-        return dataArray
+    fun filterLeadsData(leadsData: Array<ShortArray>): Array<ShortArray> {
+        val notifyFilterBean = NotifyFilterBean()
+        val size = leadsData[0].size
+        val jniFilter = JniFilterNew.getInstance()
+        notifyFilterBean.outDataLen = size
+        val leadOffArr = IntArray(size)
+        jniFilter.DCRecover(leadsData, size, notifyFilterBean, 12, leadOffArr)
+        //DC后数值位数变化，需要用int接收
+        var tmpDataArray = notifyFilterBean.intDataArray
+        //漂移 高通  0.67
+        jniFilter.HP0p67(tmpDataArray, tmpDataArray[0].size, notifyFilterBean, 12)
+        tmpDataArray = notifyFilterBean.intDataArray
+        //肌电 、低通  35
+        jniFilter.electromyography35(tmpDataArray, tmpDataArray[0].size, notifyFilterBean, 12)
+        tmpDataArray = notifyFilterBean.intDataArray
+        //工频滤波 50hz
+        jniFilter.powerFrequency50(tmpDataArray, tmpDataArray[0].size, notifyFilterBean, 12)
+        tmpDataArray = notifyFilterBean.intDataArray
+        //重新转成short类型丢出
+        return tmpDataArray.map { it.map { it.toShort() }.toShortArray() }.toTypedArray()
     }
 
 
@@ -173,33 +177,6 @@ class ECGBytesToShort {
     private fun short8ToByte(s: Short): Byte {
         return (s.toInt() and 0xff).toByte()
     }
-
-    companion object {
-        private const val SHORT_MV_GAIN: Float = 5 / 2048f
-
-        fun switchEcgDataArray(dataArray: Array<ShortArray>): Array<FloatArray> {
-            val valueDataArray = Array(dataArray.size) { FloatArray(dataArray[0].size) }
-            for (i in dataArray.indices) {
-                for (j in dataArray[0].indices) {
-                    val value = dataArray[i][j]
-                    valueDataArray[i][j] = value * SHORT_MV_GAIN
-                }
-            }
-            return valueDataArray
-        }
-
-        fun switchEcgDataArray(dataArray: Array<FloatArray>): Array<ShortArray> {
-            val valueDataArray = Array(dataArray.size) { ShortArray(dataArray[0].size) }
-            for (i in dataArray.indices) {
-                for (j in dataArray[0].indices) {
-                    val value = dataArray[i][j]
-                    valueDataArray[i][j] = (value / SHORT_MV_GAIN).toInt().toShort()
-                }
-            }
-            return valueDataArray
-        }
-    }
-
 
     /**
      * 波形数据解析函数

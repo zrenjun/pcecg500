@@ -25,6 +25,28 @@ public class JniFilterNew {
         }
         return instance;
     }
+    //=============================DC 基线跳变问题，添加
+    public native void DCRecover(short[][] ecgDataArray, int dataLen, NotifyFilterBean notifyFilterBean, int filterLeadNum, int[] leadOffArr);
+
+    
+    /**
+     * 重置滤波器
+     */
+    public native void resetFilter();
+
+    /**
+     * 获取算法版本
+     * @return
+     */
+    public native int[] getAlgorithmVersion();
+
+    /**
+     * 初始化滤波器
+     * @param versionFlag  1 old version;0 new version
+     * @return
+     */
+    public native int InitDCRecover(int versionFlag);
+
 
     //==================================================交流 工频
 
@@ -35,12 +57,9 @@ public class JniFilterNew {
      * @param notifyFilterBean
      * @param filterLeadNum 需要滤波的导联长度
      */
-    public native void rmPacePulse(int[][] ecgDataArray, int dataLen,NotifyFilterBean notifyFilterBean,int filterLeadNum);
     public native void powerFrequency50(int[][] ecgDataArray, int dataLen,NotifyFilterBean notifyFilterBean,int filterLeadNum);
 
     public native void powerFrequency60(int[][] ecgDataArray, int dataLen,NotifyFilterBean notifyFilterBean,int filterLeadNum);
-    public native void powerFrequency70(int[][] ecgDataArray, int dataLen,NotifyFilterBean notifyFilterBean,int filterLeadNum);//自适应
-
 
     //===========================肌电  这个滤波开了，就不调用低通了。肌电和低通是一种滤波
     public native void electromyography25(int[][] ecgDataArray, int dataLen,NotifyFilterBean notifyFilterBean,int filterLeadNum);
@@ -74,27 +93,4 @@ public class JniFilterNew {
     public native void HP0p32(int[][] ecgDataArray, int dataLen,NotifyFilterBean notifyFilterBean,int filterLeadNum);
 
     public native void HP0p67(int[][] ecgDataArray, int dataLen,NotifyFilterBean notifyFilterBean,int filterLeadNum);
-
-    //=============================DC 基线跳变问题，添加
-    public native void DCRecover(short[][] ecgDataArray, int dataLen,NotifyFilterBean notifyFilterBean,int filterLeadNum,int[] leadOffArr,boolean addPacemaker);
-
-    /**
-     * 重置滤波器
-     */
-    public native void resetFilter();
-
-    /**
-     * 获取算法版本
-     * @return
-     */
-    public native int[] getAlgorithmVersion();
-
-    /**
-     * 初始化滤波器
-     * @param versionFlag  1 old version;0 new version
-     * @return
-     */
-    public native int InitDCRecover(int versionFlag);
-
-
 }
