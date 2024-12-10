@@ -5,18 +5,20 @@ plugins {
 //Targeting S+ (version 31 and above) requires that one of FLAG_IMMUTABLE or FLAG_MUTABLE be specified when creating a PendingIntent.
 //    Strongly consider using FLAG_IMMUTABLE, only use FLAG_MUTABLE if some functionality depends on the PendingIntent being mutable, e.g. if it needs to be used with inline replies or bubbles.
 android {
-    compileSdk 33
+    compileSdk 35
     namespace 'com.lepu.pcecg500'
     defaultConfig {
         applicationId "com.lepu.pcecg500"
         minSdk 21
-        targetSdk 33
+        targetSdk 35
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         ndk {
             abiFilters "armeabi-v7a"
         }
         vectorDrawables.useSupportLibrary = true
+        def createTime = new Date().format("yyyyMMddHHmmss", TimeZone.getTimeZone("GMT+08:00"))
+        setProperty("archivesBaseName", "pcecg500demo_v${defaultConfig.versionName}(${defaultConfig.versionCode})_${createTime}")
     }
 
     signingConfigs {

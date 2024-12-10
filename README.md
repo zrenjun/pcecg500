@@ -48,7 +48,8 @@
 > <?xml version="1.0" encoding="utf-8"?>
 > 
 > <resources>
->    <usb-device vendor-id="1027" product-id="24597" /> <!-- FT230X -->
+>    <usb-device vendor-id="6790" product-id="29987" /> <!-- FT230X 新设备-->
+>    <usb-device vendor-id="1027" product-id="24597" /> <!-- FT230X 旧设备-->
 > </resources>
 > ```
 
@@ -74,9 +75,9 @@
 
 > 具体参见GetPDFViewModel
 
-1. 在管理平台http://www.lepuaicloud.com（这是测试环境，生产环境https://wisemedical.creative-sz.com）创建统一客户账号
-2. 通过账号密码获取接口请求令牌，具体请参考示例及接口文档
-3. 注意：在上传用户信息patient.setUserId中一定要与客户账号一致
+1. https://github.com/viatom-develop/Lepu-AI/blob/main/AI%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E6%8E%A5%E5%8F%A3.md
+2. 通过开通账号密码获取接口请求令牌，具体请参考示例及接口文档
+
 
 
 
