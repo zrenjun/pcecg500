@@ -130,90 +130,93 @@ class GetPDFViewModel(private val repository: Repository) : BaseViewModel() {
 
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                //I/II/III/aVR/aVL/aVF/V1/V2/V3/V4/V5/V6
-                val data = ArrayList<ShortArray>()
-                // 导联数据 12导联原始数据中取 I II V1 V2 V3 V4 V5 V6
-                ecgDataArray.forEachIndexed { index, shorts ->
-                    if (index < 2 || index > 5) {
-                        data.add(
-                            ecgDataArray[index].subList(shorts.size - 1000 * 10, shorts.size)
-                                .toShortArray()
-                        )
+                try {
+                    //I/II/III/aVR/aVL/aVF/V1/V2/V3/V4/V5/V6
+                    val data = ArrayList<ShortArray>()
+                    // 导联数据 12导联原始数据中取 I II V1 V2 V3 V4 V5 V6
+                    ecgDataArray.forEachIndexed { index, shorts ->
+                        if (index < 2 || index > 5) {
+                            data.add(
+                                ecgDataArray[index].subList(shorts.size - 1000 * 10, shorts.size)
+                                    .toShortArray()
+                            )
+                        }
                     }
-                }
-                (0..6).forEach {
-                    data.add(ShortArray(1000 * 10))  //win android linux 统一算法代码 这个地方补7导数据 默认0 一起15导数据
-                }
-                if (filePath != null) {
-                    defaultFilePath = filePath
-                }
-                if (fileName != null) {
-                    defaultFileName = fileName
-                }
-                XmlUtil.createDir(defaultFilePath)
-                //本地算法分析，分析出来数据
-                val xmlPath = "${defaultFilePath}/${defaultFileName}.xml"
-                val resultBean = traditionalAnalysis(
-                    xmlPath,
-                    EcgSettingConfigEnum.LeadType.LEAD_12,
-                    patientInfoBean,
-                    data.toTypedArray()
-                )
-                LogUtil.e(resultBean.toJson())
-                mLocalResultBean.postValue(resultBean)
-                //诊断结论
-                val result = mutableListOf<String>()
-                resultBean.aiResultBean.aiResultDiagnosisBean.diagnosis.forEach {
-                    XmlUtil.map[it.code]?.apply {
-                        result.add(this)
+                    (0..6).forEach {
+                        data.add(ShortArray(1000 * 10))  //win android linux 统一算法代码 这个地方补7导数据 默认0 一起15导数据
                     }
-                }
-                mLocalResult.postValue(result)
-                //2.生成心电分析xml  参数根据UI设置
-                data.clear()
-                for (i in 0..11) {
-                    data.add(ecgDataArray[i].toShortArray())
-                }
-
-                XmlUtil.makeHl7Xml(
-                    CommonApp.context,
-                    patientInfoBean.patientNumber,
-                    resultBean,
-                    data.toTypedArray(),
-                    LeadType.LEAD_12,
-                    defaultFilePath,
-                    defaultFileName,
-                    startTime,
-                    endTime,
-                    "35",
-                    "0.67",
-                    "50"
-                )
-                //3.返回Bitmap 写文件保存或是直接展示
-                val imageBitmap = EcgDataManager.instance?.exportBmp(
-                    CommonApp.context,
-                    patientInfoBean,
-                    resultBean,
-                    data.toTypedArray(),
-                    startTime,
-                    "35",
-                    "0.67",
-                    "50"
-                )
-                val stream = FileOutputStream(File("${defaultFilePath}/${defaultFileName}.jpg"))
-                imageBitmap?.compress(Bitmap.CompressFormat.JPEG, 25, stream)
-                stream.flush()
-                stream.close()
-                //4.生成心电分析PDF
-                imageBitmap?.let {
-                    val pdfFile = EcgDataManager.instance?.exportPdf(
-                        it,
-                        "${defaultFilePath}/${defaultFileName}.pdf"
+                    if (filePath != null) {
+                        defaultFilePath = filePath
+                    }
+                    if (fileName != null) {
+                        defaultFileName = fileName
+                    }
+                    XmlUtil.createDir(defaultFilePath)
+                    //本地算法分析，分析出来数据
+                    val xmlPath = "${defaultFilePath}/${defaultFileName}.xml"
+                    val resultBean = traditionalAnalysis(
+                        xmlPath,
+                        EcgSettingConfigEnum.LeadType.LEAD_12,
+                        patientInfoBean,
+                        data.toTypedArray()
                     )
-                    val file = if (isPdf) pdfFile?.absolutePath ?: "" else xmlPath
-                    mECGPdf.postValue(file)
-                }
+                    LogUtil.e(resultBean.toJson())
+                    mLocalResultBean.postValue(resultBean)
+                    //诊断结论
+                    val result = mutableListOf<String>()
+                    resultBean.aiResultBean.aiResultDiagnosisBean.diagnosis.forEach {
+                        XmlUtil.map[it.code]?.apply {
+                            result.add(this)
+                        }
+                    }
+                    mLocalResult.postValue(result)
+                    //2.生成心电分析xml  参数根据UI设置
+                    data.clear()
+                    for (i in 0..11) {
+                        data.add(ecgDataArray[i].toShortArray())
+                    }
 
+                    XmlUtil.makeHl7Xml(
+                        CommonApp.context,
+                        patientInfoBean.patientNumber,
+                        resultBean,
+                        data.toTypedArray(),
+                        LeadType.LEAD_12,
+                        defaultFilePath,
+                        defaultFileName,
+                        startTime,
+                        endTime,
+                        "35",
+                        "0.67",
+                        "50"
+                    )
+                    //3.返回Bitmap 写文件保存或是直接展示
+                    val imageBitmap = EcgDataManager.instance?.exportBmp(
+                        CommonApp.context,
+                        patientInfoBean,
+                        resultBean,
+                        data.toTypedArray(),
+                        startTime,
+                        "35",
+                        "0.67",
+                        "50"
+                    )
+                    val stream = FileOutputStream(File("${defaultFilePath}/${defaultFileName}.jpg"))
+                    imageBitmap?.compress(Bitmap.CompressFormat.JPEG, 25, stream)
+                    stream.flush()
+                    stream.close()
+                    //4.生成心电分析PDF
+                    imageBitmap?.let {
+                        val pdfFile = EcgDataManager.instance?.exportPdf(
+                            it,
+                            "${defaultFilePath}/${defaultFileName}.pdf"
+                        )
+                        val file = if (isPdf) pdfFile?.absolutePath ?: "" else xmlPath
+                        mECGPdf.postValue(file)
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
         }
     }

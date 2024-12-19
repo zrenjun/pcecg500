@@ -65,6 +65,10 @@ dependencies {
 
     api 'io.getstream:stream-log-android:1.1.4'
     api 'io.getstream:stream-log-android-file:1.1.4'
+
+    def bugly_version = 'latest.release'
+    api "com.tencent.bugly:crashreport:$bugly_version"
+    api "com.tencent.bugly:nativecrashreport:$bugly_version"
 }
 
 afterEvaluate {

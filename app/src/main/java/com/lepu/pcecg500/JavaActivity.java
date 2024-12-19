@@ -100,16 +100,10 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         //4个设置选项
         Spinner spinnerGain = findViewById(R.id.spinnerGain);
         Spinner spinnerSpeed = findViewById(R.id.spinnerSpeed);
-        Spinner spinnerAnalysis = findViewById(R.id.spinnerAnalysis);
-        Spinner spinnerShare = findViewById(R.id.spinnerShare);
         spinnerGain.setSelection(2, true);
         spinnerSpeed.setSelection(2, true);
-        spinnerAnalysis.setSelection(0, true);
-        spinnerShare.setSelection(0, true);
         spinnerSpeed.setOnItemSelectedListener(this);
         spinnerGain.setOnItemSelectedListener(this);
-        spinnerAnalysis.setOnItemSelectedListener(this);
-        spinnerShare.setOnItemSelectedListener(this);
 
         viewViewModel.getValue().getMECGPdf().observe(this, s -> {
             dismissProgressDialog();
@@ -145,10 +139,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
             clickTvStart();
             Toast.makeText(this, R.string.detect_interrupt_re_detect, Toast.LENGTH_LONG).show();
         }
-        if (updateTimer != null) {
-            updateTimer.cancel();
-        }
-        updateTimer = new Timer();
+
         collInd.iReadIndex = 0;
         collInd.actualNumBytes = 0;
         JniFilterNew.getInstance().InitDCRecover(0);
@@ -158,7 +149,6 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
 
     @SuppressLint("SetTextI18n")
     public void runTask() {
-
         List<Byte> statusList;
         if (usbData.getTotalBytes() > uiReadBufferSize * 5) {
             statusList = usbData.collectReadData(uiReadBufferSize * 2, readBuffer, collInd);
@@ -167,8 +157,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         }
         int actualNumBytes = collInd.actualNumBytes;  //一次从缓冲数组中读取字节的数量
         if (0x00 == statusList.get(0)) {
-            short[][] tempEcgDataArray =
-                    ecgDataUtil.bytesToLeadData(isOldDevice,readBuffer, actualNumBytes);//返回的是8导数据
+            short[][] tempEcgDataArray = ecgDataUtil.bytesToLeadData(isOldDevice, readBuffer, actualNumBytes);//返回的是8导数据
             short[][] waveFormData = ecgDataUtil.leadSortThe12(tempEcgDataArray);
             runOnUiThread(() -> {
                 if (actualNumBytes > 0) {
@@ -297,15 +286,17 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
             if (!connected) {
                 Toast.makeText(this, R.string.detect_not_connection_usb, Toast.LENGTH_LONG).show();
             } else {
-                checkTimeStamp = System.currentTimeMillis();
-                allDetectInfo.clear();
-                isStart = !isStart;
-                clickTvStart();
+                if (System.currentTimeMillis() - checkTimeStamp > 500) {
+                    checkTimeStamp = System.currentTimeMillis();
+                    allDetectInfo.clear();
+                    isStart = !isStart;
+                    clickTvStart();
+                }
             }
         }
     }
 
-    private Boolean isAI = true;
+    private final Boolean isAI = false;
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
@@ -313,10 +304,6 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
             MainEcgManager.getInstance().updateMainGain(position);//设置增益
         } else if (adapterView.getId() == R.id.spinnerSpeed) {
             MainEcgManager.getInstance().updateMainSpeed(position); //设置走速
-        } else if (adapterView.getId() == R.id.spinnerAnalysis) {//设置分析方式
-            isAI = position == 0;
-        } else if (adapterView.getId() == R.id.spinnerShare) {//设置分享文件格式
-            viewViewModel.getValue().setPdf(position == 0);
         }
     }
 
@@ -359,9 +346,11 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void connect() {
+        if (updateTimer != null) {
+            updateTimer.cancel();
+        }
         UsbDevice device = null;
         UsbManager usbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
-
         for (UsbDevice v : usbManager.getDeviceList().values())
             device = v;
 
@@ -405,12 +394,13 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
             if (!isOldDevice) {
                 usbIoManager.writeAsync(usbData.startCmd()); //开始采集命令
             }
+            updateTimer = new Timer();
             updateTimer.schedule(new TimerTask() {
                 @Override
                 public void run() {
                     runTask();
                 }
-            }, 200, 200);
+            }, 200, updateTaskPeriodTime);
         } catch (Exception e) {
             status("connection exception: " + e.getMessage());
             disconnect();
@@ -429,7 +419,7 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         } catch (IOException ignored) {
         }
         usbSerialPort = null;
-//        StreamLogFileManager.INSTANCE.share();
+
     }
 
     private void status(String str) {

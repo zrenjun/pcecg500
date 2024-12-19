@@ -20,7 +20,7 @@
         android:layout_height="@dimen/dp_36"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_20"
         android:entries="@array/ecgGain"
         app:layout_constraintStart_toEndOf="@id/tv"
         app:layout_constraintTop_toTopOf="parent" />
@@ -66,26 +66,7 @@
 
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/tv4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/sp_16"
-        android:layout_marginStart="@dimen/dp_20"
-        android:text="@string/analysis"
-        app:layout_constraintBottom_toBottomOf="@id/spinnerAnalysis"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/spinnerAnalysis" />
 
-    <Spinner
-        android:id="@+id/spinnerAnalysis"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dp_36"
-        android:layout_gravity="center"
-        android:entries="@array/analysis"
-        app:layout_constraintStart_toEndOf="@id/tv4"
-        app:layout_constraintTop_toTopOf="@id/tv_start"
-        app:layout_constraintBottom_toBottomOf="@id/tv_start" />
 
     <TextView
         android:id="@+id/tv_start"
@@ -107,26 +88,6 @@
 
 
 
-    <TextView
-        android:id="@+id/tv5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/sp_16"
-        android:layout_marginStart="@dimen/dp_20"
-        android:text="@string/share"
-        app:layout_constraintBottom_toBottomOf="@id/spinnerShare"
-        app:layout_constraintEnd_toStartOf="@id/spinnerShare"
-        app:layout_constraintTop_toTopOf="@id/spinnerShare" />
 
-    <Spinner
-        android:id="@+id/spinnerShare"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dp_36"
-        android:layout_gravity="center"
-        android:entries="@array/share"
-        android:layout_marginEnd="@dimen/dp_20"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_start"
-        app:layout_constraintBottom_toBottomOf="@id/tv_start" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
