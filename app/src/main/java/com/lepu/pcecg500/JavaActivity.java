@@ -387,12 +387,15 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
             int baudRate = isOldDevice ? 200000 : 460800;  // 串口设定波特率，
             usbSerialPort.open(usbConnection);
             usbSerialPort.setParameters(baudRate, 8, 1, UsbSerialPort.PARITY_NONE);
+            SerialInputOutputManager.DEBUG = true;
             usbIoManager = new SerialInputOutputManager(usbSerialPort, this);
             usbIoManager.start();
             status("connected");
             connected = true;
             if (!isOldDevice) {
-                usbIoManager.writeAsync(usbData.startCmd()); //开始采集命令
+                //开始采集命令
+                usbSerialPort.write(usbData.startCmd(),1000);
+//                usbIoManager.writeAsync(usbData.startCmd());
             }
             updateTimer = new Timer();
             updateTimer.schedule(new TimerTask() {
