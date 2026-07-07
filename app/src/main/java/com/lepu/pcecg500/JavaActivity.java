@@ -345,6 +345,29 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
         tvStart.setCompoundDrawables(drawable, null, null, null);
     }
 
+    /**
+     * 发送指令（单次）延时调度
+     * @param cmd 要发送的字节数组
+     * @param delayMs 延时时间，毫秒
+     */
+    private void sendCommandWithDelay(final byte[] cmd, long delayMs) {
+        if (cmd == null) return;
+        if (mainLooper == null) mainLooper = new Handler(Looper.getMainLooper());
+        mainLooper.postDelayed(() -> {
+            new Thread(() -> {
+                try {
+                    if (usbSerialPort != null && connected) {
+                        usbSerialPort.write(cmd, 1000);
+                    } else {
+                        runOnUiThread(() -> status("send failed: not connected"));
+                    }
+                } catch (IOException e) {
+                    runOnUiThread(() -> status("send exception: " + e.getMessage()));
+                }
+            }).start();
+        }, delayMs);
+    }
+
     private void connect() {
         if (updateTimer != null) {
             updateTimer.cancel();
@@ -393,9 +416,8 @@ public class JavaActivity extends AppCompatActivity implements View.OnClickListe
             status("connected");
             connected = true;
             if (!isOldDevice) {
-                //开始采集命令
-                usbSerialPort.write(usbData.startCmd(),1000);
-//                usbIoManager.writeAsync(usbData.startCmd());
+                //开始采集命令（延时发送，500ms）
+                sendCommandWithDelay(usbData.startCmd(), 1000);
             }
             updateTimer = new Timer();
             updateTimer.schedule(new TimerTask() {
